@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">MyTenthApp</string>
-    <string name="edit_message">Enter a message4</string>
+    <string name="edit_message">Enter a message3</string>
     <string name="button_send">Send</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
