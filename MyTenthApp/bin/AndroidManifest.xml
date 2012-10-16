@@ -21,11 +21,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplayMessageActivity"
-            android:label="@string/title_activity_page_2" >
+            android:name=".Page2Activity"
+            android:label="@string/title_activity_page2" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.mytenthapp.MainActivity" />
+                android:value="com.example.myfirstapp.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Page3Activity"
+            android:label="@string/title_activity_page3" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfirstapp.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Page4Activity"
+            android:label="@string/title_activity_page4" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.myfirstapp.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Page5Activity"
+            android:label="@string/title_activity_page5" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
