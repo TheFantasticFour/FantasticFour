@@ -22,5 +22,8 @@
     <string name="title_activity_page3">Page3Activity</string>
     <string name="title_activity_page4">Page4Activity</string>
     <string name="title_activity_page5">Page5Activity</string>
+    
+    <string name="my_page">TEST</string>
+    
 
 </resources>
