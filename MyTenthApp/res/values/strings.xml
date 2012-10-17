@@ -11,10 +11,12 @@
     
     <string name="edit_message">Enter a message</string>
     
+    <string name="edit_message_3">Total on Page 4</string>
+    
     <string name="button_send_page_2">To Page 2</string>
     <string name="button_send_page_3">To Page 3</string>
     <string name="button_send_page_4">To Page 4</string>
-    <string name="button_send_page_5">To Page 5</string>
+    <string name="button_send_page_5">Final Confirmation</string>
     
     <string name="title_activity_display_message">My Message</string>
     
