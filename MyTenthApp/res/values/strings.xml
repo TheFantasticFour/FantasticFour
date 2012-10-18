@@ -15,7 +15,7 @@
     <string name="edit_message_3.2">Number of Pizzas</string>
     <string name="edit_message_3.3">Number of Sodas</string>
     
-    <string name="button_send_page_2">To Page 2</string>
+    <string name="button_send_page_2">Menu</string>
     <string name="button_send_page_3">To Page 3</string>
     <string name="button_send_page_4">To Page 4</string>
     <string name="button_send_page_5">Final Confirmation</string>
@@ -28,6 +28,8 @@
     <string name="title_activity_page5">Page5Activity</string>
     
     <string name="my_page">TEST</string>
+    <string name="button_contact">Contact Us</string>
+    <string name="title_activity_contact">Contact Us</string>
     
 
 </resources>
