@@ -14,16 +14,16 @@
     <string name="delivery_address">Enter a Address For Delivery!</string>
     
     <string name="button_send_page_2">Menu</string>
-    <string name="button_send_page_3">To Page 3</string>
+    <string name="button_send_page_3">Continue Order</string>
     <string name="button_send_page_4">Next</string>
     <string name="button_send_page_5">Final Confirmation</string>
     
     <string name="title_activity_display_message">My Message</string>
     
-    <string name="title_activity_page2">Page2Activity</string>
-    <string name="title_activity_page3">Page3Activity</string>
-    <string name="title_activity_page4">Page4Activity</string>
-    <string name="title_activity_page5">Page5Activity</string>
+    <string name="title_activity_page2">Please Order Items</string>
+    <string name="title_activity_page3">Address Page</string>
+    <string name="title_activity_page4">Order Summary</string>
+    <string name="title_activity_page5">THANK YOU!</string>
     
     <string name="my_page">TEST</string>
     <string name="button_contact">Contact Us</string>

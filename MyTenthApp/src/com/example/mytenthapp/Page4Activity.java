@@ -25,18 +25,17 @@ public class Page4Activity extends Activity {
         
         Intent intent = getIntent();
         
-        String message1 = intent.getStringExtra(Page2Activity.EXTRA_MESSAGE_3_pizza);
+        String message1 = intent.getStringExtra(Page3Activity.PASSPIZZA);
+        //System.out.println(intent.getStringExtra(Page3Activity.PASSPIZZA));
         TextView myTextView1= (TextView) findViewById(R.id.number_pizzas);
-        myTextView1.setText(message1);
+        myTextView1.setText("2");
         
-        String message2 = intent.getStringExtra(Page2Activity.EXTRA_MESSAGE_3_soda);
+        String message2 = intent.getStringExtra(Page3Activity.PASSPOP);
         TextView myTextView2= (TextView) findViewById(R.id.number_sodas);
-        myTextView2.setText(message2);        
+        myTextView2.setText("3");        
         
         String message = intent.getStringExtra(Page3Activity.EXTRA_MESSAGE_3);
-        
         TextView myTextView= (TextView) findViewById(R.id.order_total);
-        
         myTextView.setText(message);
         
         
