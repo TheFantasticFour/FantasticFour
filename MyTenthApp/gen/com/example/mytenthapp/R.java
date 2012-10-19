@@ -22,23 +22,22 @@ public final class R {
     }
     public static final class id {
         public static final int FrameLayout1=0x7f080000;
-        public static final int Label1=0x7f080007;
+        public static final int Label1=0x7f080006;
         public static final int button1=0x7f080002;
         public static final int button2=0x7f080003;
         public static final int button3=0x7f080001;
-        public static final int credit_card=0x7f08000d;
+        public static final int credit_card=0x7f08000c;
+        public static final int delivery_address=0x7f080005;
         public static final int edit_message=0x7f080004;
-        public static final int menu_settings=0x7f080011;
-        public static final int numPiz=0x7f08000a;
-        public static final int numSod=0x7f08000c;
-        public static final int number_of_pizzas=0x7f080005;
-        public static final int number_of_sodas=0x7f080006;
-        public static final int number_pizzas=0x7f080009;
-        public static final int number_sodas=0x7f08000b;
-        public static final int order_total=0x7f080008;
-        public static final int textView1=0x7f08000e;
-        public static final int textView2=0x7f08000f;
-        public static final int textView3=0x7f080010;
+        public static final int menu_settings=0x7f080010;
+        public static final int numPiz=0x7f080009;
+        public static final int numSod=0x7f08000b;
+        public static final int number_pizzas=0x7f080008;
+        public static final int number_sodas=0x7f08000a;
+        public static final int order_total=0x7f080007;
+        public static final int textView1=0x7f08000d;
+        public static final int textView2=0x7f08000e;
+        public static final int textView3=0x7f08000f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -58,27 +57,25 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int button_contact=0x7f050012;
-        public static final int button_send_page_2=0x7f050008;
-        public static final int button_send_page_3=0x7f050009;
-        public static final int button_send_page_4=0x7f05000a;
-        public static final int button_send_page_5=0x7f05000b;
+        public static final int button_contact=0x7f050010;
+        public static final int button_send_page_2=0x7f050006;
+        public static final int button_send_page_3=0x7f050007;
+        public static final int button_send_page_4=0x7f050008;
+        public static final int button_send_page_5=0x7f050009;
+        public static final int delivery_address=0x7f050005;
         public static final int edit_message=0x7f050004;
-        public static final int edit_message_3=0x7f050005;
-        public static final int edit_message_3_2=0x7f050006;
-        public static final int edit_message_3_3=0x7f050007;
         public static final int menu_settings=0x7f050001;
-        public static final int my_page=0x7f050011;
+        public static final int my_page=0x7f05000f;
         /**  string name="hello_world">Hello world!</string
          */
         public static final int thank_you=0x7f050003;
-        public static final int title_activity_contact=0x7f050013;
-        public static final int title_activity_display_message=0x7f05000c;
+        public static final int title_activity_contact=0x7f050011;
+        public static final int title_activity_display_message=0x7f05000a;
         public static final int title_activity_main=0x7f050002;
-        public static final int title_activity_page2=0x7f05000d;
-        public static final int title_activity_page3=0x7f05000e;
-        public static final int title_activity_page4=0x7f05000f;
-        public static final int title_activity_page5=0x7f050010;
+        public static final int title_activity_page2=0x7f05000b;
+        public static final int title_activity_page3=0x7f05000c;
+        public static final int title_activity_page4=0x7f05000d;
+        public static final int title_activity_page5=0x7f05000e;
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;

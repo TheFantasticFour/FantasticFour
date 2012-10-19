@@ -8,9 +8,7 @@ import android.widget.EditText;
 
 public class Page3Activity extends Activity {
 	
-	public final static String EXTRA_MESSAGE_3_total = "com.example.mytenthapp.MESSAGE_3";
-	public final static String EXTRA_MESSAGE_3_pizza = "com.example.mytenthapp.MESSAGE_3_2";
-	public final static String EXTRA_MESSAGE_3_soda = "com.example.mytenthapp.MESSAGE_3_3";	
+	public final static String EXTRA_MESSAGE_3 = "com.example.mytenthapp.MESSAGE_3";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +20,9 @@ public class Page3Activity extends Activity {
     public void sendMessage4(View view) {
         Intent intent = new Intent(this, Page4Activity.class);
         
-        EditText editText = (EditText) findViewById(R.id.edit_message);
+        EditText editText = (EditText) findViewById(R.id.delivery_address);
         String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE_3_total, message);
-        
-        EditText editText2 = (EditText) findViewById(R.id.number_of_pizzas);
-        String message2 = editText2.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE_3_pizza, message2);
-        
-        EditText editText3 = (EditText) findViewById(R.id.number_of_sodas);
-        String message3 = editText3.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE_3_soda, message3);
+        intent.putExtra(EXTRA_MESSAGE_3, message);
         
         startActivity(intent);
     }
