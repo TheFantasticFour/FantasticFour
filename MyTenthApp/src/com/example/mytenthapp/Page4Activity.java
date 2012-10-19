@@ -24,12 +24,23 @@ public class Page4Activity extends Activity {
         setContentView(R.layout.activity_page4);
         
         Intent intent = getIntent();
+        
+        String message1 = intent.getStringExtra(Page2Activity.EXTRA_MESSAGE_3_pizza);
+        TextView myTextView1= (TextView) findViewById(R.id.number_pizzas);
+        myTextView1.setText(message1);
+        
+        String message2 = intent.getStringExtra(Page2Activity.EXTRA_MESSAGE_3_soda);
+        TextView myTextView2= (TextView) findViewById(R.id.number_sodas);
+        myTextView2.setText(message2);        
+        
         String message = intent.getStringExtra(Page3Activity.EXTRA_MESSAGE_3);
         
         TextView myTextView= (TextView) findViewById(R.id.order_total);
         
         myTextView.setText(message);
         
+        
+
         // Get the message from the intent
         //Intent intent = getIntent();
         //String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
