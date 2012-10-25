@@ -7,7 +7,8 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 	//public final static String EXTRA_MESSAGE = "com.example.mytenthapp.MESSAGE";
-
+	//THIS IS A TEST OF AN ADDITION TO THE NEW REPO
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
