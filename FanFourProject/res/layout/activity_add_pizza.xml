@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent" >
 
     <Button
@@ -22,110 +22,184 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:text="Large Pizzas"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Button
-                android:id="@+id/large_pizza_minus"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="minusOneLargePizza"
-                android:text="-1" />
-
-            <TextView
-                android:id="@+id/large_pizza_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:inputType="none"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:background="@drawable/border1"
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/large_pizza_plus"
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Pizza Size"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <RadioGroup
+                    android:id="@+id/radioSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RadioButton
+                        android:id="@+id/size_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Small" />
+
+                    <RadioButton
+                        android:id="@+id/size_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medium" />
+
+                    <RadioButton
+                        android:id="@+id/size_large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Large" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="addOneLargePizza"
-                android:text="+1" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/border1"
+                android:orientation="vertical" >
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Cheese"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <CheckBox
+                    android:id="@+id/cheese_mozzarella"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Mozzarella" />
+
+                <CheckBox
+                    android:id="@+id/cheese_cheddar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cheddar" />
+
+                <CheckBox
+                    android:id="@+id/cheese_american"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="American" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/TextView02"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:text="Med Pizzas"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Button
-                android:id="@+id/medium_pizza_minus"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="minusOneMediumPizza"
-                android:text="-1" />
-
-            <TextView
-                android:id="@+id/medium_pizza_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:background="@drawable/border1"
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/medium_pizza_plus"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Meats"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <CheckBox
+                    android:id="@+id/meat_pepperoni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pepperoni" />
+
+                <CheckBox
+                    android:id="@+id/meat_sausage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sausage" />
+
+                <CheckBox
+                    android:id="@+id/meat_bacon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bacon" />
+
+                <CheckBox
+                    android:id="@+id/meat_beef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Beef" />
+
+                <CheckBox
+                    android:id="@+id/meat_chicken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chicken" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="addOneMediumPizza"
-                android:text="+1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/TextView03"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:text="Small Pizzas"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <Button
-                android:id="@+id/small_pizza_minus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="minusOneSmallPizza"
-                android:text="-1" />
-
-            <TextView
-                android:id="@+id/small_pizza_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:background="@drawable/border1"
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/small_pizza_plus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="addOneSmallPizza"
-                android:text="+1" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Veggies"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <CheckBox
+                    android:id="@+id/veggie_olives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Olives" />
+
+                <CheckBox
+                    android:id="@+id/veggie_tomato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tomato" />
+
+                <CheckBox
+                    android:id="@+id/veggie_jalapeno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jalapeno" />
+
+                <CheckBox
+                    android:id="@+id/veggie_onions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onions" />
+
+                <CheckBox
+                    android:id="@+id/veggie_peppers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peppers" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.fanfourproject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ public class MainMenuActivity extends Activity {
 	public static Integer currentMediumPizzaCount;
 	public static Integer currentSmallPizzaCount;
 	public static Integer currentPopCount;
+	
+	TextView tv1;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,30 @@ public class MainMenuActivity extends Activity {
         i1.putExtra("PIZZA_PASS_SMALL", currentSmallPizzaCount.toString());
         i2.putExtra("POP_PASS_1", currentPopCount.toString());
         
+        tv1 = (TextView)findViewById(R.id.tv1);
+
+        editTextArea();
+        
     }
+	private void editTextArea(){
+
+        String s = "";
+
+        //for(int x=0;x<=100;x++){
+        //    s += "Line: "+String.valueOf(x)+"\n";
+        //}
+        s = s + "$15.00 |" + currentLargePizzaCount.toString() + " Large Pizzas" + "\n";
+        s = s + "$12.50 |" + currentMediumPizzaCount.toString() + " Medium Pizzas" + "\n";
+        s = s + "$10.00 |" + currentSmallPizzaCount.toString() + " Small Pizzas" + "\n";
+        s = s + "$3.00  |" + currentPopCount.toString() + " Pops" + "\n";
+        
+                
+        tv1.setMovementMethod(new ScrollingMovementMethod());
+
+        tv1.setText(s);
+
+    }
+	
 	
 	private void addLargePizzaCount(Integer num){
 		currentLargePizzaCount = currentLargePizzaCount + num;
@@ -64,6 +90,8 @@ public class MainMenuActivity extends Activity {
     	
     	
     	try{
+    		
+    		
     		String message1 = i1.getStringExtra("PIZZA_PASS_LARGE");
     		String message2 = i1.getStringExtra("PIZZA_PASS_MEDIUM");
     		String message3 = i1.getStringExtra("PIZZA_PASS_SMALL");
@@ -80,15 +108,7 @@ public class MainMenuActivity extends Activity {
     		i1.putExtra("PIZZA_PASS_SMALL", "0");
     		i2.putExtra("POP_PASS_1", "0");
     		
-    		TextView myTextView1 = (TextView) findViewById(R.id.large_piz_disp);
-    		TextView myTextView2 = (TextView) findViewById(R.id.med_piz_disp);
-    		TextView myTextView3 = (TextView) findViewById(R.id.small_piz_disp);
-    		TextView myTextView4 = (TextView) findViewById(R.id.pop_disp);
-    		
-    		myTextView1.setText(currentLargePizzaCount.toString() + " Large Pizzas");
-    		myTextView2.setText(currentMediumPizzaCount.toString() + " Medium Pizzas");
-    		myTextView3.setText(currentSmallPizzaCount.toString() + " Small Pizzas");
-    		myTextView4.setText(currentPopCount.toString() + " Pops");
+    		editTextArea();
     	}
     	catch(Exception e){
     		System.out.println(e);
