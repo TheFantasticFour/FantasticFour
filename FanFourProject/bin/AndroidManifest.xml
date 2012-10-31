@@ -20,6 +20,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ContactPageActivity"
+            android:label="@string/title_activity_contact_page" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.ContactPageActivity" />
+        </activity>
+        <activity
+            android:name=".MainMenuActivity"
+            android:label="@string/title_activity_main_menu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name=".AddPizzaActivity"
+            android:label="@string/title_activity_add_pizza" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.AddPizzaActivity" />
+        </activity>
+        <activity
+            android:name=".AddPopActivity"
+            android:label="@string/title_activity_add_pop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.AddPopActivity" />
+        </activity>
     </application>
 
 </manifest>

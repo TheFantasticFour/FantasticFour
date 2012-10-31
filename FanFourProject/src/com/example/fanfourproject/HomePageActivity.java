@@ -2,7 +2,8 @@ package com.example.fanfourproject;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.content.Intent;
+import android.view.View;
 
 public class HomePageActivity extends Activity {
 
@@ -11,10 +12,16 @@ public class HomePageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_home_page, menu);
-        return true;
+    
+    /** Called when the user clicks the 'Menu' button */
+    public void goToMenu(View view) {
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
+    }
+    
+    /** Called when the user clicks the 'Contact Us' button */
+    public void goToContact(View view) {
+        Intent intent = new Intent(this, ContactPageActivity.class);
+        startActivity(intent);
     }
 }

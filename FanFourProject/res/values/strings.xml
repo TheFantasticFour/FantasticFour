@@ -3,6 +3,30 @@
     <string name="app_name">FanFourProject</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_home_page">HomePageActivity</string>
+
+    <!-- Home Page Activity -->
+    <string name="title_activity_home_page">Gary\'s Pizza</string>
+    <string name="button_menu">Menu</string>
+    <string name="button_contact_us">Contact Us</string>
+
+    <!-- Contact Page Activity -->
+    <string name="title_activity_contact_page">Contact Information</string>
+    <string name="contact_us">Contact Us:</string>
+    <string name="phone_number">Phone: 320–363–7261</string>
+    <string name="email_address">Email: garys@csbsju.edu</string>
+    <string name="back_to_home_page">Back to Home Page</string>
+
+    <!-- Main Menu Activity -->
+    <string name="title_activity_main_menu">Order Items</string>
+    <string name="add_pizza">Add Pizza</string>
+    <string name="add_pop">Add Pop</string>
+
+    <!-- Add Pizza Activity -->
+    <string name="title_activity_add_pizza">Add a Pizza!</string>
+    <string name="add_pizza_hint">Number of Pizzas</string>
+    
+    <!-- Add Pop Activity -->
+    <string name="title_activity_add_pop">Add a Pop!</string>
+    <string name="add_pop_hint">Number of Pops</string>
 
 </resources>

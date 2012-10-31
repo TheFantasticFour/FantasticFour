@@ -1,14 +1,28 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="161dp"
+        android:background="@drawable/garyslogo" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".HomePageActivity" />
+        android:onClick="goToMenu"
+        android:text="@string/button_menu" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToContact"
+        android:text="@string/button_contact_us" />
+
+</LinearLayout>
