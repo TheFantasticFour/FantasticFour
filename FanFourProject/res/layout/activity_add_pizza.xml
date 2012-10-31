@@ -3,24 +3,131 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:hint="@string/add_pizza_hint"
-        android:inputType="number" />
-
     <Button
         android:id="@+id/button1"
-        android:text="Finish Adding Pizza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:onClick="donePizza"
-        android:layout_below="@+id/editText1" />
+        android:text="Finish Adding Pizza" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Large Pizzas"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/large_pizza_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="minusOneLargePizza"
+                android:text="-1" />
+
+            <TextView
+                android:id="@+id/large_pizza_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:inputType="none"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/large_pizza_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addOneLargePizza"
+                android:text="+1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Med Pizzas"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/medium_pizza_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="minusOneMediumPizza"
+                android:text="-1" />
+
+            <TextView
+                android:id="@+id/medium_pizza_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/medium_pizza_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addOneMediumPizza"
+                android:text="+1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:text="Small Pizzas"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/small_pizza_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="minusOneSmallPizza"
+                android:text="-1" />
+
+            <TextView
+                android:id="@+id/small_pizza_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/small_pizza_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="addOneSmallPizza"
+                android:text="+1" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
