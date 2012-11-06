@@ -38,67 +38,74 @@ public class AddPizzaActivity extends Activity {
     
     private void getPizzaSize(){
     	if(checkRadioButton(R.id.size_small)){
-    		pizzaSize = "Small Pizza";
+    		pizzaSize = "Small";
     	}
     	else if(checkRadioButton(R.id.size_medium)){
-    		pizzaSize = "Medium Pizza";
-    	}// else{\\pizza size already set to large}   
+    		pizzaSize = "Medium";
+    	}// else{\\pizza size already set to large}
+    	
     }
     
     private void getPizzaCheese(){
-    	if(checkRadioButton(R.id.cheese_american)){
+    	if(checkCheckBox(R.id.cheese_american)){
     		pizzaCheese.add("American Cheese");
     	}
-		if(checkRadioButton(R.id.cheese_cheddar)){
+		if(checkCheckBox(R.id.cheese_cheddar)){
 			pizzaCheese.add("Cheddar Cheese");	
 		}
-		if(checkRadioButton(R.id.cheese_mozzarella)){
+		if(checkCheckBox(R.id.cheese_mozzarella)){
 			pizzaCheese.add("Mozarella Cheese");	
 		}
     }
     
     private void getPizzaMeat(){
-    	if(checkRadioButton(R.id.meat_pepperoni)){
+    	if(checkCheckBox(R.id.meat_pepperoni)){
 			pizzaMeats.add("Pepperoni");	
 		}
-		if(checkRadioButton(R.id.meat_sausage)){
+		if(checkCheckBox(R.id.meat_sausage)){
 			pizzaMeats.add("Sausage");	
 		}
-    	if(checkRadioButton(R.id.meat_bacon)){
+    	if(checkCheckBox(R.id.meat_bacon)){
     		pizzaMeats.add("Bacon");
     	}
-		if(checkRadioButton(R.id.meat_beef)){
+		if(checkCheckBox(R.id.meat_beef)){
 			pizzaMeats.add("Beef");	
 		}
-		if(checkRadioButton(R.id.meat_chicken)){
+		if(checkCheckBox(R.id.meat_chicken)){
 			pizzaMeats.add("Chicken");	
 		}		
     }
     
     private void getPizzaVeggies(){
-    	if(checkRadioButton(R.id.veggie_tomato)){
+    	if(checkCheckBox(R.id.veggie_tomato)){
 			pizzaVeggies.add("Tomato");	
 		}
-    	if(checkRadioButton(R.id.veggie_olives)){
+    	if(checkCheckBox(R.id.veggie_olives)){
 			pizzaVeggies.add("Olives");	
 		}
-    	if(checkRadioButton(R.id.veggie_onions)){
+    	if(checkCheckBox(R.id.veggie_onions)){
 			pizzaVeggies.add("Onions");	
 		}
-    	if(checkRadioButton(R.id.veggie_peppers)){
+    	if(checkCheckBox(R.id.veggie_peppers)){
 			pizzaVeggies.add("Peppers");	
     	}
-    	if(checkRadioButton(R.id.veggie_jalapeno)){
+    	if(checkCheckBox(R.id.veggie_jalapeno)){
 			pizzaVeggies.add("Jalapeno");	
 		}
     }
 
     /** Called when the user clicks the 'Finished Adding Pizza' button */
     public void donePizza(View view) {
+    	//System.out.println("1");
     	getPizzaSize();
+    	//System.out.println("2");
     	getPizzaCheese();
+    	//System.out.println("3");
     	getPizzaMeat();
+    	//System.out.println("4");
     	getPizzaVeggies();
+    	//System.out.println("5");
+    	
     	
     	myIntent.putExtra("PIZZA_SIZE", pizzaSize);
     	myIntent.putStringArrayListExtra("PIZZA_CHEESES", pizzaCheese);

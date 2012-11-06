@@ -49,14 +49,12 @@
                         android:id="@+id/size_small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onPizzaSizeClicked"
                         android:text="Small" />
 
                     <RadioButton
                         android:id="@+id/size_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="onPizzaSizeClicked"
                         android:text="Medium" />
 
                     <RadioButton
@@ -64,7 +62,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:onClick="onPizzaSizeClicked"
                         android:text="Large" />
 
                 </RadioGroup>

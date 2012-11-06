@@ -17,7 +17,7 @@ public class MainMenuActivity extends Activity {
 //	public static Integer currentSmallPizzaCount;
 //	public static Integer currentPopCount;
 	
-	private String pizzaSize = "Large Pizza";
+	private String pizzaSize = "Large";
 	private ArrayList<String> pizzaCheese = new ArrayList<String>();
 	private ArrayList<String> pizzaMeats = new ArrayList<String>();
 	private ArrayList<String> pizzaVeggies = new ArrayList<String>();
@@ -40,7 +40,7 @@ public class MainMenuActivity extends Activity {
 
         String s = "";
 
-        s = s + "You current have:" + "\n";
+        s = s + "You currently have:" + "\n";
         s = s + "1 " + pizzaSize + " Pizza with: " + "\n";
         s = s + printArray(pizzaCheese) + " and" + "\n";
         s = s + printArray(pizzaMeats) + " and" + "\n";
@@ -66,7 +66,7 @@ public class MainMenuActivity extends Activity {
     private String printArray(ArrayList<String> array){
     	String s = "";
     	for(String st: array){
-    		s = s + "st, ";
+    		s = s + st + ", ";
     	}
     	
     	return s;
