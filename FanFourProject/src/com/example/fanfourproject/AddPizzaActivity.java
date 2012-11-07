@@ -18,7 +18,7 @@ public class AddPizzaActivity extends Activity {
 	private ArrayList<String> pizzaMeats = new ArrayList<String>();
 	private ArrayList<String> pizzaVeggies = new ArrayList<String>();
 	
-	Intent myIntent = MainMenuActivity.i1;
+	//Intent myIntent = MainMenuActivity.i1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,22 +26,27 @@ public class AddPizzaActivity extends Activity {
         setContentView(R.layout.activity_add_pizza);
     }
     
-    public boolean checkCheckBox(int idName){
+    private boolean checkCheckBox(int idName){
     	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
     	return myCheckBox1.isChecked();
     }
     
-    public boolean checkRadioButton(int idName){
+    private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
     	return myButton1.isChecked();
     }
     
+    private String getRadioButtonText(int idName){
+    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
+    	return myButton1.getText().toString();
+    }
+    
     private void getPizzaSize(){
     	if(checkRadioButton(R.id.size_small)){
-    		pizzaSize = "Small";
+    		pizzaSize = getRadioButtonText(R.id.size_small);
     	}
     	else if(checkRadioButton(R.id.size_medium)){
-    		pizzaSize = "Medium";
+    		pizzaSize = getRadioButtonText(R.id.size_medium);
     	}// else{\\pizza size already set to large}
     	
     }
@@ -96,21 +101,31 @@ public class AddPizzaActivity extends Activity {
 
     /** Called when the user clicks the 'Finished Adding Pizza' button */
     public void donePizza(View view) {
-    	//System.out.println("1");
     	getPizzaSize();
-    	//System.out.println("2");
     	getPizzaCheese();
-    	//System.out.println("3");
     	getPizzaMeat();
-    	//System.out.println("4");
     	getPizzaVeggies();
-    	//System.out.println("5");
+    	
+    	ArrayList<String> allToppings = new ArrayList<String>();
+    	for(String ch: pizzaCheese){
+    		allToppings.add(ch);
+    	}
+    	
+    	for(String me: pizzaMeats){
+    		allToppings.add(me);
+    	}
+    	for(String veg: pizzaVeggies){
+    		allToppings.add(veg);
+    	}
+    	
+    	Pizza tempPizza = new Pizza(pizzaSize, allToppings);
+    	MainMenuActivity.addPizzaToOrder(tempPizza);
     	
     	
-    	myIntent.putExtra("PIZZA_SIZE", pizzaSize);
-    	myIntent.putStringArrayListExtra("PIZZA_CHEESES", pizzaCheese);
-    	myIntent.putStringArrayListExtra("PIZZA_MEATS", pizzaMeats);
-    	myIntent.putStringArrayListExtra("PIZZA_VEGGIES", pizzaVeggies);
+    	//myIntent.putExtra("PIZZA_SIZE", pizzaSize);
+    	//myIntent.putStringArrayListExtra("PIZZA_CHEESES", pizzaCheese);
+    	//myIntent.putStringArrayListExtra("PIZZA_MEATS", pizzaMeats);
+    	//myIntent.putStringArrayListExtra("PIZZA_VEGGIES", pizzaVeggies);
     	finish();
     }
 }

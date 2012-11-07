@@ -52,11 +52,22 @@
         android:id="@+id/text_area"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/button1"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView3"
         android:scrollbars="vertical"
         android:text="hello"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/finalize_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:onClick="finalizeOrder"
+        android:text="Finalize Order" />
 
 </RelativeLayout>

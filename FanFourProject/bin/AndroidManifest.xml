@@ -48,6 +48,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.fanfourproject.AddPopActivity" />
         </activity>
+        <activity
+            android:name=".PaymentOptionActivity"
+            android:label="@string/title_activity_payment_option" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.PaymentOptionsActivity" />
+        </activity>
     </application>
 
 </manifest>

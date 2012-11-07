@@ -1,10 +1,8 @@
 package com.example.fanfourproject;
 
-import java.util.ArrayList;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
@@ -17,34 +15,43 @@ public class MainMenuActivity extends Activity {
 //	public static Integer currentSmallPizzaCount;
 //	public static Integer currentPopCount;
 	
-	private String pizzaSize = "Large";
-	private ArrayList<String> pizzaCheese = new ArrayList<String>();
-	private ArrayList<String> pizzaMeats = new ArrayList<String>();
-	private ArrayList<String> pizzaVeggies = new ArrayList<String>();
+	//private String pizzaSize = "Large";
+	//private ArrayList<String> pizzaCheese = new ArrayList<String>();
+	//private ArrayList<String> pizzaMeats = new ArrayList<String>();
+	//private ArrayList<String> pizzaVeggies = new ArrayList<String>();
 	
 	TextView tv1;
 	
+	public static Order mainOrder;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        
+        mainOrder = new Order();
+        
         i1 = new Intent();
         i2 = new Intent();
         
         tv1 = (TextView)findViewById(R.id.text_area);
 
-        editTextArea();
-        
+        editTextArea();        
     }
+	
+	public static void addPizzaToOrder(Pizza piz){
+		mainOrder.addPizza(piz);
+	}
+	
+	public static void addPopToOrder(Pop pop){
+		mainOrder.addPop(pop);
+	}
+	
 	private void editTextArea(){
 
         String s = "";
 
-        s = s + "You currently have:" + "\n";
-        s = s + "1 " + pizzaSize + " Pizza with: " + "\n";
-        s = s + printArray(pizzaCheese) + " and" + "\n";
-        s = s + printArray(pizzaMeats) + " and" + "\n";
-        s = s + printArray(pizzaVeggies);
+        s = s + mainOrder.toString();
                         
         tv1.setMovementMethod(new ScrollingMovementMethod());
 
@@ -63,24 +70,27 @@ public class MainMenuActivity extends Activity {
         startActivity(i2);
     }
     
-    private String printArray(ArrayList<String> array){
-    	String s = "";
-    	for(String st: array){
-    		s = s + st + ", ";
-    	}
-    	
-    	return s;
+//    private String printArray(ArrayList<String> array){
+//    	String s = "";
+//    	for(String st: array){
+//    		s = s + st + ", ";
+//    	}
+//    	
+//    	return s;
+//    }
+    
+    public void finalizeOrder(View view){
+    	Intent intent = new Intent(this, PaymentOptionActivity.class);
+        startActivity(intent);
     }
     
     public void onResume(){
     	super.onResume();
-    	
-    	
     	try{
-    		pizzaSize = i1.getStringExtra("PIZZA_SIZE");
-    		pizzaCheese = i1.getStringArrayListExtra("PIZZA_CHEESES");
-    		pizzaMeats = i1.getStringArrayListExtra("PIZZA_MEATS");
-    		pizzaVeggies = i1.getStringArrayListExtra("PIZZA_VEGGIES");
+    		//pizzaSize = i1.getStringExtra("PIZZA_SIZE");
+    		//pizzaCheese = i1.getStringArrayListExtra("PIZZA_CHEESES");
+    		//pizzaMeats = i1.getStringArrayListExtra("PIZZA_MEATS");
+    		//pizzaVeggies = i1.getStringArrayListExtra("PIZZA_VEGGIES");
     			
     		editTextArea();
     	}
