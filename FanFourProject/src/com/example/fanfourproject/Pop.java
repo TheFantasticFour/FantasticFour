@@ -27,6 +27,6 @@ public class Pop {
 	}
 	
 	public String toString(){
-		return "finishMe";
+		return size + " of " + type;
 	}
 }

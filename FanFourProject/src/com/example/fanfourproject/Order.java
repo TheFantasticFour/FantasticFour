@@ -115,6 +115,13 @@ public class Order {
 	}
 	
 	public String toString(){
-		return "finishMe";
+		String s = "";
+		for(Pizza p: pizzas){
+			s = s + p + "\n";
+		}
+		for(Pop p : pops){
+			s = s + p + "\n";
+		}
+		return s;
 	}
 }

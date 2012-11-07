@@ -35,6 +35,16 @@ public class Pizza {
 	}
 	
 	public String toString(){
-		return "finishMe";
+		String s = "";
+		s = s + pizzaSize + " Pizza with ";
+		for(int i = 0; i < toppings.size(); i++){
+			if(i!=toppings.size()-1){
+				s = s + toppings.get(i) + ", ";
+			}
+			else{
+				s = s + "and " + toppings.get(i);
+			}
+		}
+		return s;
 	}
 }
