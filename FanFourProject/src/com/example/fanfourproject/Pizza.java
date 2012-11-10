@@ -1,5 +1,8 @@
 package com.example.fanfourproject;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Pizza {
@@ -35,16 +38,41 @@ public class Pizza {
 	}
 	
 	public String toString(){
+		PrintWriter myOut = null;
+		try {
+			//myOut = new PrintWriter(new BufferedWriter(new FileWriter("/home/f10/pghardy/Desktop/"+"testName")));
+			myOut = new PrintWriter(new BufferedWriter(new FileWriter("testName")));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+			
+		/////
 		String s = "";
-		s = s + pizzaSize + " Pizza with ";
-		for(int i = 0; i < toppings.size(); i++){
-			if(i!=toppings.size()-1){
-				s = s + toppings.get(i) + ", ";
-			}
-			else{
-				s = s + "and " + toppings.get(i);
+		if(toppings.size()>1){
+			s = s + pizzaSize + " Pizza with ";
+			for(int i = 0; i < toppings.size(); i++){
+				if(i==toppings.size()-2){
+					s = s + toppings.get(i);
+				}
+				else if(i!=toppings.size()-1){
+					s = s + toppings.get(i) + ", ";
+				}				
+				else{
+					s = s + " and " + toppings.get(i);
+				}
 			}
 		}
+		else if(toppings.size()==1){
+			s = s + pizzaSize + " Pizza with " + toppings.get(0);
+		}
+		else{//no toppings
+			s = s + pizzaSize + " Pizza";
+		}
+		
+		
+		/////
+		//myOut.print(s);
+		//myOut.close();
 		return s;
 	}
 }

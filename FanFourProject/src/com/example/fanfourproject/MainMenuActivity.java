@@ -54,8 +54,13 @@ public class MainMenuActivity extends Activity {
         s = s + mainOrder.toString();
                         
         tv1.setMovementMethod(new ScrollingMovementMethod());
-
-        tv1.setText(s);
+        
+        if(!s.equals("")){
+        	tv1.setText(s);
+        }
+        else{
+        	tv1.setText("No Items Ordered");
+        }
     }
 	
     /** Called when the user clicks the 'Add Pizza' button */

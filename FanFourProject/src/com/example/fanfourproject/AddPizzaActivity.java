@@ -13,7 +13,7 @@ public class AddPizzaActivity extends Activity {
 
 	//public final static String NUMBER_PIZZAS = "com.example.mytenthapp.NUMBER_PIZZAS";
 	
-	private String pizzaSize = "Large Pizza";
+	private String pizzaSize = "Large";
 	private ArrayList<String> pizzaCheese = new ArrayList<String>();
 	private ArrayList<String> pizzaMeats = new ArrayList<String>();
 	private ArrayList<String> pizzaVeggies = new ArrayList<String>();
