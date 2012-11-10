@@ -102,7 +102,12 @@
             </RadioGroup>
 
         </LinearLayout>
-
+ing getPizzaSize(){
+		return pizzaSize;
+	}
+	
+	public void setPizzaSize(String size){
+		pizzaSize = size;
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
