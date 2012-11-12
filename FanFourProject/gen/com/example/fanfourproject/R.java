@@ -19,7 +19,7 @@ public final class R {
         public static final int pop_pic=0x7f020005;
     }
     public static final class id {
-        public static final int absolute_total_label=0x7f07003f;
+        public static final int absolute_total_label=0x7f070042;
         public static final int add_pizza=0x7f07002d;
         public static final int add_pop=0x7f07002f;
         public static final int address=0x7f070032;
@@ -43,11 +43,14 @@ public final class R {
         public static final int cheese_mozzarella=0x7f070007;
         public static final int credit_card_field=0x7f07003b;
         public static final int credit_card_option=0x7f07003a;
-        public static final int discount_total_label=0x7f07003e;
+        public static final int discount_total_label=0x7f070040;
+        public static final int discounts_total_number=0x7f070041;
         public static final int e_mail=0x7f070036;
         public static final int email_field=0x7f070037;
+        public static final int final_total_number=0x7f070043;
         public static final int finalize_order=0x7f070031;
         public static final int initial_total_label=0x7f07003c;
+        public static final int intial_total_number=0x7f07003d;
         public static final int liter_coka_coke=0x7f070018;
         public static final int liter_diet_coke=0x7f07001b;
         public static final int liter_dr_pepper=0x7f07001e;
@@ -62,8 +65,8 @@ public final class R {
         public static final int meat_chicken=0x7f07000f;
         public static final int meat_pepperoni=0x7f07000b;
         public static final int meat_sausage=0x7f07000c;
-        public static final int menu_settings=0x7f070042;
-        public static final int message_area=0x7f070040;
+        public static final int menu_settings=0x7f070046;
+        public static final int message_area=0x7f070044;
         public static final int phone_number=0x7f070034;
         public static final int phone_number_field=0x7f070035;
         public static final int pizza_image=0x7f07002c;
@@ -74,8 +77,9 @@ public final class R {
         public static final int size_large=0x7f070005;
         public static final int size_medium=0x7f070004;
         public static final int size_small=0x7f070003;
-        public static final int submit_order=0x7f070041;
-        public static final int tax_total_label=0x7f07003d;
+        public static final int submit_order=0x7f070045;
+        public static final int tax_total_label=0x7f07003e;
+        public static final int tax_total_number=0x7f07003f;
         public static final int textView1=0x7f070001;
         public static final int textView2=0x7f070006;
         public static final int textView3=0x7f07000a;

@@ -7,7 +7,7 @@ public class AllTests {
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
-		suite.addTestSuite(TestCase1.class);
+		suite.addTestSuite(PaymentOptionActivityTest.class);
 		//$JUnit-END$
 		return suite;
 	}

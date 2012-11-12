@@ -92,22 +92,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Cash" />
+                    android:text="Cash" 
+                    android:onClick="clickCash"/>
 
                 <RadioButton
                     android:id="@+id/credit_card_option"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Credit Card" />
+                    android:text="Credit Card"
+                    android:onClick="clickCredit" />
             </RadioGroup>
 
         </LinearLayout>
-ing getPizzaSize(){
-		return pizzaSize;
-	}
 	
-	public void setPizzaSize(String size){
-		pizzaSize = size;
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -120,7 +117,7 @@ ing getPizzaSize(){
                 android:ems="10"
                 android:hint="Credit Card Number"
                 android:inputType="number"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -137,7 +134,7 @@ ing getPizzaSize(){
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/intial_total_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -160,7 +157,7 @@ ing getPizzaSize(){
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tax_total_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -183,7 +180,7 @@ ing getPizzaSize(){
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/discounts_total_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -205,7 +202,7 @@ ing getPizzaSize(){
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/final_total_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
@@ -223,7 +220,7 @@ ing getPizzaSize(){
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:text="Messages"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>

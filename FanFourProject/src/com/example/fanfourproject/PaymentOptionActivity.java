@@ -1,10 +1,10 @@
 package com.example.fanfourproject;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class PaymentOptionActivity extends Activity {
 	
@@ -18,9 +18,30 @@ public class PaymentOptionActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_option);
+        
+        Order thisOrder = MainMenuActivity.mainOrder;
+        TextView intialNumber = (TextView) findViewById(R.id.intial_total_number);
+        TextView taxNumber = (TextView) findViewById(R.id.tax_total_number);
+        TextView discountNumber = (TextView) findViewById(R.id.discounts_total_number);
+        TextView finalNumber = (TextView) findViewById(R.id.final_total_number);
+        intialNumber.setText(thisOrder.getInitialPrice());
+        taxNumber.setText(thisOrder.getTax());
+        discountNumber.setText(thisOrder.getDiscounts());
+        finalNumber.setText(thisOrder.getFinalPrice());
+        
     }
     
-    private boolean verifyAddress(){
+    public void clickCash(View view){
+    	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
+    	creditText.setVisibility(View.INVISIBLE);
+    }
+    
+    public void clickCredit(View view){
+    	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
+    	creditText.setVisibility(View.VISIBLE);
+    }
+    
+    public boolean verifyAddress(){
     	boolean va = false;
     	EditText myEditText = (EditText) findViewById(R.id.address_field);
     	String tempAddress = myEditText.getText().toString();
@@ -28,8 +49,7 @@ public class PaymentOptionActivity extends Activity {
     	if(true){
     		va  = true;
     		address = tempAddress;
-    	}
-    	
+    	}    	
     	return va;
     }
     
@@ -38,7 +58,7 @@ public class PaymentOptionActivity extends Activity {
     	EditText myEditText = (EditText) findViewById(R.id.phone_number_field);
     	String tempPhoneNumber = myEditText.getText().toString();
     	
-    	if(true){
+    	if(tempPhoneNumber.length() == 10){
     		vpn  = true;
     		phoneNumber = tempPhoneNumber;
     	}    	
@@ -51,7 +71,7 @@ public class PaymentOptionActivity extends Activity {
     	EditText myEditText = (EditText) findViewById(R.id.email_field);
     	String tempEmail = myEditText.getText().toString();
     	
-    	if(true){
+		if(tempEmail.indexOf('@') >= 0){
     		vem  = true;
     		eMail = tempEmail;
     	}
@@ -63,10 +83,11 @@ public class PaymentOptionActivity extends Activity {
     	boolean vcc = false;
     	EditText myEditText = (EditText) findViewById(R.id.credit_card_field);
     	String tempCreditCard = myEditText.getText().toString();
-    	
-    	if(true){
+    	Integer ccNumber = Integer.valueOf(tempCreditCard);
+    	    	
+    	if(ccNumber%2==0){
     		vcc  = true;
-    		phoneNumber = tempCreditCard;
+    		creditCard = tempCreditCard;
     	}    	
     	
     	return vcc;
@@ -78,9 +99,27 @@ public class PaymentOptionActivity extends Activity {
     	boolean vem = verifyEmail();
     	boolean vcc = verifyCreditCard();
     	
+    	String message = "";
+    	
+    	if(!va){
+    		message = message + "Invalid Address" + "\n";
+    	}
+    	if(!vpn){
+    		message = message + "Invalid Phone Number" + "\n";
+    	}
+    	if(!vem){
+    		message = message + "Invalid E-Mail" + "\n";
+    	}
+    	if(!vcc){
+    		message = message + "Invalid CreditCardNumber" + "\n";
+    	}    	
     	if(va && vpn && vem && vcc){
     		//finish();
-    	}
-    	
+    		System.out.println(phoneNumber);
+    		System.out.println(address);
+    		System.out.println(eMail);
+    		System.out.println(creditCard);
+    		System.out.println(MainMenuActivity.mainOrder);
+    	}    	
     }
 }
