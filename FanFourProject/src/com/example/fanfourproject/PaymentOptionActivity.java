@@ -24,10 +24,10 @@ public class PaymentOptionActivity extends Activity {
         TextView taxNumber = (TextView) findViewById(R.id.tax_total_number);
         TextView discountNumber = (TextView) findViewById(R.id.discounts_total_number);
         TextView finalNumber = (TextView) findViewById(R.id.final_total_number);
-        intialNumber.setText(thisOrder.getInitialPrice());
-        taxNumber.setText(thisOrder.getTax());
-        discountNumber.setText(thisOrder.getDiscounts());
-        finalNumber.setText(thisOrder.getFinalPrice());
+        intialNumber.setText("$" + thisOrder.getInitialPrice());
+        taxNumber.setText("$" +thisOrder.getTax());
+        discountNumber.setText("$" +thisOrder.getDiscounts());
+        finalNumber.setText("$" +thisOrder.getFinalPrice());
         
     }
     

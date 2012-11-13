@@ -9,9 +9,9 @@ public class Order {
 	
 	private static final double POP_CAN_PRICE = 0.99;
 	private static final double POP_LITER_PRICE = 2.99;
-	private static final double PIZZA_SMALL_PRICE = 9.99;
-	private static final double PIZZA_MEDIUM_PRICE = 14.99;
-	private static final double PIZZA_LARGE_PRICE = 19.99;
+	private static final double PIZZA_SMALL_PRICE = 8.99;
+	private static final double PIZZA_MEDIUM_PRICE = 13.99;
+	private static final double PIZZA_LARGE_PRICE = 18.99;
 	
 	private static final double TAX_RATE = 0.075;
 	
@@ -55,8 +55,13 @@ public class Order {
 		}
 		else if(value.substring(finalIndex-1,finalIndex).equals(".")){
 			return value + "0";
+		}
+		else{			
+			int d100 = (int)(d*100.0);
+			Double value2 = d100/100.0;
+			
+			return value2.toString();
 		}	
-		return value;		
 	}
 	
 	public String getInitialPrice(){
@@ -79,8 +84,11 @@ public class Order {
 			else{
 				total = total + PIZZA_LARGE_PRICE;
 			}
+			for(String top : p.getPizzaToppings()){
+				total = total + 1.00;
+			}
 		}
-		return total.toString();
+		return checkDecimals(total);
 	}
 	
 	public String getTax(){

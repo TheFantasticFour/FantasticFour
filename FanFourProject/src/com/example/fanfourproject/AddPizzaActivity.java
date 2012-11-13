@@ -43,10 +43,10 @@ public class AddPizzaActivity extends Activity {
     
     private void getPizzaSize(){
     	if(checkRadioButton(R.id.size_small)){
-    		pizzaSize = getRadioButtonText(R.id.size_small);
+    		pizzaSize = getRadioButtonText(R.id.size_small).substring(0,5);
     	}
     	else if(checkRadioButton(R.id.size_medium)){
-    		pizzaSize = getRadioButtonText(R.id.size_medium);
+    		pizzaSize = getRadioButtonText(R.id.size_medium).substring(0,6);
     	}// else{\\pizza size already set to large}
     	
     }
