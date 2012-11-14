@@ -29,11 +29,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
+                android:hint="Street"
                 android:inputType="textPostalAddress" >
 
-                <requestFocus />
+                <!-- requestFocus /-->
             </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/city_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.00"
+                android:hint="City"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/state_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="MN"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/zip_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Zip"
+                android:inputType="number" />
+
         </LinearLayout>
 
         <LinearLayout

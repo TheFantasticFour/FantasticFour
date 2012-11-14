@@ -38,13 +38,13 @@ public class Pizza {
 	}
 	
 	public String toString(){
-		PrintWriter myOut = null;
-		try {
-			//myOut = new PrintWriter(new BufferedWriter(new FileWriter("/home/f10/pghardy/Desktop/"+"testName")));
-			myOut = new PrintWriter(new BufferedWriter(new FileWriter("testName")));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+//		PrintWriter myOut = null;
+//		try {
+//			//myOut = new PrintWriter(new BufferedWriter(new FileWriter("/home/f10/pghardy/Desktop/"+"testName")));
+//			myOut = new PrintWriter(new BufferedWriter(new FileWriter("testName")));
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
 			
 		/////
 		String s = "";

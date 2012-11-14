@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class PaymentOptionActivity extends Activity {
@@ -11,7 +12,7 @@ public class PaymentOptionActivity extends Activity {
 	private String address = "";
 	private String phoneNumber = "";
 	private String eMail = "";
-	private String creditCard = "";
+	private String payment = "";
 	
 	
     @Override
@@ -43,12 +44,23 @@ public class PaymentOptionActivity extends Activity {
     
     public boolean verifyAddress(){
     	boolean va = false;
-    	EditText myEditText = (EditText) findViewById(R.id.address_field);
-    	String tempAddress = myEditText.getText().toString();
+    	EditText myStreet = (EditText) findViewById(R.id.address_field);
+    	EditText myCity = (EditText) findViewById(R.id.city_field);
+    	EditText myState = (EditText) findViewById(R.id.state_field);
+    	EditText myZip = (EditText) findViewById(R.id.zip_field);
     	
-    	if(true){
+    	String tempStreet = myStreet.getText().toString();
+    	String tempCity = myCity.getText().toString();
+    	String tempState = myState.getText().toString();
+    	String tempZip = myZip.getText().toString();
+    	
+    	boolean inMinnesota = tempState.toLowerCase().equals("mn");
+    	boolean inZip1 = tempZip.equals("56321");
+    	boolean inZip2 = tempZip.equals("56374");
+    	
+    	if(inMinnesota && (inZip1 || inZip2)){
     		va  = true;
-    		address = tempAddress;
+    		address = tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip;
     	}    	
     	return va;
     }
@@ -79,28 +91,45 @@ public class PaymentOptionActivity extends Activity {
     	return vem;
     }
     
-    private boolean verifyCreditCard(){
-    	boolean vcc = false;
-    	EditText myEditText = (EditText) findViewById(R.id.credit_card_field);
-    	String tempCreditCard = myEditText.getText().toString();
-    	Integer ccNumber = Integer.valueOf(tempCreditCard);
-    	    	
-    	if(ccNumber%2==0){
-    		vcc  = true;
-    		creditCard = tempCreditCard;
-    	}    	
+    private boolean verifyPayment(){
+    	boolean vp = false;	
+    	boolean cashPressed = ((RadioButton) findViewById(R.id.cash_option)).isChecked();
+    	String tempCreditCard = "";
     	
-    	return vcc;
+    	if(cashPressed){//want cash option
+    		payment = "Cash";
+    		vp = true;
+    	}
+    	else{//want credit card option
+    		EditText myEditText = (EditText) findViewById(R.id.credit_card_field);
+    		tempCreditCard = myEditText.getText().toString();
+    		Integer ccNumber = null;
+    		try{
+    			ccNumber = Integer.valueOf(tempCreditCard);
+    		}
+    		catch(Exception e){}
+    		
+    		if(ccNumber==null || ccNumber%2!=0){    			
+    			vp  = false;
+        		
+    		}
+    		else{
+    			payment = tempCreditCard;
+    			vp= true;
+    		}
+    	}	
+    	
+    	return vp;
     }
 
     public void submitOrder(View view){
     	boolean va = verifyAddress();
     	boolean vpn = verifyPhoneNumber();
     	boolean vem = verifyEmail();
-    	boolean vcc = verifyCreditCard();
+    	boolean vp = verifyPayment();
     	
     	String message = "";
-    	
+    	//System.out.println("" + va + vpn + vem + vp);
     	if(!va){
     		message = message + "Invalid Address" + "\n";
     	}
@@ -110,16 +139,18 @@ public class PaymentOptionActivity extends Activity {
     	if(!vem){
     		message = message + "Invalid E-Mail" + "\n";
     	}
-    	if(!vcc){
-    		message = message + "Invalid CreditCardNumber" + "\n";
+    	if(!vp){
+    		message = message + "Invalid Credit Card Number" + "\n";
     	}    	
-    	if(va && vpn && vem && vcc){
+    	if(va && vpn && vem && vp){
     		//finish();
     		System.out.println(phoneNumber);
     		System.out.println(address);
     		System.out.println(eMail);
-    		System.out.println(creditCard);
+    		System.out.println(payment);
     		System.out.println(MainMenuActivity.mainOrder);
-    	}    	
+    	}
+    	TextView messageTextView = (TextView) findViewById(R.id.message_area);
+    	messageTextView.setText(message);
     }
 }
