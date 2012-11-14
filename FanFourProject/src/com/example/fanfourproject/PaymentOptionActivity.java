@@ -9,9 +9,16 @@ import android.widget.TextView;
 
 public class PaymentOptionActivity extends Activity {
 	
+	//This is a string to hold the address that the user will input
 	private String address = "";
+	
+	//This is a string to hold the phone number that the user will input
 	private String phoneNumber = "";
+	
+	//This is a string to hold the e-mail address that the user will input
 	private String eMail = "";
+	
+	//This is a string to hold "cash" if cash is chosen and the credit card number if that is chosen
 	private String payment = "";
 	
 	
@@ -32,16 +39,28 @@ public class PaymentOptionActivity extends Activity {
         
     }
     
+    /*
+     * This is a method that runs when the Cash radio button is pressed.
+     * It will set the visibility of the credit card field to invisible
+     */
     public void clickCash(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.INVISIBLE);
     }
     
+    /*
+     * This is a method that runs when the Credit Card radio button is pressed.
+     * It will set the visibility of the credit card field to visible
+     */
     public void clickCredit(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.VISIBLE);
     }
     
+    /*
+     * This method verifies all aspects of the user's address. It will get the street, city,
+     * state and zip-code and only approve of the address if certain criteria are met. 
+     */
     public boolean verifyAddress(){
     	boolean va = false;
     	EditText myStreet = (EditText) findViewById(R.id.address_field);
@@ -65,19 +84,34 @@ public class PaymentOptionActivity extends Activity {
     	return va;
     }
     
+    /*
+     * This method verifies the user's phone number. Currently, a valid phone number has length 10
+     * after the optional dashes are removed. 
+     */
     private boolean verifyPhoneNumber(){
     	boolean vpn = false;
     	EditText myEditText = (EditText) findViewById(R.id.phone_number_field);
     	String tempPhoneNumber = myEditText.getText().toString();
     	
-    	if(tempPhoneNumber.length() == 10){
+    	String finalPhoneNumber = "";
+    	for(int i = 0; i < tempPhoneNumber.length(); i++){
+    		if(!tempPhoneNumber.substring(i, i+1).equals("-")){
+    			finalPhoneNumber = finalPhoneNumber + tempPhoneNumber.substring(i, i+1);
+    		}   		
+    	}
+    	
+    	if(finalPhoneNumber.length() == 10){
     		vpn  = true;
-    		phoneNumber = tempPhoneNumber;
+    		phoneNumber = finalPhoneNumber;
     	}    	
     	
     	return vpn;
     }
     
+    /*
+     * This method verifies the user's e-mail address. Currently, a valid e-mail contains
+     * an @ symbol. 
+     */
     private boolean verifyEmail(){
     	boolean vem = false;
     	EditText myEditText = (EditText) findViewById(R.id.email_field);
@@ -91,6 +125,10 @@ public class PaymentOptionActivity extends Activity {
     	return vem;
     }
     
+    /*
+     * This method verifies the user's payment info. If the credit card option is chosen,
+     * payment is set to the credit card number which currently accepts an even number.
+     */
     private boolean verifyPayment(){
     	boolean vp = false;	
     	boolean cashPressed = ((RadioButton) findViewById(R.id.cash_option)).isChecked();
@@ -121,7 +159,11 @@ public class PaymentOptionActivity extends Activity {
     	
     	return vp;
     }
-
+    
+    /*
+     * This method is run when the user hits the submit order button. It checks whether each of the
+     * verifications passed and if one does not, the message is altered and the order is not submitted.
+     */
     public void submitOrder(View view){
     	boolean va = verifyAddress();
     	boolean vpn = verifyPhoneNumber();
@@ -152,5 +194,9 @@ public class PaymentOptionActivity extends Activity {
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
     	messageTextView.setText(message);
+    }
+    
+    @Override
+    public void onBackPressed() {//disable the back button
     }
 }

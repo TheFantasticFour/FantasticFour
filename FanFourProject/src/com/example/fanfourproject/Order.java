@@ -44,7 +44,7 @@ public class Order {
 		pops = new ArrayList<Pop>();
 	}
 	
-	private String checkDecimals(Double d){
+	public String checkDecimals(Double d){
 		String value= d.toString();
 		int finalIndex = value.length()-1;
 		if(!value.contains(".")){

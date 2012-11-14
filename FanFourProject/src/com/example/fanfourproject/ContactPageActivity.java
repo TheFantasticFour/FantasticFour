@@ -15,4 +15,8 @@ public class ContactPageActivity extends Activity {
     public void backToMain(View view) {
         finish();
     }
+    
+    @Override
+    public void onBackPressed() {//disable the back button
+    }
 }
