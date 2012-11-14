@@ -34,9 +34,9 @@ public class MainMenuActivity extends Activity {
         i1 = new Intent();
         i2 = new Intent();
         
-        tv1 = (TextView)findViewById(R.id.text_area);
+        //tv1 = (TextView)findViewById(R.id.text_area);
 
-        editTextArea();        
+        //editTextArea();        
     }
 	
 	public static void addPizzaToOrder(Pizza piz){
@@ -97,7 +97,7 @@ public class MainMenuActivity extends Activity {
     		//pizzaMeats = i1.getStringArrayListExtra("PIZZA_MEATS");
     		//pizzaVeggies = i1.getStringArrayListExtra("PIZZA_VEGGIES");
     			
-    		editTextArea();
+    		//editTextArea();
     	}
     	catch(Exception e){
     		System.out.println(e);
