@@ -1,23 +1,44 @@
 import junit.framework.TestCase;
 
-import com.example.fanfourproject.Order;
+import com.example.fanfourproject.PaymentOptionActivity;
 
 
 public class PaymentOptionActivityTest extends TestCase {
 	
+	
+	
 	@Override
 	protected void setUp() throws Exception {
-		//super.setUp();
+		//poa = new PaymentOptionActivity();
 	}
 	
 	public void testVerifyAddress(){
-		Order myOrder = new Order();
-		myOrder.checkDecimals(Double.valueOf(6.894));
+		PaymentOptionActivity poa = new PaymentOptionActivity();
+		//System.out.println(poa);
+		
+		poa.setAddressStreet("Seton11");
+		poa.setAddressCity("Collegeville");
+		poa.setAddressState("MN");
+		poa.setAddressZip("56321");
+//		assertTrue(poa.verifyAddress());
+//		
+//		poa.setAddressZip("56347");
+//		assertTrue(poa.verifyAddress());
+//		
+//		poa.setAddressZip("55443");
+//		assertFalse(poa.verifyAddress());
+//		
+//		poa.setAddressZip("");
+//		assertFalse(poa.verifyAddress());
+//		
+//		poa.setAddressZip(null);
+//		assertFalse(poa.verifyAddress());
+		
 	}
 	
-	public void testVerifyPhoneNumber(){
-		if(true){
-			assertEquals(false,false);
-		}
-	}
+//	public void testVerifyPhoneNumber(){
+//		if(true){
+//			assertEquals(false,false);
+//		}
+//	}
 }
