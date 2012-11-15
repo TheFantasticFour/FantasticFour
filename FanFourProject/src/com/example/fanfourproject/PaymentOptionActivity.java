@@ -112,7 +112,7 @@ public class PaymentOptionActivity extends Activity {
      * This method verifies the user's phone number. Currently, a valid phone number has length 10
      * after the optional dashes are removed. 
      */
-    private boolean verifyPhoneNumber(){
+    public boolean verifyPhoneNumber(){
     	boolean vpn = false;
     	String tempPhoneNumber = getPhoneNumber();
     	
@@ -338,7 +338,7 @@ public class PaymentOptionActivity extends Activity {
 		this.addressZip = addressZip;
 	}
 
-	@Override
-    public void onBackPressed() {//disable the back button
-    }
+	//@Override
+    //public void onBackPressed() {//disable the back button
+    //}
 }
