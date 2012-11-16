@@ -312,7 +312,7 @@ public class PaymentOptionActivity extends Activity {
     		System.out.println(geteMail());
     		System.out.println(getPayment());
     		System.out.println(MainMenuActivity.mainOrder);
-    		Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
+    		Intent intent = new Intent();
             startActivity(intent);
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
