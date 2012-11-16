@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/submit_order"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
@@ -32,9 +32,8 @@
                 android:hint="Street"
                 android:inputType="textPostalAddress" >
 
-                <!-- requestFocus /-->
+                <!-- requestFocus / -->
             </EditText>
-
         </LinearLayout>
 
         <LinearLayout
@@ -63,7 +62,6 @@
                 android:layout_weight="1"
                 android:hint="Zip"
                 android:inputType="number" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -84,7 +82,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="phone" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +102,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textEmailAddress" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -122,19 +118,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Cash" 
-                    android:onClick="clickCash"/>
+                    android:onClick="clickCash"
+                    android:text="Cash" />
 
                 <RadioButton
                     android:id="@+id/credit_card_option"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Credit Card"
-                    android:onClick="clickCredit" />
+                    android:onClick="clickCredit"
+                    android:text="Credit Card" />
             </RadioGroup>
-
         </LinearLayout>
-	
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -148,7 +143,6 @@
                 android:hint="Credit Card Number"
                 android:inputType="number"
                 android:visibility="invisible" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -171,7 +165,6 @@
                 android:text="$0.00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -194,7 +187,6 @@
                 android:text="$0.00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -217,7 +209,6 @@
                 android:text="$0.00"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="18dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -238,11 +229,11 @@
                 android:gravity="right"
                 android:text="$0.00"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ScrollView
+            android:id="@+id/message_scroll_view"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
             <TextView
@@ -252,18 +243,15 @@
                 android:scrollbars="vertical"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        </LinearLayout>
-
+        </ScrollView>
     </LinearLayout>
 
     <Button
         android:id="@+id/submit_order"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:onClick="submitOrder"
         android:text="Submit Order" />
 

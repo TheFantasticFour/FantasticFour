@@ -96,15 +96,18 @@ public class PaymentOptionActivity extends Activity {
     	String tempCity = getAddressCity();
     	String tempState = getAddressState();
     	String tempZip = getAddressZip();
-    	
-    	boolean inMinnesota = tempState.toLowerCase().equals("mn");
-    	boolean inZip1 = tempZip.equals("56321");
-    	boolean inZip2 = tempZip.equals("56374");
-    	
-    	if(inMinnesota && (inZip1 || inZip2)){
-    		va  = true;
-    		setAddress(tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip);
-    	}    	
+    	try{
+    		boolean inMinnesota = tempState.toLowerCase().equals("mn");
+    		boolean inZip1 = tempZip.equals("56321");
+        	boolean inZip2 = tempZip.equals("56374");
+    		if(inMinnesota && (inZip1 || inZip2)){
+    			setAddress(tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip);
+    			va  = true;
+    		}
+    	}
+    	catch(Exception e){
+    		return va;
+    	}
     	return va;
     }
     
@@ -116,17 +119,22 @@ public class PaymentOptionActivity extends Activity {
     	boolean vpn = false;
     	String tempPhoneNumber = getPhoneNumber();
     	
-    	String finalPhoneNumber = "";
-    	for(int i = 0; i < tempPhoneNumber.length(); i++){
-    		if(!tempPhoneNumber.substring(i, i+1).equals("-")){//this removes all of the dashes in a phone number
-    			finalPhoneNumber = finalPhoneNumber + tempPhoneNumber.substring(i, i+1);
-    		}   		
-    	}
-    	
-    	if(finalPhoneNumber.length() == 10){
-    		vpn  = true;
-    		setPhoneNumber(finalPhoneNumber);
-    	}    	
+    	try{
+			String finalPhoneNumber = "";
+			for(int i = 0; i < tempPhoneNumber.length(); i++){
+				if(!tempPhoneNumber.substring(i, i+1).equals("-")){//this removes all of the dashes in a phone number
+					finalPhoneNumber = finalPhoneNumber + tempPhoneNumber.substring(i, i+1);
+				}   		
+			}
+			
+			if(finalPhoneNumber.length() == 10){
+				vpn  = true;
+				setPhoneNumber(finalPhoneNumber);
+			}
+		} 
+    	catch (Exception e){
+			return vpn;
+		}    	
     	
     	return vpn;
     }
@@ -135,14 +143,19 @@ public class PaymentOptionActivity extends Activity {
      * This method verifies the user's e-mail address. Currently, a valid e-mail contains
      * an @ symbol. 
      */
-    private boolean verifyEmail(){
+    public boolean verifyEmail(){
     	boolean vem = false;
     	String tempEmail = eMail;
     	
-		if(tempEmail.indexOf('@') >= 0){
-    		vem  = true;
-    		eMail = tempEmail;
-    	}
+		try{
+			if(tempEmail.indexOf('@') >= 0){
+				eMail = tempEmail;
+				vem  = true;
+			}
+		}
+		catch (Exception e){
+			return vem;
+		}
     	return vem;
     }
     
@@ -150,26 +163,29 @@ public class PaymentOptionActivity extends Activity {
      * This method verifies the user's payment info. If the credit card option is chosen,
      * payment is set to the credit card number which currently accepts an even number.
      */
-    private boolean verifyPayment(){
+    public boolean verifyPayment(){
     	boolean vp = false;
     	String tempCreditCard = "";
     	
-    	if(getPayment().equals("Cash")){//want cash option
-    		vp = true;
-    	}
-    	else{//want credit card option
-    		tempCreditCard = getPayment();
-    		Integer ccNumber = null;
-    		try{ccNumber = Integer.valueOf(tempCreditCard);}
-    		catch(Exception e){}
-    		
-    		if(ccNumber==null || ccNumber%2!=0){	
-    			vp = false;        		
-    		}
-    		else{
-    			vp = true;
-    		}
-    	}
+    	try {
+			if(getPayment().equals("Cash")){//want cash option
+				vp = true;
+			}
+			else{//want credit card option
+				tempCreditCard = getPayment();
+				Integer ccNumber = null;
+				ccNumber = Integer.valueOf(tempCreditCard);
+				
+				if(ccNumber==null || ccNumber%2!=0){	
+					vp = false;        		
+				}
+				else{
+					vp = true;
+				}
+			}
+		} catch (Exception e) {
+			return vp;
+		}
     	return vp;
     }
     
