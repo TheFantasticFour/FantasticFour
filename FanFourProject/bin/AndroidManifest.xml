@@ -2,13 +2,13 @@
     package="com.example.fanfourproject"
     android:versionCode="1"
     android:versionName="1.0" >
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
-    
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -57,6 +57,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.fanfourproject.PaymentOptionsActivity" />
+        </activity>
+        <activity
+            android:name=".ReceiveConfirmationActivity"
+            android:label="@string/title_activity_receive_confirmation" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.fanfourproject.ReceiveConfirmationActivity" />
         </activity>
     </application>
 

@@ -1,6 +1,9 @@
 package com.example.fanfourproject;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +35,18 @@ public class PaymentOptionActivity extends Activity {
 	
 	//This is a string to hold the zip address that the user will input
 	private String addressZip = "";
+	
+	//This is an Array List of integers to hold different messages to convery to the user
+	private ArrayList<Integer> listOfMessages = new ArrayList<Integer>();
+	// 1 --> "Invalid Street Address"
+	// 2 --> "Invalid City"
+	// 3 --> "Invalid State"
+	// 4 --> "Invalid ZipCode"
+	// 5 --> "Invalid Address"
+	// 6 --> "Invalid Phone Number"
+	// 7 --> "Invalid Email"
+	// 8 --> "Invalid Credit Card Number"
+	
 	
 	public PaymentOptionActivity(){
 		
@@ -103,12 +118,18 @@ public class PaymentOptionActivity extends Activity {
     		if(inMinnesota && (inZip1 || inZip2)){
     			setAddress(tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip);
     			va  = true;
+    			return va;
+    		}
+    		else{
+    			va = false;
+    			addToListOfMessages(4);
+    			return va;
     		}
     	}
     	catch(Exception e){
+    		addToListOfMessages(5);
     		return va;
     	}
-    	return va;
     }
     
     /*
@@ -130,13 +151,20 @@ public class PaymentOptionActivity extends Activity {
 			if(finalPhoneNumber.length() == 10){
 				vpn  = true;
 				setPhoneNumber(finalPhoneNumber);
+				return vpn;
+			}
+			else{
+				vpn = false;
+				System.out.println("HERE:)");
+				addToListOfMessages(6);
+				return vpn;
 			}
 		} 
     	catch (Exception e){
+    		addToListOfMessages(6);
 			return vpn;
 		}    	
-    	
-    	return vpn;
+ 
     }
     
     /*
@@ -151,12 +179,18 @@ public class PaymentOptionActivity extends Activity {
 			if(tempEmail.indexOf('@') >= 0){
 				eMail = tempEmail;
 				vem  = true;
+				return vem;
+			}
+			else{
+				vem  = false;
+				addToListOfMessages(7);
+				return vem;
 			}
 		}
 		catch (Exception e){
+			addToListOfMessages(7);
 			return vem;
 		}
-    	return vem;
     }
     
     /*
@@ -170,23 +204,27 @@ public class PaymentOptionActivity extends Activity {
     	try {
 			if(getPayment().equals("Cash")){//want cash option
 				vp = true;
+				return vp;
 			}
 			else{//want credit card option
 				tempCreditCard = getPayment();
 				Integer ccNumber = null;
 				ccNumber = Integer.valueOf(tempCreditCard);
 				
-				if(ccNumber==null || ccNumber%2!=0){	
-					vp = false;        		
+				if(ccNumber == null || ccNumber%2!=0){	
+					vp = false;
+					addToListOfMessages(8);
+					return vp;
 				}
 				else{
 					vp = true;
+					return vp;
 				}
 			}
 		} catch (Exception e) {
+			addToListOfMessages(8);
 			return vp;
 		}
-    	return vp;
     }
     
     /*
@@ -217,18 +255,55 @@ public class PaymentOptionActivity extends Activity {
     	
     	String message = "";
     	//System.out.println("" + va + vpn + vem + vp);
-    	if(!va){
-    		message = message + "Invalid Address" + "\n";
+    	
+    	// 1 --> "Invalid Street Address"
+    	// 2 --> "Invalid City"
+    	// 3 --> "Invalid State"
+    	// 4 --> "Invalid ZipCode"
+    	// 5 --> "Invalid Address"
+    	// 6 --> "Invalid Phone Number"
+    	// 7 --> "Invalid Email"
+    	// 8 --> "Invalid Credit Card Number"
+    	
+    	for(Integer myInt: listOfMessages){
+    		if(myInt == 1){
+    			message = message + "Invalid Street Address" + "\n";
+    		}
+    		else if(myInt == 2){
+    			message = message + "Invalid City" + "\n";
+    		}
+    		else if(myInt == 3){
+    			message = message + "Invalid State" + "\n";
+    		}
+    		else if(myInt == 4){
+    			message = message + "Invalid ZipCode" + "\n";
+    		}
+    		else if(myInt == 5){
+    			message = message + "Invalid Address" + "\n";
+    		}
+    		else if(myInt == 6){
+    			message = message + "Invalid Phone Number" + "\n";
+    		}
+    		else if(myInt == 7){
+    			message = message + "Invalid Email" + "\n";
+    		}
+    		else if(myInt == 8){
+    			message = message + "Invalid Credit Card Number" + "\n";
+    		}
     	}
-    	if(!vpn){
-    		message = message + "Invalid Phone Number" + "\n";
-    	}
-    	if(!vem){
-    		message = message + "Invalid E-Mail" + "\n";
-    	}
-    	if(!vp){
-    		message = message + "Invalid Credit Card Number" + "\n";
-    	}    	
+    	clearListOfMessages();
+//    	if(!va){
+//    		message = message + "Invalid Address" + "\n";
+//    	}
+//    	if(!vpn){
+//    		message = message + "Invalid Phone Number" + "\n";
+//    	}
+//    	if(!vem){
+//    		message = message + "Invalid E-Mail" + "\n";
+//    	}
+//    	if(!vp){
+//    		message = message + "Invalid Credit Card Number" + "\n";
+//    	}    	
     	if(va && vpn && vem && vp){
     		//finish();
     		//output this info to the database and start a final activity
@@ -237,6 +312,8 @@ public class PaymentOptionActivity extends Activity {
     		System.out.println(geteMail());
     		System.out.println(getPayment());
     		System.out.println(MainMenuActivity.mainOrder);
+    		Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
+            startActivity(intent);
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
     	messageTextView.setText(message);
@@ -352,6 +429,18 @@ public class PaymentOptionActivity extends Activity {
 	 */
 	public void setAddressZip(String addressZip) {
 		this.addressZip = addressZip;
+	}
+	
+	public void addToListOfMessages(Integer myInt){
+		listOfMessages.add(myInt);
+	}
+	
+	public void clearListOfMessages(){
+		listOfMessages = new ArrayList<Integer>();
+	}
+	
+	public ArrayList<Integer> getListOfMessages(){
+		return listOfMessages;
 	}
 
 	//@Override

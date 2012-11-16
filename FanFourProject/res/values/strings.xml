@@ -29,5 +29,6 @@
     <string name="title_activity_add_pop">Add a Pop!</string>
     <string name="add_pop_hint">Number of Pops</string>
     <string name="title_activity_payment_option">PaymentOptionActivity</string>
+    <string name="title_activity_receive_confirmation">ReceiveConfirmationActivity</string>
 
 </resources>
