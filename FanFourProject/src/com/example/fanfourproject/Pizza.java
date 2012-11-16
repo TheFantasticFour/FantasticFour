@@ -59,7 +59,7 @@ public class Pizza {
 				}
 			}
 		}
-		else if(toppings.size()==2){
+		else if(toppings.size()==1){
 			s = s + pizzaSize + " Pizza with " + toppings.get(0);
 		}
 		else{//no toppings
