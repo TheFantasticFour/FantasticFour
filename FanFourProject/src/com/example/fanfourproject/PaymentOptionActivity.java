@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class PaymentOptionActivity extends Activity {
+	//ADDED THIS LINE!!!~~~!!!
 	
 	//This is a string to hold the entire address that the user will input
 	private String address = "";
