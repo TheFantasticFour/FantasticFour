@@ -1,5 +1,6 @@
 package com.example.fanfourproject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Order {
@@ -82,10 +83,9 @@ public class Order {
 		Double tax = 0.0;
 		tax = Double.valueOf(getInitialPrice())*TAX_RATE;
 		String dis = checkDecimals(tax);
-		
 		return dis;
 	}
-	
+	//Use discountCalculate Class
 	public String getDiscounts(){
 		discountCalculate dc = new discountCalculate("DISC15", getInitialPrice());
 		
@@ -93,8 +93,7 @@ public class Order {
 	}
 	
 	public String getFinalPrice(){
-		Double price = 0.0;
-		price = price + Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
+		Double price =  Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
 		
 		String finalPrice = checkDecimals(price);
 		
