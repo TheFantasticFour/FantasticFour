@@ -52,6 +52,7 @@ public final class R {
         public static final int TextView_order_8=0x7f070049;
         public static final int TextView_order_9=0x7f07004c;
         public static final int absolute_total_label=0x7f070077;
+        public static final int actual_id=0x7f07007b;
         public static final int add_pizza=0x7f07002d;
         public static final int add_pop=0x7f07002f;
         public static final int address=0x7f070064;
@@ -115,7 +116,7 @@ public final class R {
         public static final int meat_chicken=0x7f07000f;
         public static final int meat_pepperoni=0x7f07000b;
         public static final int meat_sausage=0x7f07000c;
-        public static final int menu_settings=0x7f07007b;
+        public static final int menu_settings=0x7f07007c;
         public static final int message_area=0x7f07007a;
         public static final int message_scroll_view=0x7f070079;
         public static final int order_scroll_view=0x7f070030;
