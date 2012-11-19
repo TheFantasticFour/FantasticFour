@@ -13,7 +13,7 @@ public class PizzaTest extends TestCase {
 		a.add("cheese");
 		a.add("sausage");
 		a.add("mushrooms");
-		  Pizza p = new Pizza("large",a);
+		Pizza p = new Pizza("large",a);
 		  
 		  assertEquals(p.getPizzaSize(),"large");
 		  
