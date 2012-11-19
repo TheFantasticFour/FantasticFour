@@ -5,8 +5,7 @@ import junit.framework.TestCase;
 public class PopTest extends TestCase {
 
 	public void testPopSize() {
-		 Pop p = new Pop("small","coke");
-		 
+		 Pop p = new Pop("small","coke");	 
 		 assertEquals(p.getPopSize(),"small");
 		 
 		 p.setPopSize("large");

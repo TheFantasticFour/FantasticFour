@@ -9,6 +9,7 @@ public class AllTests {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(PaymentOptionActivityTest.class);
 		suite.addTestSuite(PopTest.class);
+		suite.addTestSuite(PizzaTest.class);
 		//$JUnit-END$
 		return suite;
 	}
