@@ -45,23 +45,10 @@ public class Order {
 	}
 	
 	public String checkDecimals(Double d){
-		String value= d.toString();
-		int finalIndex = value.length()-1;
-		if(!value.contains(".")){
-			return value + ".00";
-		}
-		else if(value.substring(finalIndex).equals(".")){
-			return value + "00";
-		}
-		else if(value.substring(finalIndex-1,finalIndex).equals(".")){
-			return value + "0";
-		}
-		else{			
-			int d100 = (int)(d*100.0);
-			Double value2 = d100/100.0;
-			
-			return value2.toString();
-		}	
+		BigDecimal bd = new BigDecimal(d);
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		String value = bd.toString();
+		return value;
 	}
 	
 	public String getInitialPrice(){

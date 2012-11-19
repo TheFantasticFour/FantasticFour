@@ -4,89 +4,96 @@ import java.math.BigDecimal;
 
 public class discountCalculate {
 	private boolean discounted = false;
+	private String code, price, id;
 	public discountCalculate(String code, String price){
+		this.code = code;
+		this.price = price;
 	}
 	public discountCalculate(String code, String id, String price){	
+		this.code = code;
+		this.id = id;
+		this.price = price;
 	}
-	public String discountCode(String code, String price){
-		String finalPrice;
+	public String discountCode(){
+		String discountPrice;
 		if (!discounted ){
 			discounted = true;
 			if(code.equals("DISC10")){
 				double temp=Double.parseDouble(price);
-				temp=temp*0.9;
+				temp=temp*0.1;
 				BigDecimal bd = new BigDecimal(temp);
 			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
+			discountPrice=bd.toString();
+			return discountPrice;
 		}
 		else if(code.equals("DISC15")){
 			double temp=Double.parseDouble(price);
-			temp=temp*0.85;
+			temp=temp*0.15;
 			BigDecimal bd = new BigDecimal(temp);
 			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
+			discountPrice=bd.toString();
+			return discountPrice;
 		}
 		else if(code.equals("DISC20")){
 			double temp=Double.parseDouble(price);
-			temp=temp*0.8;
+			temp=temp*0.2;
 			BigDecimal bd = new BigDecimal(temp);
 			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
+			discountPrice=bd.toString();
+			return discountPrice;
 		}
 		else if(code.equals("DISC4OFF")){
-			double temp=Double.parseDouble(price);
-			temp=temp - 4;
+			double temp = 4;
 			BigDecimal bd = new BigDecimal(temp);
 			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
+			discountPrice=bd.toString();
+			return discountPrice;
 		}
 		else if(code.equals("DISC10OFF100")){
-			double temp=Double.parseDouble(price);
-			if (temp>=100){
-				temp = temp - 10;
+			double priced=Double.parseDouble(price);
+			double temp = 0;
+			if (priced>=100){
+				temp = 10;
 			}
 			BigDecimal bd = new BigDecimal(temp);
 			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
+			discountPrice=bd.toString();
+			return discountPrice;
 		}
 		else {
-			finalPrice = price;
+			discountPrice = price;
 			discounted = false;
-			return finalPrice;
+			return discountPrice;
 		}
 		}
 		else {
-			finalPrice = price;
-			return finalPrice;
+			discountPrice = price;
+			return discountPrice;
 		}
 	}
 	
 	
 	//Student get 15% off
-	public String discountID(String id, String price){
-		String finalPrice = price;
+	public String discountID(){
+		String discountPrice = price;
 		int idNum;
 		try{
 			idNum = Integer.parseInt(id);
 			if(!discounted){
 				if (idNum >= 900190000 && idNum <=900209999){
-					finalPrice = discountCode("DISC15", price);
+					code = "DISC15";
+					discountPrice = discountCode();
 					discounted = true;
 				}
 				else{
-					finalPrice = price;
+					discountPrice = price;
 				}
 			}
 		}
 		catch(Exception e){
 			System.out.println("Invalid ID number");
 		}		
-		return finalPrice;
+		return discountPrice;
 	}
 
 }
