@@ -3,7 +3,7 @@ package com.example.fanfourproject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
+//import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 public class AddPopActivity extends Activity {
@@ -19,10 +19,10 @@ public class AddPopActivity extends Activity {
         setContentView(R.layout.activity_add_pop);
     }
     
-    private boolean checkCheckBox(int idName){
-    	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
-    	return myCheckBox1.isChecked();
-    }
+//    private boolean checkCheckBox(int idName){
+//    	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
+//    	return myCheckBox1.isChecked();
+//    }
     
     private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	

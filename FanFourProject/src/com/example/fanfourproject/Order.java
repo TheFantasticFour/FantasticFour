@@ -72,7 +72,7 @@ public class Order {
 			else{
 				total = total + PIZZA_LARGE_PRICE;
 			}
-			for(String top : p.getPizzaToppings()){
+			for(int i = 0; i < p.getPizzaToppings().size(); i++){
 				total = total + 1.00;
 			}
 		}
