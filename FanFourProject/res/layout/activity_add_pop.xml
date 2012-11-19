@@ -56,49 +56,49 @@
                         android:id="@+id/liter_coka_coke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Coka-Cola" />
+                        android:text="Coka-Cola  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_pepsi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pepsi" />
+                        android:text="Pepsi        $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_mountain_dew"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mountain Dew" />
+                        android:text="Mountain Dew  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_diet_coke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diet Coke" />
+                        android:text="Diet Coke  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_orange_fanta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Orange Fanta" />
+                        android:text="Orange Fanta  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_root_beer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Root Beer" />
+                        android:text="Root Beer  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_dr_pepper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dr. Pepper" />
+                        android:text="Dr. Pepper  $2.99" />
 
                     <RadioButton
                         android:id="@+id/liter_sprite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sprite" />
+                        android:text="Sprite          $2.99" />
 
                 </RadioGroup>
             </LinearLayout>
@@ -133,49 +133,49 @@
                         android:id="@+id/can_coka_cola"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Coka-Cola" />
+                        android:text="Coka-Cola  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_pepsi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pepsi" />
+                        android:text="Pepsi          $.99" />
 
                     <RadioButton
                         android:id="@+id/can_mountain_dew"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mountain Dew" />
+                        android:text="Mountain Dew  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_diet_coke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diet Coke" />
+                        android:text="Diet Coke  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_orage_fanta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Orange Fanta" />
+                        android:text="Orange Fanta  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_root_beer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Root Beer" />
+                        android:text="Root Beer  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_dr_pepper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dr. Pepper" />
+                        android:text="Dr. Pepper  $.99" />
 
                     <RadioButton
                         android:id="@+id/can_sprite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sprite" />
+                        android:text="Sprite            $.99" />
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
