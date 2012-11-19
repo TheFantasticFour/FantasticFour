@@ -87,14 +87,9 @@ public class Order {
 	}
 	
 	public String getDiscounts(){
-		Double discounts = 0.0;
-		discounts = discounts+5.0;
+		discountCalculate dc = new discountCalculate("DISC15", getInitialPrice());
 		
-		int discounts100 = (int)(discounts*100.0);
-		discounts = discounts100/100.0;
-		String dis = checkDecimals(discounts);
-		
-		return dis;
+		return dc.discountCode();
 	}
 	
 	public String getFinalPrice(){
