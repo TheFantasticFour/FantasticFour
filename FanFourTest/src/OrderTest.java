@@ -8,8 +8,8 @@ import junit.framework.TestCase;
 
 
 public class OrderTest extends TestCase {
-	Pizza a, b, c, d;
-	Pop m, n, p, q;
+	Pizza a, b, d;
+	Pop m, n;
 	
 	public void setUp(){
 		ArrayList<String> topping = new ArrayList<String>();  
@@ -18,12 +18,9 @@ public class OrderTest extends TestCase {
 		topping.add("mushrooms");
 		a = new Pizza("Large", topping);
 		b = new Pizza("Small", topping);
-		c = new Pizza("Large", topping);
 		d = new Pizza("Medium", topping);
 		m = new Pop("Can", "coke");
 		n = new Pop("Liter", "coke");
-		p = new Pop("Liter", "coke");
-		q = new Pop("Can", "coke");
 		
 	}
 	
