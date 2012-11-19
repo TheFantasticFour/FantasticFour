@@ -81,9 +81,6 @@ public class Order {
 	public String getTax(){
 		Double tax = 0.0;
 		tax = Double.valueOf(getInitialPrice())*TAX_RATE;
-		
-		int tax100 = (int)(tax*100.0);
-		tax = tax100/100.0;
 		String dis = checkDecimals(tax);
 		
 		return dis;
