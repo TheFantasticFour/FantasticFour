@@ -8,6 +8,7 @@ public class AllTests {
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		//$JUnit-BEGIN$
 		suite.addTestSuite(PaymentOptionActivityTest.class);
+		suite.addTestSuite(PopTest.class);
 		//$JUnit-END$
 		return suite;
 	}
