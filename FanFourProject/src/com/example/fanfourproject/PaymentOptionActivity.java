@@ -158,7 +158,6 @@ public class PaymentOptionActivity extends Activity {
 			}
 			else{
 				vpn = false;
-				System.out.println("HERE:)");
 				addToListOfMessages(6);
 				return vpn;
 			}

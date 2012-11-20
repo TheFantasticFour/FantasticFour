@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/pop_image"
-        android:text="Order Summary:"
+        android:text="Current Total:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ScrollView
@@ -87,12 +87,21 @@
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall"/>
 
+                <TextView
+                    android:id="@+id/TextView_price_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
                 <Button
                     android:id="@+id/Button_order_1"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -107,13 +116,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_2"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -128,13 +145,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_3"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -149,13 +174,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_4"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -170,13 +203,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_5"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -191,13 +232,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_6"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -212,13 +261,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_7"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -233,13 +290,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_8"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -254,13 +319,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_9"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -275,13 +348,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_10"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -296,13 +377,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_11"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -317,13 +406,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_12"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -338,13 +435,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_13"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -359,13 +464,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_14"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -380,13 +493,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_15"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp"  />
             </LinearLayout>
 
             <LinearLayout
@@ -401,13 +522,21 @@
                     android:layout_weight="1"
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/TextView_price_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Button
                     android:id="@+id/Button_order_16"
                     style="?android:attr/buttonStyleSmall"
-                    android:layout_width="35dp"
+                    android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:text="X" />
+                    android:text="X"
+                    android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -422,5 +551,16 @@
         android:layout_alignParentRight="true"
         android:onClick="finalizeOrder"
         android:text="Finalize Order" />
+
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/pop_image"
+        android:layout_toRightOf="@+id/textView3"
+        android:gravity="right|center_vertical"
+        android:text="$0.00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
