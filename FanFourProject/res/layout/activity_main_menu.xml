@@ -56,7 +56,7 @@
             android:text="Add Discounts" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/discount_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"

@@ -23,6 +23,8 @@ public class MainMenuActivity extends Activity {
 	TextView tv1;
 	
 	public static Order mainOrder;
+	public static String codeString;
+	public static String bannerString;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
