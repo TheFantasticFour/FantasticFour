@@ -88,9 +88,14 @@ public class Order {
 	//Use discountCalculate Class
 	public String getDiscounts(){
 		String price = new Double(Double.valueOf(getInitialPrice()) + Double.valueOf(getTax())).toString();
-		discountCalculate dc = new discountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price);
+		try{
+			discountCalculate dc = new discountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price);
+			return dc.discountCode();
+		}
+		catch(Exception e){
+			return "0.00";
+		}
 		
-		return dc.discountCode();
 	}
 	
 	public String getFinalPrice(){

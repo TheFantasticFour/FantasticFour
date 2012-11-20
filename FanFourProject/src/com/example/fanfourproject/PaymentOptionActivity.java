@@ -69,8 +69,10 @@ public class PaymentOptionActivity extends Activity {
         
         intialNumber.setText("$" + thisOrder.getInitialPrice());
         taxNumber.setText("$" +thisOrder.getTax());
+        System.out.println(thisOrder.getDiscounts());
         discountNumber.setText("$" +thisOrder.getDiscounts());
         finalNumber.setText("$" +thisOrder.getFinalPrice());
+        
     }
     
     /*
