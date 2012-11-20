@@ -31,6 +31,10 @@ public class MainMenuActivity extends Activity {
 	private ArrayList<Pizza> pizzas;
 	private ArrayList<Pop> pops;
 	
+	private static final Double SMALL_PIZZA_COST = 8.99;
+	private static final Double MEDIUM_PIZZA_COST = 13.99;
+	private static final Double LARGE_PIZZA_COST = 18.99;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -136,6 +140,7 @@ public class MainMenuActivity extends Activity {
     		System.out.println(e);
     	}
     	
+    	LinearLayout rlayout1 = (LinearLayout) findViewById(R.id.ll_order_1);
     	LinearLayout rlayout2 = (LinearLayout) findViewById(R.id.ll_order_2);
     	LinearLayout rlayout3 = (LinearLayout) findViewById(R.id.ll_order_3);
     	LinearLayout rlayout4 = (LinearLayout) findViewById(R.id.ll_order_4);
@@ -168,6 +173,18 @@ public class MainMenuActivity extends Activity {
     	TextView displayPrice9 = (TextView) findViewById(R.id.TextView_price_9);
     	TextView displayPrice10 = (TextView) findViewById(R.id.TextView_price_10);
     	
+    	rlayout1.setVisibility(View.INVISIBLE);
+    	rlayout2.setVisibility(View.INVISIBLE);
+    	rlayout3.setVisibility(View.INVISIBLE);
+    	rlayout4.setVisibility(View.INVISIBLE);
+    	rlayout5.setVisibility(View.INVISIBLE);
+    	rlayout6.setVisibility(View.INVISIBLE);
+    	rlayout7.setVisibility(View.INVISIBLE);
+    	rlayout8.setVisibility(View.INVISIBLE);
+    	rlayout9.setVisibility(View.INVISIBLE);
+    	rlayout10.setVisibility(View.INVISIBLE);
+    	
+    	
     	
     	ArrayList<String> top = new ArrayList<String>();
     	String type = "";
@@ -178,21 +195,22 @@ public class MainMenuActivity extends Activity {
     	int numPops = 0;
     	
     	if(numPizzas<pizzas.size() && numPizzas<6){
+    		rlayout1.setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems1.setText(pizzas.get(numPizzas).getPizzaSize() +" pizza; "+ toppings);
-    		if(pizzas.get(numPizzas).getPizzaSize()=="small"){
-        		displayPrice1.setText("$8.99");
+    		displayItems1.setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
+        		displayPrice1.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize()=="medium"){
-        		displayPrice1.setText("$13.99");
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
+        		displayPrice1.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
     		}
     		else{
-        		displayPrice1.setText("$18.99");
+        		displayPrice1.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -205,15 +223,15 @@ public class MainMenuActivity extends Activity {
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems2.setText(pizzas.get(numPizzas).getPizzaSize() +" pizza; "+ toppings);
-    		if(pizzas.get(numPizzas).getPizzaSize()=="small"){
-        		displayPrice2.setText("$8.99");
+    		displayItems2.setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
+        		displayPrice2.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize()=="medium"){
-        		displayPrice2.setText("$13.99");
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
+        		displayPrice2.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
     		}
     		else{
-        		displayPrice2.setText("$18.99");
+        		displayPrice2.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -226,15 +244,15 @@ public class MainMenuActivity extends Activity {
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems3.setText(pizzas.get(numPizzas).getPizzaSize() +" pizza; "+ toppings);
-    		if(pizzas.get(numPizzas).getPizzaSize()=="small"){
-        		displayPrice3.setText("$8.99");
+    		displayItems3.setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
+        		displayPrice3.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize()=="medium"){
-        		displayPrice3.setText("$13.99");
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
+        		displayPrice3.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
     		}
     		else{
-        		displayPrice3.setText("$18.99");
+        		displayPrice3.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
     		}
     		numPizzas++;
 
@@ -248,15 +266,15 @@ public class MainMenuActivity extends Activity {
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems4.setText(pizzas.get(numPizzas).getPizzaSize() +" pizza; "+ toppings);
-    		if(pizzas.get(numPizzas).getPizzaSize()=="small"){
-        		displayPrice4.setText("$8.99");
+    		displayItems4.setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
+        		displayPrice4.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize()=="medium"){
-        		displayPrice4.setText("$13.99");
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
+        		displayPrice4.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
     		}
     		else{
-        		displayPrice4.setText("$18.99");
+        		displayPrice4.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -269,15 +287,15 @@ public class MainMenuActivity extends Activity {
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems5.setText(pizzas.get(numPizzas).getPizzaSize() +" pizza; "+ toppings);
-    		if(pizzas.get(numPizzas).getPizzaSize()=="small"){
-        		displayPrice5.setText("$8.99");
+    		displayItems5.setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
+        		displayPrice5.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize()=="medium"){
-        		displayPrice5.setText("$13.99");
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
+        		displayPrice5.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
     		}
     		else{
-        		displayPrice5.setText("$18.99");
+        		displayPrice5.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -286,7 +304,7 @@ public class MainMenuActivity extends Activity {
     		rlayout6.setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems6.setText(pops.get(numPops).getPopSize() +" "+ type);
+    		displayItems6.setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
         		displayPrice6.setText("$2.99");
     		}
@@ -299,7 +317,7 @@ public class MainMenuActivity extends Activity {
     		rlayout7.setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems7.setText(pops.get(numPops).getPopSize() +" "+ type);
+    		displayItems7.setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
         		displayPrice7.setText("$2.99");
     		}
@@ -312,7 +330,7 @@ public class MainMenuActivity extends Activity {
     		rlayout8.setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems8.setText(pops.get(numPops).getPopSize() +" "+ type);
+    		displayItems8.setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
         		displayPrice8.setText("$2.99");
     		}
@@ -325,7 +343,7 @@ public class MainMenuActivity extends Activity {
     		rlayout9.setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems9.setText(pops.get(numPops).getPopSize() +" "+ type);
+    		displayItems9.setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
         		displayPrice9.setText("$2.99");
     		}
@@ -338,7 +356,7 @@ public class MainMenuActivity extends Activity {
     		rlayout10.setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems10.setText(pops.get(numPops).getPopSize() +" "+ type);
+    		displayItems10.setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
         		displayPrice10.setText("$2.99");
     		}
@@ -353,35 +371,45 @@ public class MainMenuActivity extends Activity {
     }
     public void removeItem1(View view) {
     	if(pizzas.get(0) != null){
-    		pizzas.remove(0);
+    		mainOrder.getPizzas().remove(0);
+    		onResume();
     	}
     }
     public void removeItem2(View view) {
-    	pizzas.remove(1);
+    	mainOrder.getPizzas().remove(1);
+    	onResume();
 	}public void removeItem3(View view) {
 
-    	pizzas.remove(2);
+		mainOrder.getPizzas().remove(2);
+		onResume();
 	}public void removeItem4(View view) {
 
-    	pizzas.remove(3);
+		mainOrder.getPizzas().remove(3);
+		onResume();
     }
 	public void removeItem5(View view) {
 
-		pizzas.remove(4);
+		mainOrder.getPizzas().remove(4);
+		onResume();
     }public void removeItem6(View view) {
 
-    	pops.remove(0);
+		mainOrder.getPop().remove(0);
+		onResume();
 	}public void removeItem7(View view) {
 
-    	pops.remove(1);
+		mainOrder.getPop().remove(1);
+		onResume();
 	}public void removeItem8(View view) {
 
-    	pops.remove(2);
+		mainOrder.getPop().remove(2);
+		onResume();
 	}public void removeItem9(View view) {
 
-    	pops.remove(3);
+		mainOrder.getPop().remove(3);
+		onResume();
 	}public void removeItem10(View view) {
 
-    	pops.remove(4);
+		mainOrder.getPop().remove(4);
+		onResume();
 	}
 }
