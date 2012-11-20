@@ -1,41 +1,9 @@
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-=======
-import com.example.fanfourproject.Order;
->>>>>>> 83d7768c5bfb5492571589a325412638db733832
 import com.example.fanfourproject.Pizza;
 import com.example.fanfourproject.Pop;
 
 import junit.framework.TestCase;
-
-<<<<<<< HEAD
-public class OrderTest extends TestCase {
-
-	
-	public void testAddPizza() {
-		Order o = new Order();
-		ArrayList a = new ArrayList<String>();  
-		a.add("cheese");
-		  Pizza p = new Pizza("large", a);
-		  o.addPizza(p);
-		  ArrayList plist = new ArrayList<String>();
-		  plist = o.getPizzas();
-		  assertEquals(plist.size(), 1);
-		  
-
-	}
-	public void testAddPop() {
-		Order o1 = new Order();
-		 Pop g = new Pop("small","coke");
-		  o1.addPizza(g);
-		  ArrayList plist = new ArrayList<String>();
-		  plist = o1.getPop();
-		  assertEquals(plist.size(), 1);
-		  
-	}
-}
-=======
 
 public class OrderTest extends TestCase {
 	Pizza a, b, d;
@@ -152,5 +120,3 @@ public class OrderTest extends TestCase {
 		assertEquals("The first pizza should be pizza", pops.get(1), n);
 	}
 }
-	
->>>>>>> 83d7768c5bfb5492571589a325412638db733832
