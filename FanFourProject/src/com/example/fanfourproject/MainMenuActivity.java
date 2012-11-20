@@ -136,8 +136,6 @@ public class MainMenuActivity extends Activity {
     		System.out.println(e);
     	}
     	
-    	int total = pizzas.size()+pops.size();
-    	
     	LinearLayout rlayout2 = (LinearLayout) findViewById(R.id.ll_order_2);
     	LinearLayout rlayout3 = (LinearLayout) findViewById(R.id.ll_order_3);
     	LinearLayout rlayout4 = (LinearLayout) findViewById(R.id.ll_order_4);
@@ -199,7 +197,7 @@ public class MainMenuActivity extends Activity {
     		numPizzas++;
     		toppings="";
     	}
-    	if(numPizzas<pizzas.size() && numPizzas<10){
+    	if(numPizzas<pizzas.size() && numPizzas<6){
     		rlayout2.setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
@@ -353,5 +351,37 @@ public class MainMenuActivity extends Activity {
     	TextView totalDisplay = (TextView) findViewById(R.id.total_text);
     	totalDisplay.setText("$" + mainOrder.getInitialPrice());
     }
-    
+    public void removeItem1(View view) {
+    	if(pizzas.get(0) != null){
+    		pizzas.remove(0);
+    	}
+    }
+    public void removeItem2(View view) {
+    	pizzas.remove(1);
+	}public void removeItem3(View view) {
+
+    	pizzas.remove(2);
+	}public void removeItem4(View view) {
+
+    	pizzas.remove(3);
+    }
+	public void removeItem5(View view) {
+
+		pizzas.remove(4);
+    }public void removeItem6(View view) {
+
+    	pops.remove(0);
+	}public void removeItem7(View view) {
+
+    	pops.remove(1);
+	}public void removeItem8(View view) {
+
+    	pops.remove(2);
+	}public void removeItem9(View view) {
+
+    	pops.remove(3);
+	}public void removeItem10(View view) {
+
+    	pops.remove(4);
+	}
 }
