@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class discountCalculate {
 
-	private boolean discounted = false;
+	//private boolean discounted = false;
 	
 	public static final String CODE_1 = "DISC10";
 	public static final String CODE_2 = "DISC15";
@@ -27,11 +27,44 @@ public class discountCalculate {
 		this.id = id;
 		this.price = price;
 	}
-
+	
+	public String getDiscountAmount(){
+		String discountAmount = "";
+		if(code == null){
+			return "0.00";
+		}
+		if(code.equals(CODE_1)){
+			double temp = Double.parseDouble(price);
+			temp = temp * 0.1;
+			discountAmount = getBigDecimalString(temp);
+			return discountAmount;
+		}
+		else if(code.equals(CODE_2)){
+			double temp = Double.parseDouble(price);
+			temp = temp * 0.15;
+			discountAmount = getBigDecimalString(temp);
+			return discountAmount;
+		}
+		else if(code.equals(CODE_3)){
+			double temp = Double.parseDouble(price);
+			temp = temp * 0.2;
+			discountAmount = getBigDecimalString(temp);
+			return discountAmount;
+		}
+		else if(code.equals(CODE_4)){
+			double temp = Double.parseDouble(price);
+			temp = 4;
+			discountAmount = getBigDecimalString(temp);
+			return discountAmount;
+		}
+		
+		return "0.00";
+	}
+	
 	public String discountCode() {
 		String discountPrice;
-		if (!discounted) {
-			discounted = true;
+		//if (!discounted) {
+			//discounted = true;
 			if (code.equals(CODE_1)) {
 				double temp = Double.parseDouble(price);
 				temp = temp * 0.1;
@@ -66,15 +99,15 @@ public class discountCalculate {
 //			} 
 			else {
 				discountPrice = price;
-				discounted = false;
+				//discounted = false;
 				return discountPrice;
 			}
 		} 
-		else {
-			discountPrice = price;
-			return discountPrice;
-		}
-	}
+//		else {
+//			discountPrice = price;
+//			return discountPrice;
+//		}
+	//}
 	
 	private String getBigDecimalString(double temp){
 		BigDecimal bd = new BigDecimal(temp);
@@ -84,23 +117,23 @@ public class discountCalculate {
 
 	// Student get 10% off
 	public String discountID() {
-		String discountPrice = price;
 		int idNum;
 		try {
 			idNum = Integer.parseInt(id);
-			if (!discounted) {
-				if (idNum >= LOWEST_BANNER_ID && idNum <= HIGHEST_BANNER_ID) {
-					code = CODE_1;
-					discountPrice = discountCode();
-					discounted = true;
-				} else {
-					discountPrice = price;
-				}
+			// if (!discounted) {
+			if (idNum >= LOWEST_BANNER_ID && idNum <= HIGHEST_BANNER_ID) {
+				code = CODE_1;
+				return getDiscountAmount();
+				// discounted = true;
+			} 
+			else {
+				return "0.00";
 			}
+			// }
 		} catch (Exception e) {
 			System.out.println("Invalid ID number");
+			return "0.00";
 		}
-		return discountPrice;
 	}
 
 }
