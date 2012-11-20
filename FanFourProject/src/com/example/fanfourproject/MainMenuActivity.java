@@ -75,6 +75,11 @@ public class MainMenuActivity extends Activity {
         startActivity(i2);
     }
     
+    /** Called when the user clicks the 'Add Discounts' button */
+    public void addDiscount(View view) {
+    	Intent intent = new Intent(this, AddDiscountActivity.class);
+        startActivity(intent);
+    }
 //    private String printArray(ArrayList<String> array){
 //    	String s = "";
 //    	for(String st: array){
