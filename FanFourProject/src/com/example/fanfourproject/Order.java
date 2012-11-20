@@ -72,7 +72,7 @@ public class Order {
 			else{
 				total = total + PIZZA_LARGE_PRICE;
 			}
-			for(String top : p.getPizzaToppings()){
+			for(int i = 0; i < p.getPizzaToppings().size(); i++){
 				total = total + 1.00;
 			}
 		}
@@ -87,9 +87,11 @@ public class Order {
 	}
 	//Use discountCalculate Class
 	public String getDiscounts(){
-		discountCalculate dc = new discountCalculate("DISC15", getInitialPrice());
+		Double price = Double.valueOf(getInitialPrice()) + Double.valueOf(getTax());
+		discountCalculate dc = new discountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price.toString());
 		
-		return dc.discountCode();
+		return dc.getDiscountAmount();
+		
 	}
 	
 	public String getFinalPrice(){

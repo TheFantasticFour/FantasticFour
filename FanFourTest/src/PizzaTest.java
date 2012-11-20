@@ -1,15 +1,14 @@
 import java.util.ArrayList;
 
-import com.example.fanfourproject.Pizza;
-import com.example.fanfourproject.Pop;
-
 import junit.framework.TestCase;
+
+import com.example.fanfourproject.Pizza;
 
 public class PizzaTest extends TestCase {
 
 	
 	public void testPizzaSize() {
-		ArrayList a = new ArrayList<String>();  
+		ArrayList<String> a = new ArrayList<String>();  
 		a.add("cheese");
 		a.add("sausage");
 		a.add("mushrooms");
@@ -21,7 +20,7 @@ public class PizzaTest extends TestCase {
 		  assertEquals(p.getPizzaSize(),"small");
 	}
 	public void testPizzaToppings() {
-		ArrayList a = new ArrayList<String>();  
+		ArrayList<String> a = new ArrayList<String>();  
 		a.add("cheese");
 		a.add("sausage");
 		a.add("mushrooms");

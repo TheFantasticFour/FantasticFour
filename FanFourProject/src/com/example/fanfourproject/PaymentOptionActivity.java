@@ -69,8 +69,10 @@ public class PaymentOptionActivity extends Activity {
         
         intialNumber.setText("$" + thisOrder.getInitialPrice());
         taxNumber.setText("$" +thisOrder.getTax());
+        System.out.println(thisOrder.getDiscounts());
         discountNumber.setText("$" +thisOrder.getDiscounts());
         finalNumber.setText("$" +thisOrder.getFinalPrice());
+        
     }
     
     /*
@@ -158,7 +160,6 @@ public class PaymentOptionActivity extends Activity {
 			}
 			else{
 				vpn = false;
-				System.out.println("HERE:)");
 				addToListOfMessages(6);
 				return vpn;
 			}
@@ -316,6 +317,7 @@ public class PaymentOptionActivity extends Activity {
     		System.out.println(getPayment());
     		System.out.println(MainMenuActivity.mainOrder);
     		Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
+    		intent.putExtra("UserEmail", geteMail());
             startActivity(intent);
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);

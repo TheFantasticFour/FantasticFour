@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import com.example.fanfourproject.MainMenuActivity;
 import com.example.fanfourproject.Order;
 import com.example.fanfourproject.Pizza;
 import com.example.fanfourproject.Pop;
@@ -91,15 +92,16 @@ public class OrderTest extends TestCase {
 		order.addPizza(a);
 		String price = order.getInitialPrice();
 		assertEquals("price should be 21.99", price, "21.99");
+		MainMenuActivity.codeString = "DISC15";
 		String discount = order.getDiscounts();
-		assertEquals("Discount should be 3.30", discount, "3.30");
+		assertEquals("Discount should be 3.55", discount, "3.55");
 	}
 	
 	public void testFinalPrice(){
 		Order order = new Order();
 		order.addPizza(a);
 		String finalprice = order.getFinalPrice();
-		assertEquals("The final price should be 20.34", finalprice, "20.34");
+		assertEquals("The final price should be 20.09", finalprice, "20.09");
 	}
 	
 	public void testGetPizza(){
