@@ -8,27 +8,29 @@ public class PizzaTest extends TestCase {
 
 	
 	public void testPizzaSize() {
-		ArrayList<String> a = new ArrayList<String>();  
-		a.add("cheese");
-		a.add("sausage");
-		a.add("mushrooms");
-		Pizza p = new Pizza("large",a);
+		//Test the setters and getters: getPizzaSize and setPizzaSize
+		ArrayList<String> myToppings = new ArrayList<String>();  
+		myToppings.add("Cheese");
+		myToppings.add("Sausage");
+		myToppings.add("Mushrooms");
+		Pizza myPizza = new Pizza("Large", myToppings);
 		  
-		  assertEquals(p.getPizzaSize(),"large");
+		assertEquals(myPizza.getPizzaSize(),"Large");
 		  
-		  p.setPizzaSize("small");
-		  assertEquals(p.getPizzaSize(),"small");
+		myPizza.setPizzaSize("Small");
+		assertEquals(myPizza.getPizzaSize(),"Small");
 	}
 	public void testPizzaToppings() {
-		ArrayList<String> a = new ArrayList<String>();  
-		a.add("cheese");
-		a.add("sausage");
-		a.add("mushrooms");
-		  Pizza p = new Pizza("large",a);
-		  assertEquals(p.getPizzaToppings(),a);
+		//Test the setters and getters: getPizzaToppings and setPizzaToppings
+		ArrayList<String> myToppings = new ArrayList<String>();  
+		myToppings.add("Cheese");
+		myToppings.add("Sausage");
+		myToppings.add("Mushrooms");
+		Pizza myPizza = new Pizza("Large", myToppings);
+		assertEquals(myPizza.getPizzaToppings(),myToppings);
 		  
-		  p.addPizzaToppings("peperoni");
-		  a.add("peperoni");
-		  assertEquals(p.getPizzaToppings(),a);
+		myPizza.addPizzaToppings("Pepperoni");
+		myToppings.add("Pepperoni");
+		assertEquals(myPizza.getPizzaToppings(),myToppings);
 	}
 }

@@ -41,6 +41,8 @@ public class MainMenuActivity extends Activity {
         setContentView(R.layout.activity_main_menu);
         
         mainOrder = new Order();
+        codeString = null;
+        bannerString = null;
         
         //tv1 = (TextView)findViewById(R.id.text_area);
 
@@ -55,21 +57,21 @@ public class MainMenuActivity extends Activity {
 		mainOrder.addPop(pop);
 	}
 	
-	public static void editTextArea(){
-
-        String s = "";
-
-        s = s + mainOrder.toString();
-                        
-        tv1.setMovementMethod(new ScrollingMovementMethod());
-        
-        if(!s.equals("")){
-        	tv1.setText(s);
-        }
-        else{
-        	tv1.setText("No Items Ordered");
-        }
-    }
+//	private static void editTextArea(){
+//
+//        String s = "";
+//
+//        s = s + mainOrder.toString();
+//                        
+//        tv1.setMovementMethod(new ScrollingMovementMethod());
+//        
+//        if(!s.equals("")){
+//        	tv1.setText(s);
+//        }
+//        else{
+//        	tv1.setText("No Items Ordered");
+//        }
+//    }
 	
     /** Called when the user clicks the 'Add Pizza' button */
     public void addPizza(View view) {
@@ -97,11 +99,13 @@ public class MainMenuActivity extends Activity {
 //    	return s;
 //    }
     
+    /** Called when the user clicks the 'Finalize Order' button */
     public void finalizeOrder(View view){
     	Intent intent = new Intent(this, PaymentOptionActivity.class);
         startActivity(intent);
     }
     
+    /** Called when the user clicks removes or adds an item */
     public void onResume(){
     	super.onResume();
     	
@@ -375,39 +379,55 @@ public class MainMenuActivity extends Activity {
     		onResume();
     	}
     }
-    public void removeItem2(View view) {
-    	mainOrder.getPizzas().remove(1);
-    	onResume();
-	}public void removeItem3(View view) {
+
+	public void removeItem2(View view) {
+		mainOrder.getPizzas().remove(1);
+		onResume();
+	}
+
+	public void removeItem3(View view) {
 
 		mainOrder.getPizzas().remove(2);
 		onResume();
-	}public void removeItem4(View view) {
+	}
+
+	public void removeItem4(View view) {
 
 		mainOrder.getPizzas().remove(3);
 		onResume();
-    }
+	}
+
 	public void removeItem5(View view) {
 
 		mainOrder.getPizzas().remove(4);
 		onResume();
-    }public void removeItem6(View view) {
+	}
+
+	public void removeItem6(View view) {
 
 		mainOrder.getPop().remove(0);
 		onResume();
-	}public void removeItem7(View view) {
+	}
+
+	public void removeItem7(View view) {
 
 		mainOrder.getPop().remove(1);
 		onResume();
-	}public void removeItem8(View view) {
+	}
+
+	public void removeItem8(View view) {
 
 		mainOrder.getPop().remove(2);
 		onResume();
-	}public void removeItem9(View view) {
+	}
+
+	public void removeItem9(View view) {
 
 		mainOrder.getPop().remove(3);
 		onResume();
-	}public void removeItem10(View view) {
+	}
+
+	public void removeItem10(View view) {
 
 		mainOrder.getPop().remove(4);
 		onResume();

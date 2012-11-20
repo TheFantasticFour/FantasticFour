@@ -10,6 +10,8 @@ public class ReceiveConfirmationActivityTest extends TestCase {
 	}
 	
 	public void testGenerateConfID(){
+		//Tests to confirm the random confirmation id generator is creating
+		//strings of length 10 and with 0's and O's.
 		ReceiveConfirmationActivity rca = new ReceiveConfirmationActivity();
 		
 		String confirmationCode = rca.generateConfID();

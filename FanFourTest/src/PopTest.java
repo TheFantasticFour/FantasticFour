@@ -5,18 +5,21 @@ import junit.framework.TestCase;
 public class PopTest extends TestCase {
 
 	public void testPopSize() {
-		 Pop p = new Pop("small","coke");	 
-		 assertEquals(p.getPopSize(),"small");
+		
+		//Test the setters and getters: getPopSize and setPopSize
+		Pop p = new Pop("Small","Coke");	 
+		assertEquals(p.getPopSize(),"Small");
 		 
-		 p.setPopSize("large");
-		 assertEquals(p.getPopSize(),"large");
+		p.setPopSize("Large");
+		assertEquals(p.getPopSize(),"Large");
 		  
 	}
 	public void testPopType() {
-		Pop p2 = new Pop("small", "pepsi");
-		assertEquals(p2.getPopType(),"pepsi");
+		//Test the setters and getters: getPopType and setPopType
+		Pop p2 = new Pop("Small", "Pepsi");
+		assertEquals(p2.getPopType(),"Pepsi");
 		
-		p2.setPopType("coke");
-		assertEquals(p2.getPopType(),"coke");
+		p2.setPopType("Coke");
+		assertEquals(p2.getPopType(),"Coke");
 	}
 }

@@ -9,8 +9,11 @@ import junit.framework.TestCase;
 
 
 public class OrderTest extends TestCase {
-	Pizza a, b, d;
-	Pop m, n;
+	Pizza a = null;
+	Pizza b = null;
+	Pizza d = null;
+	Pop m = null;
+	Pop n = null;
 	
 	public void setUp(){
 		ArrayList<String> topping = new ArrayList<String>();  
@@ -111,7 +114,7 @@ public class OrderTest extends TestCase {
 		ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
 		pizzas = order.getPizzas();
 		assertEquals("The first pizza should be pizza", pizzas.get(0), a);
-		assertEquals("The first pizza should be pizza", pizzas.get(1), b);
+		assertEquals("The second pizza should be pizza", pizzas.get(1), b);
 	}
 	
 	public void testGetPop(){
@@ -121,7 +124,7 @@ public class OrderTest extends TestCase {
 		ArrayList<Pop> pops = new ArrayList<Pop>();
 		pops = order.getPop();
 		assertEquals("The first pizza should be pizza", pops.get(0), m);
-		assertEquals("The first pizza should be pizza", pops.get(1), n);
+		assertEquals("The second pizza should be pizza", pops.get(1), n);
 	}
 }
 	

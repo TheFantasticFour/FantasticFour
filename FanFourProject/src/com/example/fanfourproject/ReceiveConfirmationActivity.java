@@ -35,10 +35,16 @@ public class ReceiveConfirmationActivity extends Activity {
     public String generateConfID(){
     	Random generator = new Random();
         String conf = "";
+        //System.out.println((char) (22+55)); "M"
+        //System.out.println((char) (23+55)); "N"
+        //System.out.println((char) (24+55)); "O"
+        //System.out.println((char) (25+55)); "P"
+        //System.out.println((char) (26+55)); "Q"
+        //System.out.println((char) (27+55)); "R"
         
         for(int j = 0; j < 10; j++){
             int i = generator.nextInt(36);
-            while(i == 0 || i == 14){//removes O's and 0's 
+            while(i == 0 || i == 24){//removes O's and 0's 
                 i = generator.nextInt(36);
             }
             if(i < 10){
