@@ -13,6 +13,10 @@ public class ReceiveConfirmationActivity extends Activity {
 
 	public String confirmationID = "";
 	
+	public ReceiveConfirmationActivity(){
+		
+	}
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
