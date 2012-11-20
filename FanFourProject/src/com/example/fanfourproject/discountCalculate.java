@@ -3,90 +3,104 @@ package com.example.fanfourproject;
 import java.math.BigDecimal;
 
 public class discountCalculate {
+
 	private boolean discounted = false;
-	public discountCalculate(String code, String price){
+	
+	public static final String CODE_1 = "DISC10";
+	public static final String CODE_2 = "DISC15";
+	public static final String CODE_3 = "DISC20";
+	public static final String CODE_4 = "DISC4OFF";
+	public static final String CODE_5 = "DISC10OFF100";
+	
+	public static final int LOWEST_BANNER_ID = 900190000;
+	public static final int HIGHEST_BANNER_ID = 900209999;
+
+	private String code, price, id;
+
+	public discountCalculate(String code, String price) {
+		this.code = code;
+		this.price = price;
 	}
-	public discountCalculate(String code, String id, String price){	
+
+	public discountCalculate(String code, String id, String price) {
+		this.code = code;
+		this.id = id;
+		this.price = price;
 	}
-	public String discountCode(String code, String price){
-		String finalPrice;
-		if (!discounted ){
+
+	public String discountCode() {
+		String discountPrice;
+		if (!discounted) {
 			discounted = true;
-			if(code.equals("DISC10")){
-				double temp=Double.parseDouble(price);
-				temp=temp*0.9;
-				BigDecimal bd = new BigDecimal(temp);
-			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
-		}
-		else if(code.equals("DISC15")){
-			double temp=Double.parseDouble(price);
-			temp=temp*0.85;
-			BigDecimal bd = new BigDecimal(temp);
-			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
-		}
-		else if(code.equals("DISC20")){
-			double temp=Double.parseDouble(price);
-			temp=temp*0.8;
-			BigDecimal bd = new BigDecimal(temp);
-			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
-		}
-		else if(code.equals("DISC4OFF")){
-			double temp=Double.parseDouble(price);
-			temp=temp - 4;
-			BigDecimal bd = new BigDecimal(temp);
-			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
-		}
-		else if(code.equals("DISC10OFF100")){
-			double temp=Double.parseDouble(price);
-			if (temp>=100){
-				temp = temp - 10;
+			if (code.equals(CODE_1)) {
+				double temp = Double.parseDouble(price);
+				temp = temp * 0.1;
+				discountPrice = getBigDecimalString(temp);
+				return discountPrice;
+			} 
+			else if (code.equals(CODE_2)) {
+				double temp = Double.parseDouble(price);
+				temp = temp * 0.15;
+				discountPrice = getBigDecimalString(temp);
+				return discountPrice;
+			} 
+			else if (code.equals(CODE_3)) {
+				double temp = Double.parseDouble(price);
+				temp = temp * 0.2;
+				discountPrice = getBigDecimalString(temp);
+				return discountPrice;
+			} 
+			else if (code.equals(CODE_4)) {
+				double temp = 4;
+				discountPrice = getBigDecimalString(temp);
+				return discountPrice;
+			} 
+//			else if (code.equals(CODE_5)) {
+//				double priced = Double.parseDouble(price);
+//				double temp = 0;
+//				if (priced >= 100) {
+//					temp = 10;
+//				}
+//				discountPrice = getBigDecimalString(temp);
+//				return discountPrice;
+//			} 
+			else {
+				discountPrice = price;
+				discounted = false;
+				return discountPrice;
 			}
-			BigDecimal bd = new BigDecimal(temp);
-			bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-			finalPrice=bd.toString();
-			return finalPrice;
-		}
+		} 
 		else {
-			finalPrice = price;
-			discounted = false;
-			return finalPrice;
-		}
-		}
-		else {
-			finalPrice = price;
-			return finalPrice;
+			discountPrice = price;
+			return discountPrice;
 		}
 	}
 	
-	
-	//Student get 15% off
-	public String discountID(String id, String price){
-		String finalPrice = price;
+	private String getBigDecimalString(double temp){
+		BigDecimal bd = new BigDecimal(temp);
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		return bd.toString();
+	}
+
+	// Student get 10% off
+	public String discountID() {
+		String discountPrice = price;
 		int idNum;
-		try{
+		try {
 			idNum = Integer.parseInt(id);
-			if(!discounted){
-				if (idNum >= 900190000 && idNum <=900209999){
-					finalPrice = discountCode("DISC15", price);
+			if (!discounted) {
+				if (idNum >= LOWEST_BANNER_ID && idNum <= HIGHEST_BANNER_ID) {
+					code = CODE_1;
+					discountPrice = discountCode();
 					discounted = true;
-				}
-				else{
-					finalPrice = price;
+				} else {
+					discountPrice = price;
 				}
 			}
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Invalid ID number");
-		}		
-		return finalPrice;
+		}
+		return discountPrice;
 	}
 
 }

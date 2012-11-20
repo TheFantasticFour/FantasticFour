@@ -23,6 +23,8 @@ public class MainMenuActivity extends Activity {
 	TextView tv1;
 	
 	public static Order mainOrder;
+	public static String codeString;
+	public static String bannerString;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,11 @@ public class MainMenuActivity extends Activity {
         startActivity(i2);
     }
     
+    /** Called when the user clicks the 'Add Discounts' button */
+    public void addDiscount(View view) {
+    	Intent intent = new Intent(this, AddDiscountActivity.class);
+        startActivity(intent);
+    }
 //    private String printArray(ArrayList<String> array){
 //    	String s = "";
 //    	for(String st: array){
@@ -91,17 +98,36 @@ public class MainMenuActivity extends Activity {
     
     public void onResume(){
     	super.onResume();
+    	
     	try{
-    		//pizzaSize = i1.getStringExtra("PIZZA_SIZE");
-    		//pizzaCheese = i1.getStringArrayListExtra("PIZZA_CHEESES");
-    		//pizzaMeats = i1.getStringArrayListExtra("PIZZA_MEATS");
-    		//pizzaVeggies = i1.getStringArrayListExtra("PIZZA_VEGGIES");
-    			
-    		//editTextArea();
+    		TextView discountDisplay = (TextView) findViewById(R.id.discount_display);
+    		
+        	
+        	String message = "";
+        	if(codeString.equals(discountCalculate.CODE_1)){
+        		message = "10% Off!";
+        	}
+        	else if(codeString.equals(discountCalculate.CODE_2)){
+        		message = "15% Off!";
+        	}
+        	else if(codeString.equals(discountCalculate.CODE_3)){
+        		message = "20% Off!";
+        	}
+        	else if(codeString.equals(discountCalculate.CODE_4)){
+        		message = "Only $4.00";
+        	}
+        	else{
+        		message = "";
+        	}
+        	discountDisplay.setText(message);
+        	
     	}
     	catch(Exception e){
     		System.out.println(e);
     	}
+    	
+    	TextView totalDisplay = (TextView) findViewById(R.id.total_text);
+    	totalDisplay.setText("$" + mainOrder.getInitialPrice());
     }
     
 }

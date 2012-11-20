@@ -1,8 +1,13 @@
 package com.example.fanfourproject;
 
+import java.util.Random;
+
+
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
 
 public class ReceiveConfirmationActivity extends Activity {
 
@@ -13,14 +18,41 @@ public class ReceiveConfirmationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_confirmation);
         setConfirmationID(generateConfID());
+        
+        TextView idTextView = (TextView) findViewById(R.id.actual_id);
+        idTextView.setText(confirmationID);
+        
+        Intent intent = getIntent();
+        String userEmail = intent.getStringExtra("UserEmail");
+        TextView emailTextView = (TextView) findViewById(R.id.email_holder);
+        emailTextView.setText(userEmail);
     }
 
     public String generateConfID(){
-    	String id = "";
-    	//Random int generators to generate a random string as a conf id
+    	Random generator = new Random();
+        String conf = "";
+        
+        for(int j = 0; j < 10; j++){
+            int i = generator.nextInt(36);
+            while(i == 0 || i == 14){//removes O's and 0's 
+                i = generator.nextInt(36);
+            }
+            if(i < 10){
+                conf = conf + i;
+            }
+            else{
+                conf = conf + ((char) (i+55));
+            }
+        }
     	
+    	return conf;
+    }
+    
+    public void closeAndRestart(View view){        
+        Intent intent = new Intent(this, HomePageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     	
-    	return id;
     }
 
 	/**
@@ -36,4 +68,8 @@ public class ReceiveConfirmationActivity extends Activity {
 	public void setConfirmationID(String confirmationID) {
 		this.confirmationID = confirmationID;
 	}
+	
+	@Override
+    public void onBackPressed() {//disable the back button
+    }
 }

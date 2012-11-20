@@ -1,5 +1,6 @@
 package com.example.fanfourproject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class Order {
@@ -45,23 +46,10 @@ public class Order {
 	}
 	
 	public String checkDecimals(Double d){
-		String value= d.toString();
-		int finalIndex = value.length()-1;
-		if(!value.contains(".")){
-			return value + ".00";
-		}
-		else if(value.substring(finalIndex).equals(".")){
-			return value + "00";
-		}
-		else if(value.substring(finalIndex-1,finalIndex).equals(".")){
-			return value + "0";
-		}
-		else{			
-			int d100 = (int)(d*100.0);
-			Double value2 = d100/100.0;
-			
-			return value2.toString();
-		}	
+		BigDecimal bd = new BigDecimal(d);
+		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		String value = bd.toString();
+		return value;
 	}
 	
 	public String getInitialPrice(){
@@ -84,7 +72,7 @@ public class Order {
 			else{
 				total = total + PIZZA_LARGE_PRICE;
 			}
-			for(String top : p.getPizzaToppings()){
+			for(int i = 0; i < p.getPizzaToppings().size(); i++){
 				total = total + 1.00;
 			}
 		}
@@ -94,28 +82,19 @@ public class Order {
 	public String getTax(){
 		Double tax = 0.0;
 		tax = Double.valueOf(getInitialPrice())*TAX_RATE;
-		
-		int tax100 = (int)(tax*100.0);
-		tax = tax100/100.0;
 		String dis = checkDecimals(tax);
-		
 		return dis;
 	}
-	
+	//Use discountCalculate Class
 	public String getDiscounts(){
-		Double discounts = 0.0;
-		discounts = discounts+5.0;
+		String price = new Double(Double.valueOf(getInitialPrice()) + Double.valueOf(getTax())).toString();
+		discountCalculate dc = new discountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price);
 		
-		int discounts100 = (int)(discounts*100.0);
-		discounts = discounts100/100.0;
-		String dis = checkDecimals(discounts);
-		
-		return dis;
+		return dc.discountCode();
 	}
 	
 	public String getFinalPrice(){
-		Double price = 0.0;
-		price = price + Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
+		Double price =  Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
 		
 		String finalPrice = checkDecimals(price);
 		
