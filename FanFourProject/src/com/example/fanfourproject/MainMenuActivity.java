@@ -20,7 +20,7 @@ public class MainMenuActivity extends Activity {
 	//private ArrayList<String> pizzaMeats = new ArrayList<String>();
 	//private ArrayList<String> pizzaVeggies = new ArrayList<String>();
 	
-	TextView tv1;
+	public static TextView tv1;
 	
 	public static Order mainOrder;
 	
@@ -47,7 +47,7 @@ public class MainMenuActivity extends Activity {
 		mainOrder.addPop(pop);
 	}
 	
-	private void editTextArea(){
+	public static void editTextArea(){
 
         String s = "";
 

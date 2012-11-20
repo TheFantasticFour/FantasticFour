@@ -120,6 +120,7 @@ public class AddPizzaActivity extends Activity {
     	
     	Pizza tempPizza = new Pizza(pizzaSize, allToppings);
     	MainMenuActivity.addPizzaToOrder(tempPizza);
+    	//MainMenuActivity.editTextArea();
     	
     	
     	//myIntent.putExtra("PIZZA_SIZE", pizzaSize);
