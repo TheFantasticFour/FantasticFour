@@ -36,9 +36,9 @@ public class JSONParser {
 	// by making HTTP POST or GET mehtod
 	public JSONObject makeHttpRequest(String url, String method,
 			List<NameValuePair> params) {
-		System.out.println("url: " + url);
-		System.out.println("method: " + method);
-		System.out.println("params: " + params);
+		//System.out.println("url: " + url);
+		//System.out.println("method: " + method);
+		//System.out.println("params: " + params);
 
 		// Making HTTP request
 		try {
@@ -48,17 +48,17 @@ public class JSONParser {
 				// request method is POST
 				// defaultHttpClient
 				DefaultHttpClient httpClient = new DefaultHttpClient();
-					System.out.println("httpClient: " + httpClient);
+					//System.out.println("httpClient: " + httpClient);
 				HttpPost httpPost = new HttpPost(url);
-					System.out.println("httpPost: " + httpPost);
+					//System.out.println("httpPost: " + httpPost);
 				httpPost.setEntity(new UrlEncodedFormEntity(params));
-					System.out.println("httpPost: " + httpPost);
+					//System.out.println("httpPost: " + httpPost);
 
 				HttpResponse httpResponse = httpClient.execute(httpPost);
-					System.out.println("httpResponse: " + httpResponse);
-					System.out.println(httpResponse.getEntity().getContentLength());
+					//System.out.println("httpResponse: " + httpResponse);
+					//System.out.println(httpResponse.getEntity().getContentLength());
 				HttpEntity httpEntity = httpResponse.getEntity();
-					System.out.println("httpEntity: " + httpEntity);
+					//System.out.println("httpEntity: " + httpEntity);
 				is = httpEntity.getContent();
 				
 			}else if(method == "GET"){
@@ -89,10 +89,10 @@ public class JSONParser {
 		}
 
 		try {
-			System.out.println("is: " + is);
+			//System.out.println("is: " + is);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					is, "iso-8859-1"), 8);
-			System.out.println("reader: " + reader);
+			//System.out.println("reader: " + reader);
 			StringBuilder sb = new StringBuilder();
 			String line = null;
 			//System.out.println("reader.readLine(): " + reader.readLine());
@@ -101,7 +101,7 @@ public class JSONParser {
 			}
 			is.close();
 			json = sb.toString();
-			System.out.println("json: " + json);
+			//System.out.println("json: " + json);
 		} catch (Exception e) {
 			System.out.println("HERE:H1");
 			Log.e("Buffer Error", "Error converting result " + e.toString());

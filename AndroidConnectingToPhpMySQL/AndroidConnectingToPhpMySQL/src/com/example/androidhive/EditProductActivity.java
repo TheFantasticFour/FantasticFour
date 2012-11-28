@@ -280,6 +280,7 @@ public class EditProductActivity extends Activity {
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("pid", pid));
+				System.out.println(pid);
 
 				// getting product details by making HTTP request
 				JSONObject json = jsonParser.makeHttpRequest(

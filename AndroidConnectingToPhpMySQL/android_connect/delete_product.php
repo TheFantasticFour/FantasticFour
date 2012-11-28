@@ -31,7 +31,7 @@ if (isset($_POST['pid'])) {
 	// mysql update row with matched pid
 	$result = mysql_query("DELETE FROM products WHERE pid = $pid",$con);
     
-   mysql_close($con);
+   
 	// check if row deleted or not
 	if (mysql_affected_rows() > 0) {
 		// successfully updated
@@ -56,6 +56,7 @@ if (isset($_POST['pid'])) {
 	// echoing JSON response
 	echo json_encode($response);
 }
+mysql_close($con);
 
 function json_encode($data) {
 		switch ($type = gettype($data)) {
