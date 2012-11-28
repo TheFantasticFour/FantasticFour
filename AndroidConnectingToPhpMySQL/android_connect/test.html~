@@ -1,0 +1,10 @@
+<HTML>
+<HEAD>
+
+<?php
+
+echo "TEST";
+?>
+
+</BODY>
+</HTML>

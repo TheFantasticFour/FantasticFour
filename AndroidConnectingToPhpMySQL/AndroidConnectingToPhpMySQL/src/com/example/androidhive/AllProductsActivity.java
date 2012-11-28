@@ -34,7 +34,7 @@ public class AllProductsActivity extends ListActivity {
 	ArrayList<HashMap<String, String>> productsList;
 
 	// url to get all products list
-	private static String url_all_products = "http://10.0.2.2/android_connect/get_all_products.php";
+	private static String url_all_products = "http://www.users.csbsju.edu/~pghardy/android_connect/get_all_products.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -166,7 +166,9 @@ public class AllProductsActivity extends ListActivity {
 					startActivity(i);
 				}
 			} catch (JSONException e) {
+				System.out.println("HERE:A1");
 				e.printStackTrace();
+				System.out.println("HERE:A2");
 			}
 
 			return null;

@@ -29,7 +29,7 @@ public class NewProductActivity extends Activity {
 	EditText inputDesc;
 
 	// url to create new product
-	private static String url_create_product = "http://10.0.2.2/android_connect/create_product.php";
+	private static String url_create_product = "http://www.users.csbsju.edu/~pghardy/android_connect/create_product.php";
 
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -95,7 +95,8 @@ public class NewProductActivity extends Activity {
 			JSONObject json = jsonParser.makeHttpRequest(url_create_product,
 					"POST", params);
 			
-			// check log cat fro response
+			System.out.println("REACHED HERE");
+			// check log cat from response
 			Log.d("Create Response", json.toString());
 
 			// check for success tag
@@ -106,14 +107,15 @@ public class NewProductActivity extends Activity {
 					// successfully created product
 					Intent i = new Intent(getApplicationContext(), AllProductsActivity.class);
 					startActivity(i);
-					
 					// closing this screen
 					finish();
 				} else {
 					// failed to create product
 				}
 			} catch (JSONException e) {
+				System.out.println("HERE:J1");
 				e.printStackTrace();
+				System.out.println("HERE:J2");
 			}
 
 			return null;
