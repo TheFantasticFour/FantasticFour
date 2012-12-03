@@ -16,31 +16,31 @@ public class PaymentOptionActivity extends Activity {
 	//ADDED THIS LINE!!!~~~!!!
 	
 	//This is a string to hold the entire address that the user will input
-	private String address = "";
+	static String address = "";
 	
 	//This is a string to hold the phone number that the user will input
-	private String phoneNumber = "";
+	static String phoneNumber = "";
 	
 	//This is a string to hold the e-mail address that the user will input
-	private String eMail = "";
+	static String eMail = "";
 	
 	//This is a string to hold "cash" if cash is chosen and the credit card number if that is chosen
-	private String payment = "";
+	static String payment = "";
 	
 	//This is a string to hold the street address that the user will input
-	private String addressStreet = "";
+	static String addressStreet = "";
 	
 	//This is a string to hold the city address that the user will input
-	private String addressCity = "";
+	static String addressCity = "";
 	
 	//This is a string to hold the state address that the user will input
-	private String addressState = "";
+	static String addressState = "";
 	
 	//This is a string to hold the zip address that the user will input
-	private String addressZip = "";
+	static String addressZip = "";
 	
 	//This is an Array List of integers to hold different messages to convery to the user
-	private ArrayList<Integer> listOfMessages = new ArrayList<Integer>();
+	static ArrayList<Integer> listOfMessages = new ArrayList<Integer>();
 	// 1 --> "Invalid Street Address"
 	// 2 --> "Invalid City"
 	// 3 --> "Invalid State"
@@ -327,7 +327,7 @@ public class PaymentOptionActivity extends Activity {
     /**
 	 * @return the address
 	 */
-	public String getAddress() {
+	public static String getAddress() {
 		return address;
 	}
 
@@ -341,7 +341,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the phoneNumber
 	 */
-	public String getPhoneNumber() {
+	public static String getPhoneNumber() {
 		return phoneNumber;
 	}
 
@@ -355,7 +355,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the eMail
 	 */
-	public String geteMail() {
+	public static String geteMail() {
 		return eMail;
 	}
 
@@ -369,7 +369,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the payment
 	 */
-	public String getPayment() {
+	public static String getPayment() {
 		return payment;
 	}
 
@@ -383,7 +383,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the addressStreet
 	 */
-	public String getAddressStreet() {
+	public static String getAddressStreet() {
 		return addressStreet;
 	}
 
@@ -397,7 +397,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the addressCity
 	 */
-	public String getAddressCity() {
+	public static String getAddressCity() {
 		return addressCity;
 	}
 
@@ -411,7 +411,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the addressState
 	 */
-	public String getAddressState() {
+	public static String getAddressState() {
 		return addressState;
 	}
 
@@ -425,7 +425,7 @@ public class PaymentOptionActivity extends Activity {
 	/**
 	 * @return the addressZip
 	 */
-	public String getAddressZip() {
+	public static String getAddressZip() {
 		return addressZip;
 	}
 

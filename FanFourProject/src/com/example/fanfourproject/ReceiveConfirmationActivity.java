@@ -12,6 +12,8 @@ import android.widget.TextView;
 public class ReceiveConfirmationActivity extends Activity {
 
 	public String confirmationID = "";
+	private DBHelperActivity myHelper = new DBHelperActivity();
+	private Order myOrder = MainMenuActivity.mainOrder;
 	
 	public ReceiveConfirmationActivity(){
 		
@@ -30,6 +32,26 @@ public class ReceiveConfirmationActivity extends Activity {
         String userEmail = intent.getStringExtra("UserEmail");
         TextView emailTextView = (TextView) findViewById(R.id.email_holder);
         emailTextView.setText(userEmail);
+        
+        String paymentHolder = PaymentOptionActivity.getPayment();
+        String cardNum = null;
+        System.out.println(paymentHolder);
+        if(!paymentHolder.equals("Cash")){
+        	paymentHolder = "Credit Card";
+        	cardNum = PaymentOptionActivity.getPayment();
+        }
+        
+        myHelper.addOrderToDatabase(getConfirmationID(), 
+        							PaymentOptionActivity.getPhoneNumber(), 
+        							PaymentOptionActivity.getAddressStreet(), 
+        							PaymentOptionActivity.getAddressCity(), 
+        							PaymentOptionActivity.getAddressState(), 
+        							PaymentOptionActivity.getAddressZip(), 
+        							PaymentOptionActivity.geteMail(), 
+        							paymentHolder, 
+        							cardNum, 
+        							MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
+        							myOrder.toString());
     }
 
     public String generateConfID(){
@@ -57,7 +79,7 @@ public class ReceiveConfirmationActivity extends Activity {
     	
     	return conf;
     }
-    
+     
     public void closeAndRestart(View view){        
         Intent intent = new Intent(this, HomePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

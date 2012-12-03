@@ -46,10 +46,11 @@ public class NewProductActivity extends Activity {
 
 		// Create button
 		Button btnCreateProduct = (Button) findViewById(R.id.btnCreateProduct);
-
+		
+		
 		// button click event
 		btnCreateProduct.setOnClickListener(new View.OnClickListener() {
-
+		
 			//@Override
 			public void onClick(View view) {
 				// creating new product in background thread
