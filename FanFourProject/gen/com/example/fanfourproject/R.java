@@ -159,20 +159,22 @@ public final class R {
         public static final int activity_add_pizza=0x7f030001;
         public static final int activity_add_pop=0x7f030002;
         public static final int activity_contact_page=0x7f030003;
-        public static final int activity_home_page=0x7f030004;
-        public static final int activity_main_menu=0x7f030005;
-        public static final int activity_payment_option=0x7f030006;
-        public static final int activity_receive_confirmation=0x7f030007;
+        public static final int activity_dbhelper=0x7f030004;
+        public static final int activity_home_page=0x7f030005;
+        public static final int activity_main_menu=0x7f030006;
+        public static final int activity_payment_option=0x7f030007;
+        public static final int activity_receive_confirmation=0x7f030008;
     }
     public static final class menu {
         public static final int activity_add_discount=0x7f060000;
         public static final int activity_add_pizza=0x7f060001;
         public static final int activity_add_pop=0x7f060002;
         public static final int activity_contact_page=0x7f060003;
-        public static final int activity_home_page=0x7f060004;
-        public static final int activity_main_menu=0x7f060005;
-        public static final int activity_payment_option=0x7f060006;
-        public static final int activity_receive_confirmation=0x7f060007;
+        public static final int activity_dbhelper=0x7f060004;
+        public static final int activity_home_page=0x7f060005;
+        public static final int activity_main_menu=0x7f060006;
+        public static final int activity_payment_option=0x7f060007;
+        public static final int activity_receive_confirmation=0x7f060008;
     }
     public static final class string {
         public static final int add_pizza=0x7f04000c;
@@ -198,6 +200,7 @@ public final class R {
         /**  Contact Page Activity 
          */
         public static final int title_activity_contact_page=0x7f040006;
+        public static final int title_activity_dbhelper=0x7f040015;
         /**  Home Page Activity 
          */
         public static final int title_activity_home_page=0x7f040003;

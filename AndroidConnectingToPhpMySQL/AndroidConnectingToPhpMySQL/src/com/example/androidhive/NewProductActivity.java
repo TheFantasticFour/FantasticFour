@@ -95,7 +95,6 @@ public class NewProductActivity extends Activity {
 			JSONObject json = jsonParser.makeHttpRequest(url_create_product,
 					"POST", params);
 			
-			System.out.println("REACHED HERE");
 			// check log cat from response
 			Log.d("Create Response", json.toString());
 

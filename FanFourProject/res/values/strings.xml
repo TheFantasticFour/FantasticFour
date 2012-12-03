@@ -31,5 +31,6 @@
     <string name="title_activity_payment_option">Payment Option Page</string>
     <string name="title_activity_receive_confirmation">Receive Confirmation Page</string>
     <string name="title_activity_add_discount">Add a Discount!</string>
+    <string name="title_activity_dbhelper">DBHelperActivity</string>
 
 </resources>

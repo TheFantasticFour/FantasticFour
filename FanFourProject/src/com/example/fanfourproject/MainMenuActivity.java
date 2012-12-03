@@ -3,6 +3,7 @@ package com.example.fanfourproject;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -39,6 +40,16 @@ public class MainMenuActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        
+        //ProgressDialog pDialog;
+        
+        //pDialog = new ProgressDialog(MainMenuActivity.this);
+		//pDialog.setMessage("Creating Product..");
+		//pDialog.setIndeterminate(false);
+		//pDialog.setCancelable(true);
+		//pDialog.show();
+		//pDialog.wait(3000);
+		//pDialog.dismiss();
         
         mainOrder = new Order();
         codeString = null;
