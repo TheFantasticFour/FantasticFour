@@ -51,7 +51,7 @@ public class ReceiveConfirmationActivity extends Activity {
         							paymentHolder, 
         							cardNum, 
         							MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
-        							myOrder.toString());
+        							myOrder);
     }
 
     public String generateConfID(){
