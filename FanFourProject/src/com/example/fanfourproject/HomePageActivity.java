@@ -24,4 +24,9 @@ public class HomePageActivity extends Activity {
         Intent intent = new Intent(this, ContactPageActivity.class);
         startActivity(intent);
     }
+    
+    public void goToChangeOrder(View view){
+    	Intent intent = new Intent(this, ChangeOrderActivity.class);
+        startActivity(intent);
+    }
 }

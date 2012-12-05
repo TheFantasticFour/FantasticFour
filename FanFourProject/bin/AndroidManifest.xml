@@ -26,60 +26,47 @@
         <activity
             android:name=".ContactPageActivity"
             android:label="@string/title_activity_contact_page" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.ContactPageActivity" />
         </activity>
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/title_activity_main_menu" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.MainMenuActivity" />
         </activity>
         <activity
             android:name=".AddPizzaActivity"
             android:label="@string/title_activity_add_pizza" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.AddPizzaActivity" />
         </activity>
         <activity
             android:name=".AddPopActivity"
             android:label="@string/title_activity_add_pop" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.AddPopActivity" />
         </activity>
         <activity
             android:name=".PaymentOptionActivity"
             android:label="@string/title_activity_payment_option" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.PaymentOptionsActivity" />
         </activity>
         <activity
             android:name=".ReceiveConfirmationActivity"
             android:label="@string/title_activity_receive_confirmation" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fanfourproject.ReceiveConfirmationActivity" />
         </activity>
         <activity
             android:name=".AddDiscountActivity"
             android:label="@string/title_activity_add_discount" >
+        </activity>
+        <activity
+            android:name=".DBHelperActivity"
+            android:label="@string/title_activity_dbhelper" >
+        </activity>
+        <activity
+            android:name=".ChangeOrderActivity"
+            android:label="@string/title_activity_change_order" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DBHelperActivity"
-            android:label="@string/title_activity_dbhelper" >
-        </activity>
     </application>
 
-    <!--  Internet Permissions -->
+    <!-- Internet Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

@@ -38,23 +38,25 @@ public class DBHelperTest extends TestCase {
 		
 		myHelper = new DBHelperActivity();
 		String databaseString = myHelper.convertOrderToDatabase(myOrder1);
-		assertTrue(databaseString.equals("Large Pizza with Pepperoni, Onions and Bacon|Medium Pizza with Tomato and Chicken?Can of Pepsi"));
+		assertTrue(databaseString.equals("Large Pizza with Pepperoni, Onions and Bacon//Medium Pizza with Tomato and Chicken///Can of Pepsi"));
 		
 		pizza1 = new Pizza("Small", new ArrayList<String>());
 		myOrder1 = new Order();
 		myOrder1.addPizza(pizza1);
 		databaseString = myHelper.convertOrderToDatabase(myOrder1);
-		assertTrue(databaseString.equals("Small Pizza?"));
+		assertTrue(databaseString.equals("Small Pizza///"));
 		
 		pop1 = new Pop("2-Liter", "Mountain Dew");
 		myOrder1 = new Order();
 		myOrder1.addPop(pop1);
 		databaseString = myHelper.convertOrderToDatabase(myOrder1);
-		assertTrue(databaseString.equals("?2-Liter of Mountain Dew"));
+		System.out.println(databaseString);
+		System.out.println("///2-Liter of Mountain Dew");
+		assertTrue(databaseString.equals("///2-Liter of Mountain Dew"));
 	}
 	
 	public void testCovertOrderFromDatabase(){
-		String databaseString = "Small Pizza with Tomato and Onions|Medium Pizza?Can of Pepsi?2-Liter of Orange Fanta";
+		String databaseString = "Small Pizza with Tomato and Onions//Medium Pizza///Can of Pepsi//2-Liter of Orange Fanta";
 		Order order = myHelper.convertOrderFromDatabase(databaseString);
 		
 		ArrayList<String> toppings1 = new ArrayList<String>();

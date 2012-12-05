@@ -52,13 +52,13 @@ public class AddPizzaActivity extends Activity {
     
     private void getPizzaCheese(){
     	if(checkCheckBox(R.id.cheese_american)){
-    		pizzaCheese.add("American Cheese");
+    		pizzaCheese.add("American");
     	}
 		if(checkCheckBox(R.id.cheese_cheddar)){
-			pizzaCheese.add("Cheddar Cheese");	
+			pizzaCheese.add("Cheddar");	
 		}
 		if(checkCheckBox(R.id.cheese_mozzarella)){
-			pizzaCheese.add("Mozarella Cheese");	
+			pizzaCheese.add("Mozarella");	
 		}
     }
     
