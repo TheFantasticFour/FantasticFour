@@ -1,5 +1,6 @@
 package com.example.fanfourproject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -115,7 +116,7 @@ public class MainMenuActivity extends Activity {
     	Intent intent = new Intent(this, PaymentOptionActivity.class);
         startActivity(intent);
     }
-    
+        
     /** Called when the user clicks removes or adds an item */
     public void onResume(){
     	super.onResume();
@@ -219,13 +220,13 @@ public class MainMenuActivity extends Activity {
         	
     		displayItems1.setText(pizzas.get(numPizzas).toString());
     		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice1.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
+        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
     		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice1.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
+        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice1.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
+        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -240,13 +241,13 @@ public class MainMenuActivity extends Activity {
         	
     		displayItems2.setText(pizzas.get(numPizzas).toString());
     		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice2.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
+        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
     		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice2.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
+        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice2.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
+        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -261,13 +262,13 @@ public class MainMenuActivity extends Activity {
         	
     		displayItems3.setText(pizzas.get(numPizzas).toString());
     		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice3.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
+        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
     		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice3.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
+        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice3.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
+        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
 
@@ -283,13 +284,13 @@ public class MainMenuActivity extends Activity {
         	
     		displayItems4.setText(pizzas.get(numPizzas).toString());
     		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice4.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
+        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
     		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice4.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
+        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice4.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
+        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -304,13 +305,13 @@ public class MainMenuActivity extends Activity {
         	
     		displayItems5.setText(pizzas.get(numPizzas).toString());
     		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice5.setText("$" + Double.valueOf((SMALL_PIZZA_COST+top.size())).toString());
+        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
     		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice5.setText("$" + Double.valueOf((MEDIUM_PIZZA_COST+top.size())).toString());
+        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice5.setText("$" + Double.valueOf((LARGE_PIZZA_COST+top.size())).toString());
+        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
@@ -442,5 +443,10 @@ public class MainMenuActivity extends Activity {
 
 		mainOrder.getPop().remove(4);
 		onResume();
+	}
+	
+	Double roundTwoDecimals(double d) {
+    	DecimalFormat twoDForm = new DecimalFormat("#.##");
+    	return Double.valueOf(twoDForm.format(d));
 	}
 }
