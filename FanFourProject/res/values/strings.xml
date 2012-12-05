@@ -32,5 +32,6 @@
     <string name="title_activity_receive_confirmation">Receive Confirmation Page</string>
     <string name="title_activity_add_discount">Add a Discount!</string>
     <string name="title_activity_dbhelper">DBHelperActivity</string>
+    <string name="title_activity_change_order">ChangeOrderActivity</string>
 
 </resources>

@@ -25,4 +25,11 @@
         android:onClick="goToContact"
         android:text="@string/button_contact_us" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToChangeOrder"
+        android:text="Change Order" />
+
 </LinearLayout>
