@@ -33,5 +33,18 @@
     <string name="title_activity_add_discount">Add a Discount!</string>
     <string name="title_activity_dbhelper">DBHelperActivity</string>
     <string name="title_activity_change_order">ChangeOrderActivity</string>
+    <string name="title_activity_reviews">ReviewsActivity</string>
+
+    <string-array name="special_array">
+        <item>1: Meat-Lovers Pizza </item>
+        <item>2: Taco Pizza</item>
+        <item>3: Veggie Pizza</item>
+        <item>4: Fajita Pizza</item>
+        <item>5: Buffalo-Chicken-Ranch Pizza</item>
+        <item>6: Bacon-Cheeseburger Pizza</item>
+        <item>7: Dessert Pizza</item>
+    </string-array>
+
+    <string name="title_activity_all_reviews">AllReviewsActivity</string>
 
 </resources>

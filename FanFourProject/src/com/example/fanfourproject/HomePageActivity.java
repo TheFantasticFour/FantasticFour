@@ -29,4 +29,9 @@ public class HomePageActivity extends Activity {
     	Intent intent = new Intent(this, ChangeOrderActivity.class);
         startActivity(intent);
     }
+    
+    public void goToReviewsActivity(View view){
+    	Intent intent = new Intent(this, ReviewsActivity.class);
+        startActivity(intent);
+    }
 }

@@ -54,12 +54,12 @@ if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['str
     $email = $_POST['email'];
     $paymentType = $_POST['paymentType'];
     $creditCard = $_POST['creditCard'];
-    $discountType = $_POST['discountType'];
+    $discountCode = $_POST['discountCode'];
     $myOrder = $_POST['myOrder'];
 	 
     // mysql inserting a new row
     //$query = "INSERT INTO products(name, price, description) VALUES(" . $name . ", " . $price . ", " . $description . ")";
-    $result = mysql_query("INSERT INTO testOrder(confID, phoneNumber, street, city, state, zipCode, email, paymentType, creditCard, discountType, myOrder) VALUES('$confID', '$phoneNumber', '$street', '$city', '$state', '$zipCode', '$email', '$paymentType', '$creditCard', '$discountCode', '$myOrder')",$con);
+    $result = mysql_query("INSERT INTO testOrder(confID, phoneNumber, street, city, state, zipCode, email, paymentType, creditCard, discountCode, myOrder) VALUES('$confID', '$phoneNumber', '$street', '$city', '$state', '$zipCode', '$email', '$paymentType', '$creditCard', '$discountCode', '$myOrder')",$con);
 	    
     //$result = mysql_query($query, $link_identifier = null););
  	 mysql_close($con);

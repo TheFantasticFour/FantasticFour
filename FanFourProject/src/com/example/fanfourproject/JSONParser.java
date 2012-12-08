@@ -36,9 +36,9 @@ public class JSONParser {
 	// by making HTTP POST or GET mehtod
 	public JSONObject makeHttpRequest(String url, String method,
 			List<NameValuePair> params) {
-		//System.out.println("url: " + url);
-		//System.out.println("method: " + method);
-		//System.out.println("params: " + params);
+		System.out.println("url: " + url);
+		System.out.println("method: " + method);
+		System.out.println("params: " + params);
 
 		// Making HTTP request
 		try {
@@ -105,7 +105,7 @@ public class JSONParser {
 			}
 			is.close();
 			json = sb.toString();
-			//System.out.println("json: " + json);
+			System.out.println("json: " + json);
 		} catch (Exception e) {
 			System.out.println("HERE:H1");
 			Log.e("Buffer Error", "Error converting result " + e.toString());
