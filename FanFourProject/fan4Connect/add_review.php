@@ -10,18 +10,10 @@ header('Content-type: application/json');
 $response = array();
 
 // check for required fields
-if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zipCode']) && isset($_POST['email']) && isset($_POST['paymentType']) && isset($_POST['creditCard']) && isset($_POST['discountCode']) && isset($_POST['myOrder'])) {	    
-    $confID = $_POST['confID'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zipCode = $_POST['zipCode'];
-    $email = $_POST['email'];
-    $paymentType = $_POST['paymentType'];
-    $creditCard = $_POST['creditCard'];
-    $discountType = $_POST['discountType'];
-    $myOrder = $_POST['myOrder'];
+if (isset($_POST['pizzaType']) && isset($_POST['pizzaRating']) && isset($_POST['comment'])) {	    
+    $pizzaType= $_POST['pizzaType'];
+    $pizzaRating = $_POST['pizzaRating'];
+    $comment = $_POST['comment'];
 
 	 
     // include db connect class
@@ -45,21 +37,13 @@ if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['str
 	 
 	 //*************************    
  
- $confID = $_POST['confID'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zipCode = $_POST['zipCode'];
-    $email = $_POST['email'];
-    $paymentType = $_POST['paymentType'];
-    $creditCard = $_POST['creditCard'];
-    $discountCode = $_POST['discountCode'];
-    $myOrder = $_POST['myOrder'];
-	 
+ 	 $pizzaType= $_POST['pizzaType'];
+    $pizzaRating = $_POST['pizzaRating'];
+    $comment = $_POST['comment'];
+    
     // mysql inserting a new row
     //$query = "INSERT INTO products(name, price, description) VALUES(" . $name . ", " . $price . ", " . $description . ")";
-    $result = mysql_query("INSERT INTO testOrder(confID, phoneNumber, street, city, state, zipCode, email, paymentType, creditCard, discountCode, myOrder) VALUES('$confID', '$phoneNumber', '$street', '$city', '$state', '$zipCode', '$email', '$paymentType', '$creditCard', '$discountCode', '$myOrder')",$con);
+    $result = mysql_query("INSERT INTO reviewTable(pizzaType, comment, rating) VALUES('$pizzaType', '$comment', '$pizzaRating')",$con);
 	    
     //$result = mysql_query($query, $link_identifier = null););
  	 mysql_close($con);

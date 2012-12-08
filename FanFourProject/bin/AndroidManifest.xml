@@ -58,6 +58,14 @@
         <activity
             android:name=".ChangeOrderActivity"
             android:label="@string/title_activity_change_order" >
+        </activity>
+        <activity
+            android:name=".ReviewsActivity"
+            android:label="@string/title_activity_reviews" >
+        </activity>
+        <activity
+            android:name=".AllReviewsActivity"
+            android:label="@string/title_activity_all_reviews" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
