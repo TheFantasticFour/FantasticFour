@@ -22,6 +22,7 @@ public class DBHelperActivity extends Activity {
 
 	private static String url_add_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_order.php";
 	private static String url_get_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_order.php";
+	private static String url_add_review = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_review.php";
 	private JSONParser jsonParser = new JSONParser();
 	private static final String TAG_SUCCESS = "success";
 	
@@ -37,6 +38,10 @@ public class DBHelperActivity extends Activity {
 	private String discountCode = "";
 	private Order myOrder = null;
 	private String timestamp = "";
+	
+	private String pizzaType = "";
+	private Double pizzaRating = 0.0;
+	private String comment = "";
 
 	
 	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
@@ -112,6 +117,15 @@ public class DBHelperActivity extends Activity {
     	
     	
     }
+    
+	public void addReviewToDatabase(String pizzaType, Double pizzaRating, String comment){
+		this.pizzaType = pizzaType;
+		this.pizzaRating = pizzaRating;
+		this.comment = comment;
+		
+		new CreateNewReview().execute();		
+	}
+    
     
     public Order convertOrderFromDatabase(String fullOrder){
     	Order myOrder = new Order();
@@ -331,6 +345,39 @@ public class DBHelperActivity extends Activity {
 					//startActivity(i);
 					// closing this screen
 					System.out.println("MADE IT HERE");
+					finish();
+				} else {
+					// failed to create product
+				}
+			} catch (JSONException e) {
+				System.out.println("HERE:J1");
+				e.printStackTrace();
+				System.out.println("HERE:J2");
+			}
+			return null;
+
+		}
+	}
+	
+class CreateNewReview extends AsyncTask<String, String, String> {
+		
+		protected String doInBackground(String... args) {
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("pizzaType", pizzaType));
+			params.add(new BasicNameValuePair("pizzaRating", pizzaRating.toString()));
+			params.add(new BasicNameValuePair("comment", comment));
+			JSONObject json = jsonParser.makeHttpRequest(url_add_review, "POST", params);
+			Log.d("Create Response", json.toString());
+
+			try {
+				int success = json.getInt(TAG_SUCCESS);
+
+				if (success == 1) {
+					// successfully created product
+					//Intent i = new Intent(getApplicationContext(), ConfirmationPageActivity.class);
+					//startActivity(i);
+					// closing this screen
+					//System.out.println("MADE IT HERE");
 					finish();
 				} else {
 					// failed to create product
