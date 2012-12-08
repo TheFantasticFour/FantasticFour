@@ -23,8 +23,13 @@ public class DBHelperActivity extends Activity {
 	private static String url_add_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_order.php";
 	private static String url_get_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_order.php";
 	private static String url_add_review = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_review.php";
+	private static String url_get_all_reviews = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_all_reviews.php";
+	
 	private JSONParser jsonParser = new JSONParser();
+	JSONArray reviews = null;
 	private static final String TAG_SUCCESS = "success";
+	
+	ArrayList<Review> reviewArray = new ArrayList<Review>();
 	
 	private String confID = "";
 	private String phoneNumber = "";
@@ -124,6 +129,19 @@ public class DBHelperActivity extends Activity {
 		this.comment = comment;
 		
 		new CreateNewReview().execute();		
+	}
+	
+	public ArrayList<Review> getAllReviewsFromDatabase(){
+		GetAllReviews gar = new GetAllReviews();
+    	gar.execute();
+    	try {
+			gar.get(2000, TimeUnit.MILLISECONDS);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	    	
+    	return reviewArray;
+    	
 	}
     
     
@@ -391,4 +409,51 @@ class CreateNewReview extends AsyncTask<String, String, String> {
 
 		}
 	}
+
+class GetAllReviews extends AsyncTask<String, String, String> {
+
+	/**
+	 * getting All products from url
+	 * */
+	protected String doInBackground(String... args) {
+		// Building Parameters
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		// getting JSON string from URL
+		JSONObject json = jsonParser.makeHttpRequest(url_get_all_reviews, "GET", params);
+		
+		// Check your log cat for JSON reponse
+		Log.d("All Products: ", json.toString());
+
+		try {
+			// Checking for SUCCESS TAG
+			int success = json.getInt(TAG_SUCCESS);
+
+			if (success == 1) {
+				// products found
+				// Getting Array of Products
+				reviews = json.getJSONArray("reviews");
+
+				// looping through All Products
+				for (int i = 0; i < reviews.length(); i++) {
+					JSONObject c = reviews.getJSONObject(i);
+
+					// Storing each json item in variable
+					String tempPizzaType = c.getString("pizzaType");
+					String tempRating = c.getString("rating");
+					String tempComment = c.getString("comment");
+					String tempTime = c.getString("timestamp");
+
+					reviewArray.add(new Review(tempPizzaType, Double.valueOf(tempRating), tempComment, tempTime));
+				}
+			}
+		} catch (JSONException e) {
+			System.out.println("HERE:A1");
+			e.printStackTrace();
+			System.out.println("HERE:A2");
+		}
+
+		return null;
+	}
+
+}
 }
