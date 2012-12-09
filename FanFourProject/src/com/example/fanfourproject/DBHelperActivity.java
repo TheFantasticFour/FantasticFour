@@ -2,10 +2,7 @@ package com.example.fanfourproject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -20,16 +17,17 @@ import android.util.Log;
 
 public class DBHelperActivity extends Activity {
 
-	private static String url_add_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_order.php";
-	private static String url_get_order = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_order.php";
-	private static String url_add_review = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_review.php";
-	private static String url_get_all_reviews = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_all_reviews.php";
+	private static final String URL_ADD_ORDER = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_order.php";
+	private static final String URL_GET_ORDER = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_order.php";
+	private static final String URL_ADD_REVIEW = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_review.php";
+	private static final String URL_GET_ALL_REVIEWS = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_all_reviews.php";
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_ORDER = "orderr";
+	
 	
 	private JSONParser jsonParser = new JSONParser();
-	JSONArray reviews = null;
-	private static final String TAG_SUCCESS = "success";
-	
-	ArrayList<Review> reviewArray = new ArrayList<Review>();
+	private JSONArray reviews = null;	
+	private ArrayList<Review> reviewArray = new ArrayList<Review>();
 	
 	private String confID = "";
 	private String phoneNumber = "";
@@ -52,35 +50,20 @@ public class DBHelperActivity extends Activity {
 	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
 	public DBHelperActivity(){
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-        StrictMode.setThreadPolicy(policy); 
-		
+        StrictMode.setThreadPolicy(policy); 		
 	}
-	
-    //@Override
-    //public void onCreate(Bundle savedInstanceState) {
-    //    super.onCreate(savedInstanceState);
-    //    setContentView(R.layout.activity_dbhelper);
-    //}
     
     public ArrayList<Object> getOrderFromDatabase(String confirmationID){
     	confID = confirmationID; 
-    	ArrayList<Object> returnOrder = new ArrayList<Object>();
     	RetrieveOrder ro = new RetrieveOrder();
     	ro.execute();
     	try {
 			ro.get(2000, TimeUnit.MILLISECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		} catch (TimeoutException e) {
+		} 
+    	catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	//System.out.println("OORRDDEERR: " + myOrder);
-    	//System.out.println("OORRDDEERR: " + myOrder.toString());
-    	
+    	ArrayList<Object> returnOrder = new ArrayList<Object>();
     	returnOrder.add(confID);
     	returnOrder.add(phoneNumber);
     	returnOrder.add(street);
@@ -96,17 +79,18 @@ public class DBHelperActivity extends Activity {
     	return returnOrder;
     }
     
-    public void addOrderToDatabase(	String confID, 
-    								String phoneNumber, 
-    								String street, 
-    								String city, 
-    								String state, 
-    								String zipCode,
-    								String email,
-    								String paymentType,
-    								String creditCard,
-    								String discountCode,
-    								Order myOrder){ 
+    public void addOrderToDatabase(	
+    		String confID, 
+    		String phoneNumber, 
+    		String street, 
+    		String city, 
+    		String state, 
+    		String zipCode,
+    		String email,
+    		String paymentType,
+    		String creditCard,
+    		String discountCode,
+    		Order myOrder){ 
     	this.confID = confID;
     	this.phoneNumber = phoneNumber;
     	this.street = street;
@@ -119,8 +103,6 @@ public class DBHelperActivity extends Activity {
     	this.discountCode = discountCode;
     	this.myOrder = myOrder;
     	new CreateNewOrder().execute();
-    	
-    	
     }
     
 	public void addReviewToDatabase(String pizzaType, Double pizzaRating, String comment){
@@ -140,8 +122,7 @@ public class DBHelperActivity extends Activity {
 			e.printStackTrace();
 		}
     	    	
-    	return reviewArray;
-    	
+    	return reviewArray;    	
 	}
     
     
@@ -153,28 +134,16 @@ public class DBHelperActivity extends Activity {
     	String pizzaString = pizzaAndPop[0];
     	String popString = pizzaAndPop[1];
     	
-    	//System.out.println("pi: " + pizzaString);
-    	//System.out.println("po: " + popString);
-    	
     	String[] pizzaSplit = pizzaString.split("//");
     	String[] popSplit = popString.split("//");
     	
-    	//System.out.println("piSplit: " + pizzaSplit[0]);
-    	//System.out.println("poSplit: " + popSplit[0]);
-    	
-    	//for(String s: pizzaSplit) System.out.println(s);
-    	
     	for(String s: pizzaSplit){
     		myOrder.addPizza(convertStringToPizza(s));
-    		//System.out.println("Pizza1: " + convertStringToPizza(s));
     	}
+    	
     	for(String s: popSplit){
     		myOrder.addPop(convertStringToPop(s));
-    		//System.out.println("Pop1: " + convertStringToPop(s));
-    	}    	
-    	
-    	
-    	//System.out.println(myOrder.toString());
+    	}
     	
     	return myOrder;    	
     }
@@ -185,24 +154,20 @@ public class DBHelperActivity extends Activity {
     	pizzas = fullOrder.getPizzas();
     	pops = fullOrder.getPop();
     	
-    	//System.out.println(pizzas);
-    	//System.out.println(pops);
-    	
     	String s = "";	
     	if(pizzas != null && pizzas.size() > 0){
-    		for(int i = 0; i < pizzas.size()-1; i++){
-    			s = s + convertPizzaToString(pizzas.get(i)) + "//";
+    		for(int pizzaElement = 0; pizzaElement < pizzas.size(); pizzaElement++){
+    			s = s + convertPizzaToString(pizzas.get(pizzaElement)) + "//";
     		}
-    		s = s + convertPizzaToString(pizzas.get(pizzas.size()-1)) + "///";
+    		s = s + "/";
     	}
     	else{
     		s = s + "///";
     	}
-    	//System.out.println("s: " + s);
     	
     	if(pops != null && pops.size() > 0){
-    		for(int j = 0; j < pops.size()-1;j++){
-    			s = s + convertPopToString(pops.get(j)) + "//";
+    		for(int popElement = 0; popElement < pops.size()-1;popElement++){
+    			s = s + convertPopToString(pops.get(popElement)) + "//";
     		}
     		s = s + convertPopToString(pops.get(pops.size()-1));
     	}
@@ -212,29 +177,24 @@ public class DBHelperActivity extends Activity {
     public Pizza convertStringToPizza(String databasePizza){
     	ArrayList<String> toppings = new ArrayList<String>();
     	String[] sentence = databasePizza.split(" ");
-    	//for(String s : sentence) System.out.println("A: " + s);
     	
+    	String pizzaSize = sentence[0];
     	if(sentence.length == 2){
-    		return new Pizza(sentence[0], new ArrayList<String>());
+    		return new Pizza(pizzaSize, new ArrayList<String>());
     	}
     	else if(sentence.length == 4){
     		toppings.add(sentence[3]);
-    		return new Pizza(sentence[0], toppings);
+    		return new Pizza(pizzaSize, toppings);
     	}
-    	else if(sentence.length == 6){
-    		toppings.add(sentence[3]);
-    		toppings.add(sentence[5]);
-    		return new Pizza(sentence[0], toppings);
-    	}
-    	else if(sentence.length >= 7){
+    	else if(sentence.length >= 6){
     		for(int i = 3; i < sentence.length-3; i++){
+    			//removing the comma
     			sentence[i] = sentence[i].substring(0,sentence[i].length()-1);
     			toppings.add(sentence[i]);
     		}
     		toppings.add(sentence[sentence.length-3]);
 			toppings.add(sentence[sentence.length-1]);
-    		return new Pizza(sentence[0], toppings);    		
-    		//String s = "Large pizza with tomato, chicken, beef and onions";
+    		return new Pizza(pizzaSize, toppings);
     	}
     	
     	return null;
@@ -258,84 +218,58 @@ public class DBHelperActivity extends Activity {
     	return orderPop.toString();
     }
     
+/*******************************************************/
 	class RetrieveOrder extends AsyncTask<String, String, String> {
-		
+
 		protected String doInBackground(String... args) {
 
-			// updating UI from Background Thread
-			//runOnUiThread(new Runnable() {
-				//public void run() {
-					// Check for success tag
-					int success;
-					try {
-						// Building Parameters
-						List<NameValuePair> params = new ArrayList<NameValuePair>();
-						params.add(new BasicNameValuePair("confID", confID));
+			int success;
+			try {
+				// Building Parameters
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+				params.add(new BasicNameValuePair("confID", confID));
 
-						// getting product details by making HTTP request
-						// Note that product details url will use GET request
-						JSONObject json = jsonParser.makeHttpRequest(
-								url_get_order, "GET", params);
+				// getting an order by making HTTP request
+				JSONObject json = jsonParser.makeHttpRequest(URL_GET_ORDER,
+						"GET", params);
 
-						// check your log for json response
-						Log.d("Single Product Details", json.toString());
+				// check your log for json response
+				Log.d("Single Product Details", json.toString());
 
-						// json success tag
-						success = json.getInt(TAG_SUCCESS);
-						if (success == 1) {
-							// successfully received product details
-							JSONArray orderObj = json.getJSONArray("orderr"); // JSON
-																				// Array
+				// json success tag
+				success = json.getInt(TAG_SUCCESS);
+				if (success == 1) {
+					// successfully received product details
+					JSONArray orderObj = json.getJSONArray(TAG_ORDER);
 
-							// get first product object from JSON Array
-							JSONObject order = orderObj.getJSONObject(0);
+					// get first product object from JSON Array
+					JSONObject order = orderObj.getJSONObject(0);
 
-							// display product data in EditText
-							confID = order.getString("confID");
-							phoneNumber = order.getString("phoneNumber");				
-							street = order.getString("street");
-							city = order.getString("city");
-							state = order.getString("state");
-							zipCode = order.getString("zipCode");
-							email = order.getString("email");
-							paymentType = order.getString("paymentType");
-							creditCard = order.getString("creditCard");
-							discountCode = order.getString("discountCode");
-							//System.out.println("W: " + order.getString("myOrder"));
-							myOrder = convertOrderFromDatabase(order.getString("myOrder"));
-							timestamp = order.getString("timestamp");
-
-							/*System.out.println("PconfID: " + confID);
-							System.out.println("PphoneNumber: " + phoneNumber);
-							System.out.println("Pstreet: " + street);
-							System.out.println("Pcity: " + city);
-							System.out.println("Pstate: " + state);
-							System.out.println("PzipCode: " + zipCode);
-							System.out.println("Pemail: " + email);
-							System.out.println("PpaymentType: " + paymentType);
-							System.out.println("PcreditCard: " + creditCard);
-							System.out.println("PdiscountCode: " + discountCode);
-							System.out.println("PmyOrder: " + myOrder);
-							System.out.println("Ptimestamp: " + timestamp);*/
-
-						} else {
-							System.out.println("oops!");
-							// product with pid not found
-						}
-					} catch (JSONException e) {
-						System.out.println("HERE:B1");
-						e.printStackTrace();
-						System.out.println("HERE:B2");
-					}
-				//}
-			//});
-
-	    	return null;
+					confID = order.getString("confID");
+					phoneNumber = order.getString("phoneNumber");
+					street = order.getString("street");
+					city = order.getString("city");
+					state = order.getString("state");
+					zipCode = order.getString("zipCode");
+					email = order.getString("email");
+					paymentType = order.getString("paymentType");
+					creditCard = order.getString("creditCard");
+					discountCode = order.getString("discountCode");
+					myOrder = convertOrderFromDatabase(order.getString("myOrder"));
+					timestamp = order.getString("timestamp");
+				}
+			}
+			catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			return null;
 		}
-	}    	
-    
+	}
+	
+/*******************************************************/
 	class CreateNewOrder extends AsyncTask<String, String, String> {
-		
+
 		protected String doInBackground(String... args) {
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			params.add(new BasicNameValuePair("confID", confID));
@@ -348,56 +282,43 @@ public class DBHelperActivity extends Activity {
 			params.add(new BasicNameValuePair("paymentType", paymentType));
 			params.add(new BasicNameValuePair("creditCard", creditCard));
 			params.add(new BasicNameValuePair("discountCode", discountCode));
-			params.add(new BasicNameValuePair("myOrder", convertOrderToDatabase(myOrder)));
+			params.add(new BasicNameValuePair("myOrder",
+					convertOrderToDatabase(myOrder)));
 
-			JSONObject json = jsonParser.makeHttpRequest(url_add_order, "POST",	params);
+			JSONObject json = jsonParser.makeHttpRequest(URL_ADD_ORDER, "POST", params);
 			Log.d("Create Response", json.toString());
 
 			try {
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) {
-					// successfully created product
-					//Intent i = new Intent(getApplicationContext(), ConfirmationPageActivity.class);
-					//startActivity(i);
-					// closing this screen
-					System.out.println("MADE IT HERE");
 					finish();
-				} else {
-					// failed to create product
 				}
 			} catch (JSONException e) {
-				System.out.println("HERE:J1");
 				e.printStackTrace();
-				System.out.println("HERE:J2");
 			}
 			return null;
-
 		}
 	}
-	
-class CreateNewReview extends AsyncTask<String, String, String> {
-		
+
+/*******************************************************/
+	class CreateNewReview extends AsyncTask<String, String, String> {
+
 		protected String doInBackground(String... args) {
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			
 			params.add(new BasicNameValuePair("pizzaType", pizzaType));
 			params.add(new BasicNameValuePair("pizzaRating", pizzaRating.toString()));
 			params.add(new BasicNameValuePair("comment", comment));
-			JSONObject json = jsonParser.makeHttpRequest(url_add_review, "POST", params);
+			
+			JSONObject json = jsonParser.makeHttpRequest(URL_ADD_REVIEW, "POST", params);
 			Log.d("Create Response", json.toString());
 
 			try {
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) {
-					// successfully created product
-					//Intent i = new Intent(getApplicationContext(), ConfirmationPageActivity.class);
-					//startActivity(i);
-					// closing this screen
-					//System.out.println("MADE IT HERE");
 					finish();
-				} else {
-					// failed to create product
 				}
 			} catch (JSONException e) {
 				System.out.println("HERE:J1");
@@ -405,54 +326,51 @@ class CreateNewReview extends AsyncTask<String, String, String> {
 				System.out.println("HERE:J2");
 			}
 			return null;
-
 		}
 	}
 
-class GetAllReviews extends AsyncTask<String, String, String> {
+/*******************************************************/
+	class GetAllReviews extends AsyncTask<String, String, String> {
 
-	/**
-	 * getting All products from url
-	 * */
-	protected String doInBackground(String... args) {
-		// Building Parameters
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		// getting JSON string from URL
-		JSONObject json = jsonParser.makeHttpRequest(url_get_all_reviews, "GET", params);
-		
-		// Check your log cat for JSON reponse
-		Log.d("All Products: ", json.toString());
+		/**
+		 * getting All products from url
+		 * */
+		protected String doInBackground(String... args) {
+			// Building Parameters
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			// getting JSON string from URL
+			JSONObject json = jsonParser.makeHttpRequest(URL_GET_ALL_REVIEWS, "GET", params);
 
-		try {
-			// Checking for SUCCESS TAG
-			int success = json.getInt(TAG_SUCCESS);
+			// Check your log cat for JSON response
+			Log.d("All Products: ", json.toString());
 
-			if (success == 1) {
-				// products found
-				// Getting Array of Products
-				reviews = json.getJSONArray("reviews");
+			try {
+				// Checking for SUCCESS TAG
+				int success = json.getInt(TAG_SUCCESS);
 
-				// looping through All Products
-				for (int i = 0; i < reviews.length(); i++) {
-					JSONObject c = reviews.getJSONObject(i);
+				if (success == 1) {
+					// products found
+					reviews = json.getJSONArray("reviews");
 
-					// Storing each json item in variable
-					String tempPizzaType = c.getString("pizzaType");
-					String tempRating = c.getString("rating");
-					String tempComment = c.getString("comment");
-					String tempTime = c.getString("timestamp");
+					// looping through All Products
+					for (int i = 0; i < reviews.length(); i++) {
+						JSONObject c = reviews.getJSONObject(i);
 
-					reviewArray.add(new Review(tempPizzaType, Double.valueOf(tempRating), tempComment, tempTime));
+						// Storing each json item in variable
+						String tempPizzaType = c.getString("pizzaType");
+						String tempRating = c.getString("rating");
+						String tempComment = c.getString("comment");
+						String tempTime = c.getString("timestamp");
+						
+						Review newReview = new Review(tempPizzaType, Double
+								.valueOf(tempRating), tempComment, tempTime); 
+						reviewArray.add(newReview);
+					}
 				}
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
-		} catch (JSONException e) {
-			System.out.println("HERE:A1");
-			e.printStackTrace();
-			System.out.println("HERE:A2");
+			return null;
 		}
-
-		return null;
 	}
-
-}
 }

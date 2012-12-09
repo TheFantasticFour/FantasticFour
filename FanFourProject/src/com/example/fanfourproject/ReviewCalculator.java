@@ -38,13 +38,13 @@ public class ReviewCalculator {
 			}
 		}
 		//extra addition assures no equal values
-		Double score1 = calculateScore(type1Pizzas)+0.01;
-		Double score2 = calculateScore(type2Pizzas)+0.02;
-		Double score3 = calculateScore(type3Pizzas)+0.03;
-		Double score4 = calculateScore(type4Pizzas)+0.04;
-		Double score5 = calculateScore(type5Pizzas)+0.05;
-		Double score6 = calculateScore(type6Pizzas)+0.06;
-		Double score7 = calculateScore(type7Pizzas)+0.07;
+		Double score1 = calculateScore(type1Pizzas)+0.001;
+		Double score2 = calculateScore(type2Pizzas)+0.002;
+		Double score3 = calculateScore(type3Pizzas)+0.003;
+		Double score4 = calculateScore(type4Pizzas)+0.004;
+		Double score5 = calculateScore(type5Pizzas)+0.005;
+		Double score6 = calculateScore(type6Pizzas)+0.006;
+		Double score7 = calculateScore(type7Pizzas)+0.007;
 		TreeMap<Double, Integer> treeMap = new TreeMap<Double, Integer>();
 		treeMap.put(score1, 1);
 		treeMap.put(score2, 2);
@@ -64,6 +64,7 @@ public class ReviewCalculator {
 	
 	public Double calculateScore(ArrayList<Review> reviewArray){
 		Double score = 0.0;
+		Double weight = 0.0;
 		
 		for(Review r: reviewArray){
 			String timeStamp = r.getTimestamp();
@@ -73,10 +74,12 @@ public class ReviewCalculator {
 			//24 hours gives a 75% time factor
 			//24^2 hours gives a 50% time factor
 			Double timeFactor = 1.0 -(0.078664495*Math.log(hours));
-			
+			weight = weight + timeFactor;
 			score = score + (timeFactor)*r.getRating();
 		}
-		score = score/reviewArray.size();
+		
+		//calculates the weighted average
+		score = score/weight;
 		
 		return score;
 	}

@@ -2,59 +2,50 @@
 
 header('Content-type: application/json');
 /*
-* Following code will list all the products
+* Following code will get all the reviews in the database
 */
 
 // array for JSON response
 $response = array();
-// include db connect class
-//require_once __DIR__ . '/db_connect.php';
 
-// connecting to db
-//$db = new DB_CONNECT();
+// Connecting to mysql database
+$con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die('Error in get_all_reviews.php connection' . mysql_error());
+// Selecting database
+$db = mysql_select_db('AndroidOrders',$con) or die('Error in get_all_reviews.php database' . mysql_error());
 
-//********************
-$con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die(mysql_error());
-$db = mysql_select_db('AndroidOrders',$con) or die(mysql_error()) or die(mysql_error());
-
-
-
-//********************
-
-// get all products from products table
-$result = mysql_query("SELECT *FROM reviewTable",$con) or die(mysql_error());
-//mysql_close($con);
-
-
+// mysql getting all rows from the reviewTable
+$result = mysql_query("SELECT *FROM reviewTable",$con) or die('Error in get_all_reviews.php result' . mysql_error());
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
    // looping through all results
-   // products node
-   $response["reviews"] = array();
+   // reviews node
+   $response['reviews'] = array();
     
    while ($row = mysql_fetch_array($result)) {
-      // temp user array
+      
+      // temp review array
       $review = array();
-      $review["pizzaType"] = $row["pizzaType"];
-      $review["comment"] = $row["comment"];
-	   $review["rating"] = $row["rating"];
-		$review["timestamp"] = $row["timestamp"];
+      $review['pizzaType'] = $row['pizzaType'];
+      $review['comment'] = $row['comment'];
+	   $review['rating'] = $row['rating'];
+		$review['timestamp'] = $row['timestamp'];
 
-      // push single product into final response array
-      array_push($response["reviews"], $review);
+      // push single review into final response array
+      array_push($response['reviews'], $review);
    }
    // success
-   $response["success"] = 1;
+   $response['success'] = 1;
 
    // echoing JSON response
    echo json_encode($response);
-} else {
-   // no products found
-   $response["success"] = 0;
-   $response["message"] = "No products found";
+} 
+else {
+   // no reviews found
+   $response['success'] = 0;
+   $response['message'] = "No reviews found";
 
-   // echo no users JSON
+   // echo no reviews JSON
    echo json_encode($response);
 }
 mysql_close($con);

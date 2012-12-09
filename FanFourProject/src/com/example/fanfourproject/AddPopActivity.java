@@ -8,10 +8,10 @@ import android.widget.RadioButton;
 
 public class AddPopActivity extends Activity {
 	
-	private String popSizeLiter = "2-Liter";
-	private String popSizeCan = "Can";
-	private String popLiterType = "";
-	private String popCanType = "";
+	private static final String POP_SIZE_2_LITER = "2-Liter";
+	private static final String POP_SIZE_CAN = "Can";
+	private String popLiterFlavor = "";
+	private String popCanFlavor = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,72 +19,58 @@ public class AddPopActivity extends Activity {
         setContentView(R.layout.activity_add_pop);
     }
     
-//    private boolean checkCheckBox(int idName){
-//    	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
-//    	return myCheckBox1.isChecked();
-//    }
-    
-    private boolean checkRadioButton(int idName){
-    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
-    	return myButton1.isChecked();
-    }
-    
-    private String getRadioButtonText(int idName){
-    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
-    	return myButton1.getText().toString();
-    }
-    
-    private void checkLiter(){
+    private void checkLiterChoice(){
     	if(checkRadioButton(R.id.liter_coka_coke)){
-    		popLiterType = getRadioButtonText(R.id.liter_coka_coke);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_coka_coke);
     	}
     	else if(checkRadioButton(R.id.liter_pepsi)){
-    		popLiterType = getRadioButtonText(R.id.liter_pepsi);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_pepsi);
     	}
     	else if(checkRadioButton(R.id.liter_mountain_dew)){
-    		popLiterType = getRadioButtonText(R.id.liter_mountain_dew);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_mountain_dew);
     	}
     	else if(checkRadioButton(R.id.liter_diet_coke)){
-    		popLiterType = getRadioButtonText(R.id.liter_diet_coke);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_diet_coke);
     	}
     	else if(checkRadioButton(R.id.liter_orange_fanta)){
-    		popLiterType = getRadioButtonText(R.id.liter_orange_fanta);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_orange_fanta);
     	}
     	else if(checkRadioButton(R.id.liter_root_beer)){
-    		popLiterType = getRadioButtonText(R.id.liter_root_beer);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_root_beer);
     	}
     	else if(checkRadioButton(R.id.liter_dr_pepper)){
-    		popLiterType = getRadioButtonText(R.id.liter_dr_pepper);
+    		popLiterFlavor = getRadioButtonText(R.id.liter_dr_pepper);
     	}
     	else if(checkRadioButton(R.id.liter_sprite)){
-    		popLiterType = getRadioButtonText(R.id.liter_sprite);
-    	}// else{\\pop liter type set to "none"}
+    		popLiterFlavor = getRadioButtonText(R.id.liter_sprite);
+    	}// else{\\pop liter type set to ""}
     }
-    private void checkCan(){
+    
+    private void checkCanChoice(){
     	if(checkRadioButton(R.id.can_coka_cola)){
-    		popCanType = getRadioButtonText(R.id.can_coka_cola);
+    		popCanFlavor = getRadioButtonText(R.id.can_coka_cola);
     	}
     	else if(checkRadioButton(R.id.can_pepsi)){
-    		popCanType = getRadioButtonText(R.id.can_pepsi);
+    		popCanFlavor = getRadioButtonText(R.id.can_pepsi);
     	}
     	else if(checkRadioButton(R.id.can_mountain_dew)){
-    		popCanType = getRadioButtonText(R.id.can_mountain_dew);
+    		popCanFlavor = getRadioButtonText(R.id.can_mountain_dew);
     	}
     	else if(checkRadioButton(R.id.can_diet_coke)){
-    		popCanType = getRadioButtonText(R.id.can_diet_coke);
+    		popCanFlavor = getRadioButtonText(R.id.can_diet_coke);
     	}
     	else if(checkRadioButton(R.id.can_orage_fanta)){
-    		popCanType = getRadioButtonText(R.id.can_orage_fanta);
+    		popCanFlavor = getRadioButtonText(R.id.can_orage_fanta);
     	}
     	else if(checkRadioButton(R.id.can_root_beer)){
-    		popCanType = getRadioButtonText(R.id.can_root_beer);
+    		popCanFlavor = getRadioButtonText(R.id.can_root_beer);
     	}
     	else if(checkRadioButton(R.id.can_dr_pepper)){
-    		popCanType = getRadioButtonText(R.id.can_dr_pepper);
+    		popCanFlavor = getRadioButtonText(R.id.can_dr_pepper);
     	}
     	else if(checkRadioButton(R.id.can_sprite)){
-    		popCanType = getRadioButtonText(R.id.can_sprite);
-    	}// else{\\pop can type set to "none"}
+    		popCanFlavor = getRadioButtonText(R.id.can_sprite);
+    	}// else{\\pop can type set to ""}
     }
     
     
@@ -92,22 +78,30 @@ public class AddPopActivity extends Activity {
     /** Called when the user clicks the 'Finished Adding Pop' button */
     public void donePop(View view) {
     	
-    	checkLiter();
-    	checkCan(); 
+    	checkLiterChoice();
+    	checkCanChoice(); 
     	
-    	if(!popLiterType.equals("")){
-    		Pop tempPop = new Pop(popSizeLiter, popLiterType);
+    	if(!popLiterFlavor.equals("")){
+    		Pop tempPop = new Pop(POP_SIZE_2_LITER, popLiterFlavor);
     		MainMenuActivity.addPopToOrder(tempPop);
     	}
-    	if(!popCanType.equals("")){
-    		Pop tempPop = new Pop(popSizeCan, popCanType);
+    	if(!popCanFlavor.equals("")){
+    		Pop tempPop = new Pop(POP_SIZE_CAN, popCanFlavor);
     		MainMenuActivity.addPopToOrder(tempPop);
     	}
-    	
-    	//EditText myEditText = (EditText) findViewById(R.id.editText1);
-    	//String message = myEditText.getText().toString();
-    	
-        //MainMenuActivity.i2.putExtra("POP_PASS_1", message);    	
+    	   	
     	finish();
+    }
+    
+    //Helper method for RadioButton
+    private boolean checkRadioButton(int idName){
+    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
+    	return myButton1.isChecked();
+    }
+    
+    //Helper method for RadioButton text
+    private String getRadioButtonText(int idName){
+    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
+    	return myButton1.getText().toString();
     }
 }

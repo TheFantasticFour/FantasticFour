@@ -2,40 +2,27 @@
 
 header('Content-type: application/json');
 /*
- * Following code will get single product details
- * A product is identified by product id (pid)
+ * Following code will get single order
+ * An order is identified by Confirmation ID (confID)
  */
  
 // array for JSON response
 $response = array();
 
-
-// include db connect class
-//require_once __DIR__ . '/db_connect.php';
-
-// connecting to db
-//$db = new DB_CONNECT();
-
-//********************
-
-$con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die(mysql_error());
-$db = mysql_select_db('AndroidOrders',$con) or die(mysql_error()) or die(mysql_error());
-
-
-//********************
-
-
+// Connecting to mysql database
+$con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die('Error in get_order.php connection' . mysql_error());
+// Selecting database
+$db = mysql_select_db('AndroidOrders',$con) or die('Error in get_order.php database' . mysql_error());
 
 // check for post data
-if (isset($_GET["confID"])) {
-    $confID = $_GET["confID"];
+if (isset($_GET['confID'])) {
+    $confID = $_GET['confID'];
 		
 	
-    // get a product from products table
+    // get an order from testOrder table
     $result = mysql_query("SELECT * FROM testOrder WHERE `confID` = \"$confID\"",$con);	
     	 
 	 mysql_close($con);	 
-	
 	 
     if (!empty($result)) {
         // check for empty result
@@ -44,49 +31,52 @@ if (isset($_GET["confID"])) {
             $result = mysql_fetch_array($result);
 
             $orderr = array();
-            $orderr["confID"] = $result["confID"];
-            $orderr["phoneNumber"] = $result["phoneNumber"];
-				$orderr["street"] = $result["street"];
-				$orderr["city"] = $result["city"];
-				$orderr["state"] = $result["state"];
-				$orderr["zipCode"] = $result["zipCode"];
-				$orderr["email"] = $result["email"];
-				$orderr["paymentType"] = $result["paymentType"];
-				$orderr["creditCard"] = $result["creditCard"];
-				$orderr["discountCode"] = $result["discountCode"];
-				$orderr["myOrder"] = $result["myOrder"];
-				$orderr["timestamp"] = $result["timestamp"];
+            $orderr['confID'] = $result['confID'];
+            $orderr['phoneNumber'] = $result['phoneNumber'];
+				$orderr['street'] = $result['street'];
+				$orderr['city'] = $result['city'];
+				$orderr['state'] = $result['state'];
+				$orderr['zipCode'] = $result['zipCode'];
+				$orderr['email'] = $result['email'];
+				$orderr['paymentType'] = $result['paymentType'];
+				$orderr['creditCard'] = $result['creditCard'];
+				$orderr['discountCode'] = $result['discountCode'];
+				$orderr['myOrder'] = $result['myOrder'];
+				$orderr['timestamp'] = $result['timestamp'];
            
             // success
-            $response["success"] = 1;
+            $response['success'] = 1;
 
             // user node
-            $response["orderr"] = array();
+            $response['orderr'] = array();
 
-            array_push($response["orderr"], $orderr);
+            array_push($response['orderr'], $orderr);
 
             // echoing JSON response
             echo json_encode($response);
-        } else {
+        } 
+        else {
             // no product found
-            $response["success"] = 0;
-            $response["message"] = "No 0rder found1";
+            $response['success'] = 0;
+            $response['message'] = 'empty response in get_order.php';
 
             // echo no users JSON
             echo json_encode($response);
         }
-    } else {
+    } 
+    else {
         // no product found
-        $response["success"] = 0;
-        $response["message"] = "No 0rder found2";
+        $response['success'] = 0;
+        $response['message'] = 'No order match found in get_order.php';
 
         // echo no users JSON
         echo json_encode($response);
     }
-} else {
-    // required field is missing
-    $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+} 
+else {
+    // confirmation ID is not set
+    $response['success'] = 0;
+    $response['message'] = 'No confirmation ID in get_order.php';
 
     // echoing JSON response
     echo json_encode($response);
