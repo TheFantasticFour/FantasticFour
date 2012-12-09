@@ -4,97 +4,53 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainMenuActivity extends Activity {
 	
-	public static Intent i1,i2;
-//	public static Integer currentLargePizzaCount;
-//	public static Integer currentMediumPizzaCount;
-//	public static Integer currentSmallPizzaCount;
-//	public static Integer currentPopCount;
-	
-	//private String pizzaSize = "Large";
-	//private ArrayList<String> pizzaCheese = new ArrayList<String>();
-	//private ArrayList<String> pizzaMeats = new ArrayList<String>();
-	//private ArrayList<String> pizzaVeggies = new ArrayList<String>();
-	
-	public static TextView tv1;
-	
-	public static Order mainOrder;
-	public static String codeString;
-	public static String bannerString;
-	private ArrayList<Pizza> pizzas;
-	private ArrayList<Pop> pops;
-	
 	private static final Double SMALL_PIZZA_COST = 8.99;
 	private static final Double MEDIUM_PIZZA_COST = 13.99;
 	private static final Double LARGE_PIZZA_COST = 18.99;
+	
+	private static final String SMALL_TAG = "Small";
+	private static final String MEDIUM_TAG = "Medium";
+	private static final String LARGE_TAG = "Large";
+	
+	private static final String CAN_TAG = "$0.99";
+	private static final String LITER_TAG = "$2.99";
+	
+	public static TextView tv1;
+	public static Order mainOrder;
+	public static String codeString;
+	public static String bannerString;
+
+	private ArrayList<Pizza> pizzas;
+	private ArrayList<Pop> pops;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         
-        //ProgressDialog pDialog;
-        
-        //pDialog = new ProgressDialog(MainMenuActivity.this);
-		//pDialog.setMessage("Creating Product..");
-		//pDialog.setIndeterminate(false);
-		//pDialog.setCancelable(true);
-		//pDialog.show();
-		//pDialog.wait(3000);
-		//pDialog.dismiss();
-        
         mainOrder = new Order();
         codeString = null;
-        bannerString = null;
-        
-        //tv1 = (TextView)findViewById(R.id.text_area);
-
-        //editTextArea();        
+        bannerString = null;       
     }
-	
-	public static void addPizzaToOrder(Pizza piz){
-		mainOrder.addPizza(piz);
-	}
-	
-	public static void addPopToOrder(Pop pop){
-		mainOrder.addPop(pop);
-	}
-	
-//	private static void editTextArea(){
-//
-//        String s = "";
-//
-//        s = s + mainOrder.toString();
-//                        
-//        tv1.setMovementMethod(new ScrollingMovementMethod());
-//        
-//        if(!s.equals("")){
-//        	tv1.setText(s);
-//        }
-//        else{
-//        	tv1.setText("No Items Ordered");
-//        }
-//    }
 	
     /** Called when the user clicks the 'Add Pizza' button */
     public void addPizza(View view) {
-        i1 = new Intent(this, AddPizzaActivity.class);
-        startActivity(i1);
+        Intent intent = new Intent(this, AddPizzaActivity.class);
+        startActivity(intent);
     }
     
     /** Called when the user clicks the 'Add Pop' button */
     public void addPop(View view) {
-    	i2 = new Intent(this, AddPopActivity.class);
-        startActivity(i2);
+    	Intent intent = new Intent(this, AddPopActivity.class);
+        startActivity(intent);
     }
     
     /** Called when the user clicks the 'Add Discounts' button */
@@ -102,14 +58,6 @@ public class MainMenuActivity extends Activity {
     	Intent intent = new Intent(this, AddDiscountActivity.class);
         startActivity(intent);
     }
-//    private String printArray(ArrayList<String> array){
-//    	String s = "";
-//    	for(String st: array){
-//    		s = s + st + ", ";
-//    	}
-//    	
-//    	return s;
-//    }
     
     /** Called when the user clicks the 'Finalize Order' button */
     public void finalizeOrder(View view){
@@ -129,81 +77,71 @@ public class MainMenuActivity extends Activity {
     		
         	
         	String message = "";
-        	if(codeString.equals(discountCalculate.CODE_1)){
+        	if(codeString.equals(DiscountCalculate.CODE_1)){
         		message = "10% Off!";
         	}
-        	else if(codeString.equals(discountCalculate.CODE_2)){
+        	else if(codeString.equals(DiscountCalculate.CODE_2)){
         		message = "15% Off!";
         	}
-        	else if(codeString.equals(discountCalculate.CODE_3)){
+        	else if(codeString.equals(DiscountCalculate.CODE_3)){
         		message = "20% Off!";
         	}
-        	else if(codeString.equals(discountCalculate.CODE_4)){
+        	else if(codeString.equals(DiscountCalculate.CODE_4)){
         		message = "Only $4.00";
         	}
         	else{
         		message = "";
         	}
         	discountDisplay.setText(message);
-            
-            i1 = new Intent();
-            i2 = new Intent();
-            
-
-        	
     	}
     	catch(Exception e){
     		System.out.println(e);
     	}
     	
-    	LinearLayout rlayout1 = (LinearLayout) findViewById(R.id.ll_order_1);
-    	LinearLayout rlayout2 = (LinearLayout) findViewById(R.id.ll_order_2);
-    	LinearLayout rlayout3 = (LinearLayout) findViewById(R.id.ll_order_3);
-    	LinearLayout rlayout4 = (LinearLayout) findViewById(R.id.ll_order_4);
-    	LinearLayout rlayout5 = (LinearLayout) findViewById(R.id.ll_order_5);
-    	LinearLayout rlayout6 = (LinearLayout) findViewById(R.id.ll_order_6);
-    	LinearLayout rlayout7 = (LinearLayout) findViewById(R.id.ll_order_7);
-    	LinearLayout rlayout8 = (LinearLayout) findViewById(R.id.ll_order_8);
-    	LinearLayout rlayout9 = (LinearLayout) findViewById(R.id.ll_order_9);
-    	LinearLayout rlayout10 = (LinearLayout) findViewById(R.id.ll_order_10);
+    	ArrayList<LinearLayout> linearLayoutArray = new ArrayList<LinearLayout>();
     	
-    	TextView displayItems1 = (TextView) findViewById(R.id.TextView_order_1);
-    	TextView displayItems2 = (TextView) findViewById(R.id.TextView_order_2);
-    	TextView displayItems3 = (TextView) findViewById(R.id.TextView_order_3);
-    	TextView displayItems4 = (TextView) findViewById(R.id.TextView_order_4);
-    	TextView displayItems5 = (TextView) findViewById(R.id.TextView_order_5);
-    	TextView displayItems6 = (TextView) findViewById(R.id.TextView_order_6);
-    	TextView displayItems7 = (TextView) findViewById(R.id.TextView_order_7);
-    	TextView displayItems8 = (TextView) findViewById(R.id.TextView_order_8);
-    	TextView displayItems9 = (TextView) findViewById(R.id.TextView_order_9);
-    	TextView displayItems10 = (TextView) findViewById(R.id.TextView_order_10);
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_1));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_2));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_3));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_4));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_5));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_6));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_7));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_8));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_9));
+    	linearLayoutArray.add((LinearLayout) findViewById(R.id.ll_order_10));
+    	
+    	ArrayList<TextView> itemArray = new ArrayList<TextView>();
+    	
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_1));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_2));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_3));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_4));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_5));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_6));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_7));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_8));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_9));
+    	itemArray.add((TextView) findViewById(R.id.TextView_order_10));
 
-    	TextView displayPrice1 = (TextView) findViewById(R.id.TextView_price_1);
-    	TextView displayPrice2 = (TextView) findViewById(R.id.TextView_price_2);
-    	TextView displayPrice3 = (TextView) findViewById(R.id.TextView_price_3);
-    	TextView displayPrice4 = (TextView) findViewById(R.id.TextView_price_4);
-    	TextView displayPrice5 = (TextView) findViewById(R.id.TextView_price_5);
-    	TextView displayPrice6 = (TextView) findViewById(R.id.TextView_price_6);
-    	TextView displayPrice7 = (TextView) findViewById(R.id.TextView_price_7);
-    	TextView displayPrice8 = (TextView) findViewById(R.id.TextView_price_8);
-    	TextView displayPrice9 = (TextView) findViewById(R.id.TextView_price_9);
-    	TextView displayPrice10 = (TextView) findViewById(R.id.TextView_price_10);
+    	ArrayList<TextView> priceArray = new ArrayList<TextView>();
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_1));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_2));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_3));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_4));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_5));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_6));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_7));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_8));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_9));
+    	priceArray.add((TextView) findViewById(R.id.TextView_price_10));
     	
-    	rlayout1.setVisibility(View.INVISIBLE);
-    	rlayout2.setVisibility(View.INVISIBLE);
-    	rlayout3.setVisibility(View.INVISIBLE);
-    	rlayout4.setVisibility(View.INVISIBLE);
-    	rlayout5.setVisibility(View.INVISIBLE);
-    	rlayout6.setVisibility(View.INVISIBLE);
-    	rlayout7.setVisibility(View.INVISIBLE);
-    	rlayout8.setVisibility(View.INVISIBLE);
-    	rlayout9.setVisibility(View.INVISIBLE);
-    	rlayout10.setVisibility(View.INVISIBLE);
-    	
-    	
+    	for(int i = 0; i < 10; i++){
+    		linearLayoutArray.get(i).setVisibility(View.INVISIBLE);
+    	}   	
     	
     	ArrayList<String> top = new ArrayList<String>();
-    	String type = "";
+    	String type;
     	
     	String toppings = "";
     	
@@ -211,173 +149,173 @@ public class MainMenuActivity extends Activity {
     	int numPops = 0;
     	
     	if(numPizzas<pizzas.size() && numPizzas<6){
-    		rlayout1.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(0).setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems1.setText(pizzas.get(numPizzas).toString());
-    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
+        	itemArray.get(0).setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals(SMALL_TAG)){
+        		priceArray.get(0).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals(MEDIUM_TAG)){
+        		priceArray.get(0).setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice1.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
+        		priceArray.get(0).setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
     	}
     	if(numPizzas<pizzas.size() && numPizzas<6){
-    		rlayout2.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(1).setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems2.setText(pizzas.get(numPizzas).toString());
-    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
+        	itemArray.get(1).setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals(SMALL_TAG)){
+        		priceArray.get(1).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals(MEDIUM_TAG)){
+        		priceArray.get(1).setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice2.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
+        		priceArray.get(1).setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
     	}
     	if(numPizzas<pizzas.size() && numPizzas<6){
-    		rlayout3.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(2).setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems3.setText(pizzas.get(numPizzas).toString());
-    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
+        	itemArray.get(2).setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals(SMALL_TAG)){
+        		priceArray.get(2).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals(MEDIUM_TAG)){
+        		priceArray.get(2).setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice3.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
+        		priceArray.get(2).setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
 
     		toppings="";
     	}
     	if(numPizzas<pizzas.size() && numPizzas<6){
-    		rlayout4.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(3).setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems4.setText(pizzas.get(numPizzas).toString());
-    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
+        	itemArray.get(3).setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals(SMALL_TAG)){
+        		priceArray.get(3).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals(MEDIUM_TAG)){
+        		priceArray.get(3).setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice4.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
+        		priceArray.get(3).setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
     	}
     	if(numPizzas<pizzas.size() && numPizzas<6){
-    		rlayout5.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(4).setVisibility(View.VISIBLE);
     		top = pizzas.get(numPizzas).getPizzaToppings();
         	
         	for(int j=0; j<top.size(); j++){
         		toppings = toppings+top.get(j)+", ";
         	}
         	
-    		displayItems5.setText(pizzas.get(numPizzas).toString());
-    		if(pizzas.get(numPizzas).getPizzaSize().equals("Small")){
-        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
+        	itemArray.get(4).setText(pizzas.get(numPizzas).toString());
+    		if(pizzas.get(numPizzas).getPizzaSize().equals(SMALL_TAG)){
+        		priceArray.get(4).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+top.size()))).toString());
     		}
-    		else if(pizzas.get(numPizzas).getPizzaSize().equals("Medium")){
-        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
+    		else if(pizzas.get(numPizzas).getPizzaSize().equals(MEDIUM_TAG)){
+        		priceArray.get(4).setText("$" + roundTwoDecimals(Double.valueOf((MEDIUM_PIZZA_COST+top.size()))).toString());
     		}
     		else{
-        		displayPrice5.setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
+        		priceArray.get(4).setText("$" + roundTwoDecimals(Double.valueOf((LARGE_PIZZA_COST+top.size()))).toString());
     		}
     		numPizzas++;
     		toppings="";
     	}
     	if(numPops<pops.size() && numPops<6){
-    		rlayout6.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(5).setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems6.setText(pops.get(numPops).toString());
+    		itemArray.get(5).setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
-        		displayPrice6.setText("$2.99");
+        		priceArray.get(5).setText(LITER_TAG);
     		}
     		else{
-        		displayPrice6.setText("$0.99");
+        		priceArray.get(5).setText(CAN_TAG);
     		}
     		numPops++;
     	}
     	if(numPops<pops.size() && numPops<6){
-    		rlayout7.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(6).setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems7.setText(pops.get(numPops).toString());
+    		itemArray.get(6).setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
-        		displayPrice7.setText("$2.99");
+        		priceArray.get(6).setText(LITER_TAG);
     		}
     		else{
-        		displayPrice7.setText("$0.99");
+        		priceArray.get(6).setText(CAN_TAG);
     		}
     		numPops++;
     	}
     	if(numPops<pops.size() && numPops<6){
-    		rlayout8.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(7).setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems8.setText(pops.get(numPops).toString());
+    		itemArray.get(7).setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
-        		displayPrice8.setText("$2.99");
+        		priceArray.get(7).setText(LITER_TAG);
     		}
     		else{
-        		displayPrice8.setText("$0.99");
+        		priceArray.get(7).setText(CAN_TAG);
     		}
     		numPops++;
     	}
     	if(numPops<pops.size() && numPops<6){
-    		rlayout9.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(8).setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems9.setText(pops.get(numPops).toString());
+    		itemArray.get(8).setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
-        		displayPrice9.setText("$2.99");
+        		priceArray.get(8).setText(LITER_TAG);
     		}
     		else{
-        		displayPrice9.setText("$0.99");
+        		priceArray.get(8).setText(CAN_TAG);
     		}
     		numPops++;
     	}
     	if(numPops<pops.size() && numPops<6){
-    		rlayout10.setVisibility(View.VISIBLE);
+    		linearLayoutArray.get(9).setVisibility(View.VISIBLE);
     		type = pops.get(numPops).getPopType();
         	
-    		displayItems10.setText(pops.get(numPops).toString());
+    		itemArray.get(9).setText(pops.get(numPops).toString());
     		if(pops.get(numPops).getPopSize()=="2-Liter"){
-        		displayPrice10.setText("$2.99");
+        		priceArray.get(9).setText(LITER_TAG);
     		}
     		else{
-        		displayPrice10.setText("$0.99");
+        		priceArray.get(9).setText(CAN_TAG);
     		}
     		numPops++;
     	}
@@ -445,7 +383,16 @@ public class MainMenuActivity extends Activity {
 		onResume();
 	}
 	
-	Double roundTwoDecimals(double d) {
+	public static void addPizzaToOrder(Pizza piz){
+		mainOrder.addPizza(piz);
+	}
+	
+	public static void addPopToOrder(Pop pop){
+		mainOrder.addPop(pop);
+	}
+	
+	//Helper method for formatting
+	private Double roundTwoDecimals(double d) {
     	DecimalFormat twoDForm = new DecimalFormat("#.##");
     	return Double.valueOf(twoDForm.format(d));
 	}

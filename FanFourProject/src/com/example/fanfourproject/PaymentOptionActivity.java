@@ -11,9 +11,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class PaymentOptionActivity extends Activity {
-	//ADDED THIS LINE!!!~~~!!!
-	//ADDED THIS LINE!!!~~~!!!
-	//ADDED THIS LINE!!!~~~!!!
 	
 	//This is a string to hold the entire address that the user will input
 	static String address = "";
@@ -335,7 +332,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
-		this.address = address;
+		PaymentOptionActivity.address = address;
 	}
 
 	/**
@@ -349,7 +346,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param phoneNumber the phoneNumber to set
 	 */
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		PaymentOptionActivity.phoneNumber = phoneNumber;
 	}
 
 	/**
@@ -363,7 +360,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param eMail the eMail to set
 	 */
 	public void seteMail(String eMail) {
-		this.eMail = eMail;
+		PaymentOptionActivity.eMail = eMail;
 	}
 
 	/**
@@ -377,7 +374,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param payment the payment to set
 	 */
 	public void setPayment(String payment) {
-		this.payment = payment;
+		PaymentOptionActivity.payment = payment;
 	}
 
 	/**
@@ -391,7 +388,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param addressStreet the addressStreet to set
 	 */
 	public void setAddressStreet(String addressStreet) {
-		this.addressStreet = addressStreet;
+		PaymentOptionActivity.addressStreet = addressStreet;
 	}
 
 	/**
@@ -405,7 +402,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param addressCity the addressCity to set
 	 */
 	public void setAddressCity(String addressCity) {
-		this.addressCity = addressCity;
+		PaymentOptionActivity.addressCity = addressCity;
 	}
 
 	/**
@@ -419,7 +416,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param addressState the addressState to set
 	 */
 	public void setAddressState(String addressState) {
-		this.addressState = addressState;
+		PaymentOptionActivity.addressState = addressState;
 	}
 
 	/**
@@ -433,7 +430,7 @@ public class PaymentOptionActivity extends Activity {
 	 * @param addressZip the addressZip to set
 	 */
 	public void setAddressZip(String addressZip) {
-		this.addressZip = addressZip;
+		PaymentOptionActivity.addressZip = addressZip;
 	}
 	
 	public void addToListOfMessages(Integer myInt){

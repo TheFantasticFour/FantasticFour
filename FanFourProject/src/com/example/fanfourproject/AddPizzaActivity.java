@@ -9,15 +9,16 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 public class AddPizzaActivity extends Activity {
-
-	//public final static String NUMBER_PIZZAS = "com.example.mytenthapp.NUMBER_PIZZAS";
 	
-	private String pizzaSize = "Large";
+	private static final String LARGE = "Large";
+	private static final String MEDIUM = "Medium";
+	private static final String SMALL = "Small";
+	
+	private String pizzaSize = "";
+	
 	private ArrayList<String> pizzaCheese = new ArrayList<String>();
 	private ArrayList<String> pizzaMeats = new ArrayList<String>();
 	private ArrayList<String> pizzaVeggies = new ArrayList<String>();
-	
-	//Intent myIntent = MainMenuActivity.i1;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,29 +26,42 @@ public class AddPizzaActivity extends Activity {
         setContentView(R.layout.activity_add_pizza);
     }
     
-    private boolean checkCheckBox(int idName){
-    	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
-    	return myCheckBox1.isChecked();
-    }
-    
-    private boolean checkRadioButton(int idName){
-    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
-    	return myButton1.isChecked();
-    }
-    
-    private String getRadioButtonText(int idName){
-    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
-    	return myButton1.getText().toString();
+    /** Called when the user clicks the 'Finished Adding Pizza' button */
+    public void donePizza(View view) {
+    	getPizzaSize();
+    	getPizzaCheese();
+    	getPizzaMeat();
+    	getPizzaVeggies();
+    	
+    	ArrayList<String> allToppings = new ArrayList<String>();
+    	for(String singleCheese: pizzaCheese){
+    		allToppings.add(singleCheese);
+    	}
+    	
+    	for(String singleMeat: pizzaMeats){
+    		allToppings.add(singleMeat);
+    	}
+    	
+    	for(String singleVeggie: pizzaVeggies){
+    		allToppings.add(singleVeggie);
+    	}
+    	
+    	Pizza tempPizza = new Pizza(pizzaSize, allToppings);
+    	MainMenuActivity.addPizzaToOrder(tempPizza);
+    	
+    	finish();
     }
     
     private void getPizzaSize(){
     	if(checkRadioButton(R.id.size_small)){
-    		pizzaSize = getRadioButtonText(R.id.size_small).substring(0,5);
+    		pizzaSize = SMALL;
     	}
     	else if(checkRadioButton(R.id.size_medium)){
-    		pizzaSize = getRadioButtonText(R.id.size_medium).substring(0,6);
-    	}// else{\\pizza size already set to large}
-    	
+    		pizzaSize = MEDIUM;
+    	}
+    	else{
+    		pizzaSize = LARGE;
+    	}    	
     }
     
     private void getPizzaCheese(){
@@ -97,35 +111,16 @@ public class AddPizzaActivity extends Activity {
 			pizzaVeggies.add("Jalapeno");	
 		}
     }
-
-    /** Called when the user clicks the 'Finished Adding Pizza' button */
-    public void donePizza(View view) {
-    	getPizzaSize();
-    	getPizzaCheese();
-    	getPizzaMeat();
-    	getPizzaVeggies();
-    	
-    	ArrayList<String> allToppings = new ArrayList<String>();
-    	for(String ch: pizzaCheese){
-    		allToppings.add(ch);
-    	}
-    	
-    	for(String me: pizzaMeats){
-    		allToppings.add(me);
-    	}
-    	for(String veg: pizzaVeggies){
-    		allToppings.add(veg);
-    	}
-    	
-    	Pizza tempPizza = new Pizza(pizzaSize, allToppings);
-    	MainMenuActivity.addPizzaToOrder(tempPizza);
-    	//MainMenuActivity.editTextArea();
-    	
-    	
-    	//myIntent.putExtra("PIZZA_SIZE", pizzaSize);
-    	//myIntent.putStringArrayListExtra("PIZZA_CHEESES", pizzaCheese);
-    	//myIntent.putStringArrayListExtra("PIZZA_MEATS", pizzaMeats);
-    	//myIntent.putStringArrayListExtra("PIZZA_VEGGIES", pizzaVeggies);
-    	finish();
+    
+    //Helper method for CheckBox
+    private boolean checkCheckBox(int idName){
+    	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
+    	return myCheckBox1.isChecked();
+    }
+    
+    //Helper method for RadioButton
+    private boolean checkRadioButton(int idName){
+    	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
+    	return myButton1.isChecked();
     }
 }

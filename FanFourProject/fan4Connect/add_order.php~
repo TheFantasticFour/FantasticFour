@@ -2,50 +2,24 @@
 
 header('Content-type: application/json');
 /*
- * Following code will create a new product row
- * All product details are read from HTTP Post Request
+ * Following code will create a new order row in the AndroidOrders database
  */
 
 // array for JSON response
 $response = array();
 
 // check for required fields
-if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['street']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zipCode']) && isset($_POST['email']) && isset($_POST['paymentType']) && isset($_POST['creditCard']) && isset($_POST['discountCode']) && isset($_POST['myOrder'])) {	    
-    $confID = $_POST['confID'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zipCode = $_POST['zipCode'];
-    $email = $_POST['email'];
-    $paymentType = $_POST['paymentType'];
-    $creditCard = $_POST['creditCard'];
-    $discountType = $_POST['discountType'];
-    $myOrder = $_POST['myOrder'];
+if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['street']) && 
+	 isset($_POST['city']) && isset($_POST['state']) && isset($_POST['zipCode']) && 
+	 isset($_POST['email']) && isset($_POST['paymentType']) && isset($_POST['creditCard']) && 
+	 isset($_POST['discountCode']) && isset($_POST['myOrder'])) {
 
-	 
-    // include db connect class
-    //require_once __DIR__ . '/db_connect.php';
-	 //require_once('http://www.users.csbsju.edu/~pghardy/android_connect/db_connect.php');
-
-	 //print("HERE?");
-
-    // connecting to db
-    //$db = new DB_CONNECT;
-	 //*************************
-	 // import database connection variables
-        //require_once __DIR__ . '/db_config.php';
-        //require_once('http://www.users.csbsju.edu/~pghardy/android_connect/db_config.php');
-        // Connecting to mysql database
-        $con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die(mysql_error());
-        // Selecing database
-        $db = mysql_select_db('AndroidOrders',$con) or die(mysql_error()) or die(mysql_error());
-        //mysql_close();
-
-	 
-	 //*************************    
+    // Connecting to mysql database
+    $con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die('Error in add_order.php connection' . mysql_error());
+    // Selecting database
+    $db = mysql_select_db('AndroidOrders',$con) or die('Error in add_order.php database' . mysql_error());	
  
- $confID = $_POST['confID'];
+	 $confID = $_POST['confID'];
     $phoneNumber = $_POST['phoneNumber'];
     $street = $_POST['street'];
     $city = $_POST['city'];
@@ -57,46 +31,38 @@ if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['str
     $discountCode = $_POST['discountCode'];
     $myOrder = $_POST['myOrder'];
 	 
-    // mysql inserting a new row
-    //$query = "INSERT INTO products(name, price, description) VALUES(" . $name . ", " . $price . ", " . $description . ")";
+    // mysql inserting a new row for the new order
     $result = mysql_query("INSERT INTO testOrder(confID, phoneNumber, street, city, state, zipCode, email, paymentType, creditCard, discountCode, myOrder) VALUES('$confID', '$phoneNumber', '$street', '$city', '$state', '$zipCode', '$email', '$paymentType', '$creditCard', '$discountCode', '$myOrder')",$con);
 	    
-    //$result = mysql_query($query, $link_identifier = null););
  	 mysql_close($con);
-	 
-	 //echo $result; 
 	 
     // check if row inserted or not
     if ($result) {
         // successfully inserted into database
         $response["success"] = 1;
-        $response["message"] = "Product successfully created.";
+        $response["message"] = 'Order successfully created.';
 
-        // echoing JSON response
-        //echo "WHAT?1";
         echo json_encode($response);
-        //echo "WHAT?2";
-    } else {
-        // failed to insert row
+    } 
+    else {
+        // failed to insert a new order row
         $response["success"] = 0;
-        $response["message"] = "Oops! An error occurred.";
-        
-        // echoing JSON response
-		  //echo "WHAT?3";
+        $response["message"] = 'An error occurred in the add_order.php query.';
+
         echo json_encode($response);
-        //echo "WHAT?4";
     }
-} else {
-	 //echo "ELSEELSE";
-    // required field is missing
+} 
+else {
+    // at least one of the necessary fields is missing
     $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+    $response["message"] = 'Required field(s) is missing in add_order.php';
 
     // echoing JSON response
     echo json_encode($response);
-    //echo "WHAT?";
 }
-	function json_encode($data) {
+
+//downloaded json_encode function
+function json_encode($data) {
         switch ($type = gettype($data)) {
             case 'NULL':
                 return 'null';

@@ -2,7 +2,6 @@ package com.example.fanfourproject;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,33 +32,30 @@ public class AddDiscountActivity extends Activity {
     	String codeMessage = "";
     	String bannerMessage = "";
     	
-    	if(codeString.equals(discountCalculate.CODE_1)){
+    	if(codeString.equals(DiscountCalculate.CODE_1)){
     		codeMessage = "A 10% discount will be added for that code!";
-    		MainMenuActivity.codeString = discountCalculate.CODE_1;
+    		MainMenuActivity.codeString = DiscountCalculate.CODE_1;
     	}
-    	else if(codeString.equals(discountCalculate.CODE_2)){
+    	else if(codeString.equals(DiscountCalculate.CODE_2)){
     		codeMessage = "A 15% discount will be added for that code!";
-    		MainMenuActivity.codeString = discountCalculate.CODE_2;
+    		MainMenuActivity.codeString = DiscountCalculate.CODE_2;
     	}
-    	else if(codeString.equals(discountCalculate.CODE_3)){
+    	else if(codeString.equals(DiscountCalculate.CODE_3)){
     		codeMessage = "A 20% discount will be added for that code!";
-    		MainMenuActivity.codeString = discountCalculate.CODE_3;
+    		MainMenuActivity.codeString = DiscountCalculate.CODE_3;
     	}
-    	else if(codeString.equals(discountCalculate.CODE_4)){
+    	else if(codeString.equals(DiscountCalculate.CODE_4)){
     		codeMessage = "Your order will only cost $4.00";
-    		MainMenuActivity.codeString = discountCalculate.CODE_4;
+    		MainMenuActivity.codeString = DiscountCalculate.CODE_4;
     	}
     	else{
     		codeMessage = "Invalid discount code.";
     	}
-    	//else if(codeString.equals(discountCalculate.CODE_5)){
-    		
-    	//}
     	
     	if(bannerString.equals("")){
     		bannerMessage = "";
     	}
-    	else if(bannerID >= discountCalculate.LOWEST_BANNER_ID && bannerID <= discountCalculate.HIGHEST_BANNER_ID){
+    	else if(bannerID >= DiscountCalculate.LOWEST_BANNER_ID && bannerID <= DiscountCalculate.HIGHEST_BANNER_ID){
     		bannerMessage = "A 10% discount will be added for that ID!";
     		MainMenuActivity.bannerString = bannerString;
     	}

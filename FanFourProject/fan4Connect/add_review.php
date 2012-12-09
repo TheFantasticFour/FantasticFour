@@ -2,8 +2,7 @@
 
 header('Content-type: application/json');
 /*
- * Following code will create a new product row
- * All product details are read from HTTP Post Request
+ * Following code will create a new review row
  */
 
 // array for JSON response
@@ -11,77 +10,51 @@ $response = array();
 
 // check for required fields
 if (isset($_POST['pizzaType']) && isset($_POST['pizzaRating']) && isset($_POST['comment'])) {	    
-    $pizzaType= $_POST['pizzaType'];
-    $pizzaRating = $_POST['pizzaRating'];
-    $comment = $_POST['comment'];
-
-	 
-    // include db connect class
-    //require_once __DIR__ . '/db_connect.php';
-	 //require_once('http://www.users.csbsju.edu/~pghardy/android_connect/db_connect.php');
-
-	 //print("HERE?");
-
-    // connecting to db
-    //$db = new DB_CONNECT;
-	 //*************************
-	 // import database connection variables
-        //require_once __DIR__ . '/db_config.php';
-        //require_once('http://www.users.csbsju.edu/~pghardy/android_connect/db_config.php');
-        // Connecting to mysql database
-        $con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die(mysql_error());
-        // Selecing database
-        $db = mysql_select_db('AndroidOrders',$con) or die(mysql_error()) or die(mysql_error());
-        //mysql_close();
-
-	 
-	 //*************************    
- 
- 	 $pizzaType= $_POST['pizzaType'];
-    $pizzaRating = $_POST['pizzaRating'];
-    $comment = $_POST['comment'];
     
-    // mysql inserting a new row
-    //$query = "INSERT INTO products(name, price, description) VALUES(" . $name . ", " . $price . ", " . $description . ")";
-    $result = mysql_query("INSERT INTO reviewTable(pizzaType, comment, rating) VALUES('$pizzaType', '$comment', '$pizzaRating')",$con);
-	    
-    //$result = mysql_query($query, $link_identifier = null););
- 	 mysql_close($con);
-	 
-	 //echo $result; 
-	 
-    // check if row inserted or not
-    if ($result) {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Product successfully created.";
+	// Connecting to mysql database
+   $con = mysql_connect('devsrv.cs.csbsju.edu', 'fantastic4', 'androidfan4') or die('Error in add_review.php connection' . mysql_error());
+   // Selecting database
+   $db = mysql_select_db('AndroidOrders',$con) or die('Error in add_review.php database' . mysql_error());
 
-        // echoing JSON response
-        //echo "WHAT?1";
-        echo json_encode($response);
-        //echo "WHAT?2";
-    } else {
-        // failed to insert row
-        $response["success"] = 0;
-        $response["message"] = "Oops! An error occurred.";
-        
-        // echoing JSON response
-		  //echo "WHAT?3";
-        echo json_encode($response);
-        //echo "WHAT?4";
-    }
-} else {
-	 //echo "ELSEELSE";
-    // required field is missing
-    $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
+	$pizzaType= $_POST['pizzaType'];
+   $pizzaRating = $_POST['pizzaRating'];
+   $comment = $_POST['comment'];
+    
+   // mysql inserting a new row for the new review
+   $result = mysql_query("INSERT INTO reviewTable(pizzaType, comment, rating) VALUES('$pizzaType', '$comment', '$pizzaRating')",$con);
+	   
+ 	mysql_close($con);
+	
+	//echo $result; 
+	 
+   // check if row inserted or not
+   if ($result) {
+   	// successfully inserted into database
+      $response["success"] = 1;
+      $response["message"] = 'Review successfully created.';
 
-    // echoing JSON response
-    echo json_encode($response);
-    //echo "WHAT?";
+      echo json_encode($response);
+	} 
+	else {
+   	// failed to insert a new review row
+      $response["success"] = 0;
+      $response["message"] = 'An error occurred in the add_review.php query.';
+
+      echo json_encode($response);
+	}
+} 
+else {
+   // at least one of the necessary fields is missing
+   $response["success"] = 0;
+   $response["message"] = 'Required field(s) is missing in add_review.php';
+
+   // echoing JSON response
+   echo json_encode($response);
 }
-	function json_encode($data) {
-        switch ($type = gettype($data)) {
+
+//downloaded json_encode function
+function json_encode($data) {
+		switch ($type = gettype($data)) {
             case 'NULL':
                 return 'null';
             case 'boolean':
