@@ -11,37 +11,42 @@ import android.content.Intent;
 
 public class AllReviewsActivity extends Activity {
 
-	ArrayList<Review> reviewArray = new ArrayList<Review>();
-	DBHelperActivity myHelper = new DBHelperActivity();
-	ReviewCalculator reviewHelper = new ReviewCalculator();
+	private ArrayList<Review> reviewArray = new ArrayList<Review>();
+	private ReviewCalculator reviewHelper = new ReviewCalculator();
+	private DBHelperActivity myHelper = new DBHelperActivity();
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_reviews);
-        reviewArray = myHelper.getAllReviewsFromDatabase();
-                
-        System.out.println(reviewArray);
-        reviewArray = reviewHelper.putReviewsInOrder(reviewArray);
-        System.out.println(reviewArray);
         
+        reviewArray = myHelper.getAllReviewsFromDatabase();
+        reviewArray = reviewHelper.putReviewsInOrder(reviewArray);
+
         ListView listView = (ListView) findViewById(R.id.list_view);
-
         String[] listValues = new String[reviewArray.size()];
+        
+        String listViewElement = "";
         for(int i = 0; i < reviewArray.size(); i++){
-        	Review tempReview = reviewArray.get(i);
-        	String temp = "";
-        	temp = temp + tempReview.getLongType() + ": " + tempReview.getRating() + " stars" + "\n" ;
-        	temp = temp + "    " + tempReview.getComment();
-        	listValues[i] = temp;        	
+        	Review singleReview = reviewArray.get(i);
+        	
+        	listViewElement = singleReview.getLongType() + 
+        					  ": " + 
+        					  listViewElement +
+        					  singleReview.getRating() + 
+        					  " stars" + 
+        					  "\n     " + 
+        					  singleReview.getComment();
+        	listValues[i] = listViewElement;        	
         }
-        System.out.println(reviewHelper.calculatePizzaOrder(reviewArray));
        
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-          android.R.layout.simple_list_item_1, android.R.id.text1, listValues);
+        ArrayAdapter<String> adapter = 
+        		new ArrayAdapter<String>(this,
+        		android.R.layout.simple_list_item_1, 
+        		android.R.id.text1,
+        		listValues);
 
-        // Assign adapter to ListView
-        listView.setAdapter(adapter); 
+        listView.setAdapter(adapter);
     }
 	
 	public void closeAndRestart(View view){        
@@ -51,7 +56,6 @@ public class AllReviewsActivity extends Activity {
     }
 	
 	@Override
-    public void onBackPressed() {//disable the back button
-    }
+    public void onBackPressed() {}//disable the back button
 
 }

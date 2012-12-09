@@ -6,29 +6,28 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/contactUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/contact_us"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/phone_number"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/email_address"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/zipCodes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Serving zip codes: 56321 and 56374"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:text="Serving zip codes: 56321 and 56374"/>
 
     <Button
         android:id="@+id/button1"

@@ -4,14 +4,13 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class ChangeOrderActivity extends Activity {
 
-	DBHelperActivity dbHelper = new DBHelperActivity();
+	private DBHelperActivity dbHelper = new DBHelperActivity();
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,12 +19,11 @@ public class ChangeOrderActivity extends Activity {
     }
 
     public void confirmButton(View view){
-    	EditText confText = (EditText) findViewById(R.id.editText1);
-    	String confirmationCode = confText.getText().toString();
+    	EditText confirmationText = (EditText) findViewById(R.id.confirmationEditText);
+    	String confirmationCode = confirmationText.getText().toString();
     	
     	ArrayList<Object> mainArray = new ArrayList<Object>();
     	mainArray = dbHelper.getOrderFromDatabase(confirmationCode);
-    	//System.out.println("MainArray: " + mainArray);
     	
     	String confID = (String) mainArray.get(0);
     	String phoneNumber = (String) mainArray.get(1);
@@ -39,19 +37,6 @@ public class ChangeOrderActivity extends Activity {
     	String discountCode = (String) mainArray.get(9);
     	Order myOrder = (Order) mainArray.get(10);
     	String timestamp = (String) mainArray.get(11);
-    	
-    	/*System.out.println("confID: " + confID);
-		System.out.println("phoneNumber: " + phoneNumber);
-		System.out.println("street: " + street);
-		System.out.println("city: " + city);
-		System.out.println("state: " + state);
-		System.out.println("zipCode: " + zipCode);
-		System.out.println("email: " + email);
-		System.out.println("paymentType: " + paymentType);
-		System.out.println("creditCard: " + creditCard);
-		System.out.println("discountCode: " + discountCode);
-		System.out.println("myOrder: " + myOrder);
-		System.out.println("timestamp: " + timestamp);*/
     	
     	TextView orderText = (TextView) findViewById(R.id.orderArea);
     	
