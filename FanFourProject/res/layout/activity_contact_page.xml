@@ -23,6 +23,13 @@
         android:layout_height="wrap_content"
         android:text="@string/email_address"/>
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serving zip codes: 56321 and 56374"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"

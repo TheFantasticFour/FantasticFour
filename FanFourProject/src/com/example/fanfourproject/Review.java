@@ -7,12 +7,15 @@ public class Review {
 	private String comment = "";
 	private String timestamp = "";
 	
+	private String longType = "";
+	
 	
 	public Review(String type, Double rating, String comment, String timestamp){
 		this.type = type;
 		this.rating = rating;
 		this.comment = comment;
-		this.timestamp = timestamp;		
+		this.timestamp = timestamp;
+		setLongType();
 	}
 	
 	public Review(String type, Double rating, String comment){
@@ -20,6 +23,27 @@ public class Review {
 		this.rating = rating;
 		this.comment = comment;
 		this.timestamp = null;
+		setLongType();
+	}
+	
+	public void setLongType(){
+		switch (Integer.valueOf(type)) {
+        case 1:  longType = "Meat-Lovers Pizza";
+                 break;
+        case 2:  longType = "Taco Pizza";
+                 break;
+        case 3:  longType = "Veggie Pizza";
+                 break;
+        case 4:  longType = "Fajita Pizza";
+                 break;
+        case 5:  longType = "Buffalo-Chicken Pizza";
+                 break;
+        case 6:  longType = "Bacon-Cheeseburger Pizza";
+                 break;
+        case 7:  longType = "Dessert Pizza";
+                 break;
+		}
+		
 	}
 	
 	/**
@@ -27,6 +51,13 @@ public class Review {
 	 */
 	public String getType() {
 		return type;
+	}
+	
+	/**
+	 * @return the type
+	 */
+	public String getLongType() {
+		return longType;
 	}
 
 	/**

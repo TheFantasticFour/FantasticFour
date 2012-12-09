@@ -40,11 +40,12 @@
         <item>2: Taco Pizza</item>
         <item>3: Veggie Pizza</item>
         <item>4: Fajita Pizza</item>
-        <item>5: Buffalo-Chicken-Ranch Pizza</item>
+        <item>5: Buffalo-Chicken Pizza</item>
         <item>6: Bacon-Cheeseburger Pizza</item>
         <item>7: Dessert Pizza</item>
     </string-array>
 
     <string name="title_activity_all_reviews">AllReviewsActivity</string>
+    <string name="title_activity_menu_interface">MenuInterfaceActivity</string>
 
 </resources>

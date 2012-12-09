@@ -15,7 +15,7 @@ public class HomePageActivity extends Activity {
     
     /** Called when the user clicks the 'Menu' button */
     public void goToMenu(View view) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
+        Intent intent = new Intent(this, MenuInterfaceActivity.class);
         startActivity(intent);
     }
     
