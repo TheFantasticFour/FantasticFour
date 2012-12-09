@@ -10,7 +10,6 @@ import android.widget.TextView;
 public class AddDiscountActivity extends Activity {
 	
 	
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
