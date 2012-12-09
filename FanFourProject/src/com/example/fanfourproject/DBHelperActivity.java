@@ -211,7 +211,6 @@ public class DBHelperActivity extends Activity {
     
     public Pizza convertStringToPizza(String databasePizza){
     	ArrayList<String> toppings = new ArrayList<String>();
-    	
     	String[] sentence = databasePizza.split(" ");
     	//for(String s : sentence) System.out.println("A: " + s);
     	
@@ -229,7 +228,7 @@ public class DBHelperActivity extends Activity {
     	}
     	else if(sentence.length >= 7){
     		for(int i = 3; i < sentence.length-3; i++){
-    			sentence[i] = sentence[i].substring(0,sentence[i].length()-2);
+    			sentence[i] = sentence[i].substring(0,sentence[i].length()-1);
     			toppings.add(sentence[i]);
     		}
     		toppings.add(sentence[sentence.length-3]);

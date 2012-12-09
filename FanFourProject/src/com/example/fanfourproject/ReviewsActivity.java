@@ -24,9 +24,7 @@ public class ReviewsActivity extends Activity {
     	String pizzaType = myChoice.getSelectedItem().toString();
     	
     	RatingBar rb = (RatingBar) findViewById(R.id.ratingBar1);
-    	System.out.println(rb.getRating());
     	Double pizzaRating = Double.valueOf(rb.getRating());
-    	System.out.println(pizzaRating);
     	
     	EditText commentText = (EditText) findViewById(R.id.editText1);
     	String comment = commentText.getText().toString();
@@ -35,5 +33,10 @@ public class ReviewsActivity extends Activity {
     	Intent intent = new Intent(this, AllReviewsActivity.class);
         startActivity(intent);
     	
+    }
+    
+    public void skipReview(View view){
+    	Intent intent = new Intent(this, AllReviewsActivity.class);
+        startActivity(intent);
     }
 }

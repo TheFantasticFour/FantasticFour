@@ -66,6 +66,10 @@
         <activity
             android:name=".AllReviewsActivity"
             android:label="@string/title_activity_all_reviews" >
+        </activity>
+        <activity
+            android:name=".MenuInterfaceActivity"
+            android:label="@string/title_activity_menu_interface" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
