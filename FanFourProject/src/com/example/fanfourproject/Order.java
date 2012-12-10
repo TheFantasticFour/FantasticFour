@@ -21,6 +21,54 @@ public class Order {
 		pops = new ArrayList<Pop>();
 	}
 	
+	public String getInitialPrice(){
+		Double total = 0.0;
+		for(Pop p: pops){
+			if(p.getPopSize().equals("Can")){
+				total = total + POP_CAN_PRICE;
+			}
+			else{
+				total = total + POP_LITER_PRICE;
+			}
+		}
+		for(Pizza p: pizzas){
+			if(p.getPizzaSize().equals("Small")){
+				total = total + PIZZA_SMALL_PRICE;
+			}
+			else if(p.getPizzaSize().equals("Medium")){
+				total = total + PIZZA_MEDIUM_PRICE;
+			}
+			else{
+				total = total + PIZZA_LARGE_PRICE;
+			}
+			total = total + p.getPizzaToppings().size();
+		}
+		return checkDecimals(total);
+	}
+	
+	public String getTax(){
+		Double tax = 0.0;
+		tax = Double.valueOf(getInitialPrice())*TAX_RATE;
+		String dis = checkDecimals(tax);
+		return dis;
+	}
+	
+	//Use DiscountCalculate Class
+	public String getDiscounts(){
+		Double price = Double.valueOf(getInitialPrice()) + Double.valueOf(getTax());
+		DiscountCalculate dc = new DiscountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price.toString());
+		
+		return dc.getDiscountAmount();
+	}
+	
+	public String getFinalPrice(){
+		Double price =  Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
+		
+		String finalPrice = checkDecimals(price);
+		
+		return finalPrice;
+	}
+	
 	public ArrayList<Pizza> getPizzas(){
 		return pizzas;
 	}
@@ -45,61 +93,11 @@ public class Order {
 		pops = new ArrayList<Pop>();
 	}
 	
-	public String checkDecimals(Double d){
+	private String checkDecimals(Double d){
 		BigDecimal bd = new BigDecimal(d);
 		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
 		String value = bd.toString();
 		return value;
-	}
-	
-	public String getInitialPrice(){
-		Double total = 0.0;
-		for(Pop p: pops){
-			if(p.getPopSize().equals("Can")){
-				total = total + POP_CAN_PRICE;
-			}
-			else{
-				total = total + POP_LITER_PRICE;
-			}
-		}
-		for(Pizza p: pizzas){
-			if(p.getPizzaSize().equals("Small")){
-				total = total + PIZZA_SMALL_PRICE;
-			}
-			else if(p.getPizzaSize().equals("Medium")){
-				total = total + PIZZA_MEDIUM_PRICE;
-			}
-			else{
-				total = total + PIZZA_LARGE_PRICE;
-			}
-			for(int i = 0; i < p.getPizzaToppings().size(); i++){
-				total = total + 1.00;
-			}
-		}
-		return checkDecimals(total);
-	}
-	
-	public String getTax(){
-		Double tax = 0.0;
-		tax = Double.valueOf(getInitialPrice())*TAX_RATE;
-		String dis = checkDecimals(tax);
-		return dis;
-	}
-	//Use discountCalculate Class
-	public String getDiscounts(){
-		Double price = Double.valueOf(getInitialPrice()) + Double.valueOf(getTax());
-		DiscountCalculate dc = new DiscountCalculate(MainMenuActivity.codeString, MainMenuActivity.bannerString, price.toString());
-		
-		return dc.getDiscountAmount();
-		
-	}
-	
-	public String getFinalPrice(){
-		Double price =  Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
-		
-		String finalPrice = checkDecimals(price);
-		
-		return finalPrice;
 	}
 	
 	public String toString(){
