@@ -30,36 +30,45 @@ public class DiscountCalculate {
 	}
 	
 	public String getDiscountAmount(){
-		String discountAmount = "";
+		String discountAmount1 = "";
+		String discountAmount2 = "";
 		if(code == null){
-			return "0.00";
+			discountAmount1 = "0.0";
 		}
-		if(code.equals(CODE_1)){
+		else if(code.equals(CODE_1)){
 			double temp = Double.parseDouble(price);
 			temp = temp * 0.1;
-			discountAmount = getBigDecimalString(temp);
-			return discountAmount;
+			discountAmount1 = getBigDecimalString(temp);
 		}
 		else if(code.equals(CODE_2)){
 			double temp = Double.parseDouble(price);
 			temp = temp * 0.15;
-			discountAmount = getBigDecimalString(temp);
-			return discountAmount;
+			discountAmount1 = getBigDecimalString(temp);
 		}
 		else if(code.equals(CODE_3)){
 			double temp = Double.parseDouble(price);
 			temp = temp * 0.2;
-			discountAmount = getBigDecimalString(temp);
-			return discountAmount;
+			discountAmount1 = getBigDecimalString(temp);
 		}
 		else if(code.equals(CODE_4)){
 			double temp = Double.parseDouble(price);
 			temp = 4;
-			discountAmount = getBigDecimalString(temp);
-			return discountAmount;
+			discountAmount1 = getBigDecimalString(temp);
 		}
 		
-		return "0.00";
+		int idNum = Integer.valueOf(id);
+		if(id == null){
+			discountAmount2 = "0.0";
+		}
+		else if(idNum >= LOWEST_BANNER_ID && idNum <= HIGHEST_BANNER_ID){
+			double temp = Double.parseDouble(price);
+			temp = temp * 0.1;
+			discountAmount2 = getBigDecimalString(temp);
+		}
+		
+		Double totalDiscount = Double.valueOf(discountAmount1) + Double.valueOf(discountAmount2);
+		
+		return totalDiscount.toString();
 	}
 
 	// Student get 10% off
