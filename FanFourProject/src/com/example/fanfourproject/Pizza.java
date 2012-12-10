@@ -3,8 +3,6 @@ package com.example.fanfourproject;
 import java.util.ArrayList;
 
 public class Pizza {
-	//added a line here!
-	//added a line here!
 	
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String pizzaSize = "";
@@ -37,15 +35,6 @@ public class Pizza {
 	}
 	
 	public String toString(){
-//		PrintWriter myOut = null;
-//		try {
-//			//myOut = new PrintWriter(new BufferedWriter(new FileWriter("/home/f10/pghardy/Desktop/"+"testName")));
-//			myOut = new PrintWriter(new BufferedWriter(new FileWriter("testName")));
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-			
-		/////
 		String s = "";
 		if(toppings.size()>1){
 			s = s + pizzaSize + " Pizza with ";
@@ -67,11 +56,6 @@ public class Pizza {
 		else{//no toppings
 			s = s + pizzaSize + " Pizza";
 		}
-		
-		
-		/////
-		//myOut.print(s);
-		//myOut.close();
 		return s;
 	}
 }

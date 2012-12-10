@@ -88,19 +88,7 @@ public class PaymentOptionActivity extends Activity {
     public void clickCredit(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.VISIBLE);
-    }
-    
-    public String getUserInputString(int idNumber){
-    	EditText myStreet = (EditText) findViewById(idNumber);
-    	String returnString = myStreet.getText().toString();   	
-    	return returnString;
-    }
-    
-    public boolean getUserInputRadio(int idNumber){
-    	boolean returnBoolean = ((RadioButton) findViewById(idNumber)).isChecked();  	
-    	return returnBoolean;
-    }
-    
+    }   
     
     /*
      * This method verifies all aspects of the user's address. It will get the street, city,
@@ -319,6 +307,19 @@ public class PaymentOptionActivity extends Activity {
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
     	messageTextView.setText(message);
+    }
+    
+  //Helper method for EditText
+    private String getUserInputString(int idNumber){
+    	EditText myStreet = (EditText) findViewById(idNumber);
+    	String returnString = myStreet.getText().toString();   	
+    	return returnString;
+    }
+    
+    //Helper method for RadioButton
+    public boolean getUserInputRadio(int idNumber){
+    	boolean returnBoolean = ((RadioButton) findViewById(idNumber)).isChecked();  	
+    	return returnBoolean;
     }
     
     /**

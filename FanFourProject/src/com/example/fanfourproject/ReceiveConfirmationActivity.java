@@ -41,28 +41,23 @@ public class ReceiveConfirmationActivity extends Activity {
         	cardNum = PaymentOptionActivity.getPayment();
         }
         
-        myHelper.addOrderToDatabase(getConfirmationID(), 
-        							PaymentOptionActivity.getPhoneNumber(), 
-        							PaymentOptionActivity.getAddressStreet(), 
-        							PaymentOptionActivity.getAddressCity(), 
-        							PaymentOptionActivity.getAddressState(), 
-        							PaymentOptionActivity.getAddressZip(), 
-        							PaymentOptionActivity.geteMail(), 
-        							paymentHolder, 
-        							cardNum, 
-        							MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
-        							myOrder);
+        myHelper.addOrderToDatabase(
+        		getConfirmationID(), 
+        		PaymentOptionActivity.getPhoneNumber(), 
+        		PaymentOptionActivity.getAddressStreet(), 
+        		PaymentOptionActivity.getAddressCity(), 
+        		PaymentOptionActivity.getAddressState(), 
+        		PaymentOptionActivity.getAddressZip(), 
+        		PaymentOptionActivity.geteMail(), 
+        		paymentHolder, 
+        		cardNum, 
+        		MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
+        		myOrder);
     }
 
     public String generateConfID(){
     	Random generator = new Random();
         String conf = "";
-        //System.out.println((char) (22+55)); "M"
-        //System.out.println((char) (23+55)); "N"
-        //System.out.println((char) (24+55)); "O"
-        //System.out.println((char) (25+55)); "P"
-        //System.out.println((char) (26+55)); "Q"
-        //System.out.println((char) (27+55)); "R"
         
         for(int j = 0; j < 10; j++){
             int i = generator.nextInt(36);
@@ -76,7 +71,6 @@ public class ReceiveConfirmationActivity extends Activity {
                 conf = conf + ((char) (i+55));
             }
         }
-    	
     	return conf;
     }
      
@@ -84,7 +78,6 @@ public class ReceiveConfirmationActivity extends Activity {
         Intent intent = new Intent(this, HomePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-    	
     }
 
 	/**
@@ -102,6 +95,5 @@ public class ReceiveConfirmationActivity extends Activity {
 	}
 	
 	@Override
-    public void onBackPressed() {//disable the back button
-    }
+    public void onBackPressed() {}//disable the back button
 }

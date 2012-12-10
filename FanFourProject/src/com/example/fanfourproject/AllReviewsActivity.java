@@ -29,15 +29,14 @@ public class AllReviewsActivity extends Activity {
         String listViewElement = "";
         for(int i = 0; i < reviewArray.size(); i++){
         	Review singleReview = reviewArray.get(i);
-        	
+        	listViewElement = "";
         	listViewElement = singleReview.getLongType() + 
-        					  ": " + 
-        					  listViewElement +
+        					  ": " +
         					  singleReview.getRating() + 
         					  " stars" + 
         					  "\n     " + 
         					  singleReview.getComment();
-        	listValues[i] = listViewElement;        	
+        	listValues[i] = listViewElement;
         }
        
         ArrayAdapter<String> adapter = 
