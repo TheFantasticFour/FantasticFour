@@ -41,6 +41,12 @@ if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['str
         // successfully inserted into database
         $response["success"] = 1;
         $response["message"] = 'Order successfully created.';
+        
+        $subject = "Thank you for your Order!";
+        $message = "Thank you for your Order! \n Your confirmation ID is: " + $confID;
+        $from = "";
+        $headers = "From:" . $from;
+        mail($email,$subject,$message,$headers);
 
         echo json_encode($response);
     } 
