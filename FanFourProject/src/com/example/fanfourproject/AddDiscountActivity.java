@@ -5,7 +5,12 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
+/*
+ * This class is an extension of an order and is created when the
+ * user presses the 'Add Discount' button on the MainMenuActivity page.
+ * It is responsible having the user input a discount code and/or
+ * a banner ID number
+ */
 public class AddDiscountActivity extends Activity {
 	
 	

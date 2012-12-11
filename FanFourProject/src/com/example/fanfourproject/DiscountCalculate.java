@@ -30,8 +30,8 @@ public class DiscountCalculate {
 	}
 	
 	public String getDiscountAmount(){
-		String discountAmount1 = "";
-		String discountAmount2 = "";
+		String discountAmount1 = "0.0";
+		String discountAmount2 = "0.0";
 		if(code == null){
 			discountAmount1 = "0.0";
 		}
@@ -55,8 +55,14 @@ public class DiscountCalculate {
 			temp = 4;
 			discountAmount1 = getBigDecimalString(temp);
 		}
-		
-		int idNum = Integer.valueOf(id);
+		int idNum;
+		try{
+			idNum = Integer.valueOf(id);
+		}
+		catch(Exception e){
+			idNum = -1;
+		}
+				
 		if(id == null){
 			discountAmount2 = "0.0";
 		}
@@ -68,25 +74,7 @@ public class DiscountCalculate {
 		
 		Double totalDiscount = Double.valueOf(discountAmount1) + Double.valueOf(discountAmount2);
 		
-		return totalDiscount.toString();
-	}
-
-	// Student get 10% off
-	public String discountID() {
-		int idNum;
-		try {
-			idNum = Integer.valueOf(id);
-			if (idNum >= LOWEST_BANNER_ID && idNum <= HIGHEST_BANNER_ID) {
-				code = CODE_1;
-				return getDiscountAmount();
-			} 
-			else {
-				return "0.00";
-			}
-		} catch (Exception e) {
-			System.out.println("Invalid ID number");
-			return "0.00";
-		}
+		return getBigDecimalString(totalDiscount);
 	}
 	
 	//Helper method for formatting

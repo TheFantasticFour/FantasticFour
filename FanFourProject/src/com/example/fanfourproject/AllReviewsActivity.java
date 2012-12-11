@@ -9,6 +9,10 @@ import android.widget.ListView;
 import android.app.Activity;
 import android.content.Intent;
 
+/*
+ * This class shows a page that displays all of the reviews in the database.
+ * It sorts the reviews by speciality pizza type and creates a scrollable list.
+ */
 public class AllReviewsActivity extends Activity {
 
 	private ArrayList<Review> reviewArray = new ArrayList<Review>();
