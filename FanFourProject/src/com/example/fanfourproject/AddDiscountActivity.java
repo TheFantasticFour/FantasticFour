@@ -2,6 +2,8 @@ package com.example.fanfourproject;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,34 +40,104 @@ public class AddDiscountActivity extends Activity {
     	String bannerMessage = "";
     	
     	if(codeString.equals(DiscountCalculate.CODE_1)){
-    		codeMessage = "A 10% discount will be added for that code!";
+    		//codeMessage = "A 10% discount will be added for that code!";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("A 10% discount will be added for that code!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     		MainMenuActivity.codeString = DiscountCalculate.CODE_1;
     	}
     	else if(codeString.equals(DiscountCalculate.CODE_2)){
-    		codeMessage = "A 15% discount will be added for that code!";
+    		//codeMessage = "A 15% discount will be added for that code!";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("A 15% discount will be added for that code!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     		MainMenuActivity.codeString = DiscountCalculate.CODE_2;
     	}
     	else if(codeString.equals(DiscountCalculate.CODE_3)){
-    		codeMessage = "A 20% discount will be added for that code!";
+    		//codeMessage = "A 20% discount will be added for that code!";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("A 20% discount will be added for that code!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     		MainMenuActivity.codeString = DiscountCalculate.CODE_3;
     	}
     	else if(codeString.equals(DiscountCalculate.CODE_4)){
-    		codeMessage = "Your order will only cost $4.00";
+    		//codeMessage = "Your order will only cost $4.00";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("Your order will only cost $4.00")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     		MainMenuActivity.codeString = DiscountCalculate.CODE_4;
     	}
     	else{
-    		codeMessage = "Invalid discount code.";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("Invalid discount code!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
+    		//codeMessage = "Invalid discount code.";
     	}
     	
     	if(bannerString.equals("")){
     		bannerMessage = "";
     	}
     	else if(bannerID >= DiscountCalculate.LOWEST_BANNER_ID && bannerID <= DiscountCalculate.HIGHEST_BANNER_ID){
-    		bannerMessage = "A 10% discount will be added for that ID!";
+    		//bannerMessage = "A 10% discount will be added for that ID!";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("A 10% discount will be added for that ID!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     		MainMenuActivity.bannerString = bannerString;
     	}
     	else{
-    		bannerMessage = "Invalid CSBSJU Banner ID number";
+    		//bannerMessage = "Invalid CSBSJU Banner ID number";
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    		builder.setMessage("Invalid CSBSJU Banner ID number!")
+    		       .setCancelable(false)
+    		       .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    		           public void onClick(DialogInterface dialog, int id) {
+    		                //do things
+    		           }
+    		       });
+    		AlertDialog alert = builder.create();
+    		alert.show();
     	}
     	
     	
