@@ -16,9 +16,7 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:background="#FF0000"
-        
+        android:layout_alignParentLeft="true"        
         android:layout_below="@+id/back_to_menu" >
         <!-- 
         android:background="#FFFF00" yellow

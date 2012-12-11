@@ -47,25 +47,25 @@ public class DiscountCalculateTest extends TestCase {
 		String bannerID = "900194231";
 		String price = "20.00";
 		DiscountCalculate dc = new DiscountCalculate(null, bannerID, price);
-		assertEquals(dc.discountID(), "2.00");
+		assertEquals(dc.getDiscountAmount(), "2.00");
 		
 		//tests the Banner ID discount feature with an invalid Banner ID
 		bannerID = "0";
 		price = "20.00";
 		dc = new DiscountCalculate(null, bannerID, price);
-		assertEquals(dc.discountID(), "0.00");
+		assertEquals(dc.getDiscountAmount(), "0.00");
 		
 		//tests the Banner ID discount feature with an invalid Banner ID
 		bannerID = "words";
 		price = "20.00";
 		dc = new DiscountCalculate(null, bannerID, price);
-		assertEquals(dc.discountID(), "0.00");
+		assertEquals(dc.getDiscountAmount(), "0.00");
 		
 		//tests the Banner ID discount feature with a null Banner ID
 		bannerID = null;
 		price = "20.00";
 		dc = new DiscountCalculate(null, bannerID, price);
-		assertEquals(dc.discountID(), "0.00");
+		assertEquals(dc.getDiscountAmount(), "0.00");
 	}
 
 }

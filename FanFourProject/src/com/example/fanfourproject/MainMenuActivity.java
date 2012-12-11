@@ -28,7 +28,10 @@ public class MainMenuActivity extends Activity {
 	public static Order mainOrder;
 	public static String codeString;
 	public static String bannerString;
-
+	
+	public static Boolean changeOrder = false;
+	public static ArrayList<Object> changeArray = new ArrayList<Object>();
+	
 	private ArrayList<Pizza> pizzas;
 	private ArrayList<Pop> pops;
 	private ArrayList<TextView> priceArray;
@@ -39,12 +42,26 @@ public class MainMenuActivity extends Activity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-        
-        mainOrder = new Order();
-        codeString = null;
-        bannerString = null;       
+		changeOrder = ChangeOrderActivity.changeOrder;
+		
+		if(changeOrder!= null && changeOrder){
+			super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main_menu);
+	 
+	        mainOrder = new Order();
+	        codeString = null;
+	        bannerString = null;
+	        
+	    	startChangedOrder(ChangeOrderActivity.mainArray);
+		}
+		else{
+			super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_main_menu);
+	        
+	        mainOrder = new Order();
+	        codeString = null;
+	        bannerString = null;
+		}
     }
 	
     /** Called when the user clicks the 'Add Pizza' button */
@@ -67,8 +84,16 @@ public class MainMenuActivity extends Activity {
     
     /** Called when the user clicks the 'Finalize Order' button */
     public void finalizeOrder(View view){
-    	Intent intent = new Intent(this, PaymentOptionActivity.class);
-        startActivity(intent);
+        //if(changeOrder){
+        	Intent intent = new Intent(this, PaymentOptionActivity.class);
+            startActivity(intent);
+        	
+        //}
+        //else{
+        	//Intent intent = new Intent(this, PaymentOptionActivity.class);
+            //startActivity(intent);
+        	
+        //}
     }
         
     /** Called when the user clicks removes or adds an item */
@@ -81,7 +106,7 @@ public class MainMenuActivity extends Activity {
 		TextView discountDisplay = (TextView) findViewById(R.id.discount_display);
 
 		String message = "";
-		if (codeString == null) {
+		if (codeString == null || codeString.equals("null")) {
 			message = "No Discounts";
 		} 
 		else if (codeString.equals(DiscountCalculate.CODE_1)) {
@@ -287,6 +312,20 @@ public class MainMenuActivity extends Activity {
 	
 	public static void addPopToOrder(Pop pop){
 		mainOrder.addPop(pop);
+	}
+	
+	public void startChangedOrder(ArrayList<Object> changedOrderArray){
+		
+		mainOrder = (Order) changedOrderArray.get(10);
+		System.out.println("main Order: " + mainOrder);
+		
+		String discountString = (String) changedOrderArray.get(9);
+		int indexOfSplitter = discountString.indexOf("|");
+		codeString = discountString.substring(0, indexOfSplitter);
+		bannerString = discountString.substring(indexOfSplitter+1);
+
+		changeArray = changedOrderArray;
+		onResume();
 	}
 	
 	//Helper method for setting the price given a position, cost and array

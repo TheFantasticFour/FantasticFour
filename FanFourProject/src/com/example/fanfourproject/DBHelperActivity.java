@@ -19,8 +19,10 @@ public class DBHelperActivity extends Activity {
 
 	private static final String URL_ADD_ORDER = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_order.php";
 	private static final String URL_GET_ORDER = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_order.php";
+	private static final String URL_DELETE_ORDER = "http://www.users.csbsju.edu/~pghardy/fan4Connect/delete_order.php";
 	private static final String URL_ADD_REVIEW = "http://www.users.csbsju.edu/~pghardy/fan4Connect/add_review.php";
 	private static final String URL_GET_ALL_REVIEWS = "http://www.users.csbsju.edu/~pghardy/fan4Connect/get_all_reviews.php";
+	
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_ORDER = "orderr";
 	
@@ -105,6 +107,41 @@ public class DBHelperActivity extends Activity {
     	new CreateNewOrder().execute();
     }
     
+    public void editOrderInDatabase(	
+    		String confID, 
+    		String phoneNumber, 
+    		String street, 
+    		String city, 
+    		String state, 
+    		String zipCode,
+    		String email,
+    		String paymentType,
+    		String creditCard,
+    		String discountCode,
+    		Order myOrder){    	
+    	this.confID = confID;
+    	this.phoneNumber = phoneNumber;
+    	this.street = street;
+    	this.city = city;
+    	this.state = state;
+    	this.zipCode = zipCode;
+    	this.email = email;
+    	this.paymentType = paymentType;
+    	this.creditCard = creditCard;
+    	this.discountCode = discountCode;
+    	this.myOrder = myOrder;
+    	DeleteOrder deleteObject = new DeleteOrder();
+    	deleteObject.execute();
+    	try {
+    		deleteObject.get(2000,TimeUnit.MILLISECONDS);
+    	}
+    	catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	
+    	new CreateNewOrder().execute();
+    }
+    
 	public void addReviewToDatabase(String pizzaType, Double pizzaRating, String comment){
 		this.pizzaType = pizzaType;
 		this.pizzaRating = pizzaRating;
@@ -118,7 +155,8 @@ public class DBHelperActivity extends Activity {
     	gar.execute();
     	try {
 			gar.get(2000, TimeUnit.MILLISECONDS);
-		} catch (Exception e) {
+		}
+    	catch (Exception e) {
 			e.printStackTrace();
 		}
     	    	
@@ -300,7 +338,37 @@ public class DBHelperActivity extends Activity {
 			return null;
 		}
 	}
+/*******************************************************/
+	class DeleteOrder extends AsyncTask<String, String, String>{
 
+		protected String doInBackground(String... args) {
+
+			// Check for success tag
+			int success;
+			try {
+				// Building Parameters
+				List<NameValuePair> params = new ArrayList<NameValuePair>();
+				params.add(new BasicNameValuePair("confID", confID));
+
+				JSONObject json = jsonParser.makeHttpRequest(
+						URL_DELETE_ORDER, "POST", params);
+
+				// check your log for json response
+				Log.d("Delete Product", json.toString());
+				
+				// json success tag
+				success = json.getInt(TAG_SUCCESS);
+				if (success == 1) {
+					// Order successfully deleted
+					finish();
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+	}
+	
 /*******************************************************/
 	class CreateNewReview extends AsyncTask<String, String, String> {
 

@@ -36,7 +36,7 @@ public class PaymentOptionActivity extends Activity {
 	//This is a string to hold the zip address that the user will input
 	static String addressZip = "";
 	
-	//This is an Array List of integers to hold different messages to convery to the user
+	//This is an Array List of integers to hold different messages to convey to the user
 	static ArrayList<Integer> listOfMessages = new ArrayList<Integer>();
 	// 1 --> "Invalid Street Address"
 	// 2 --> "Invalid City"
@@ -48,13 +48,18 @@ public class PaymentOptionActivity extends Activity {
 	// 8 --> "Invalid Credit Card Number"
 	
 	
+	public static Boolean changeOrder = false;
+	public static String confId = "";
+	
+	public static ArrayList<Object> mainArray = new ArrayList<Object>();
+	
 	public PaymentOptionActivity(){
 		
 	}	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_option);
         
         Order thisOrder = MainMenuActivity.mainOrder;
@@ -69,7 +74,15 @@ public class PaymentOptionActivity extends Activity {
         System.out.println(thisOrder.getDiscounts());
         discountNumber.setText("$" +thisOrder.getDiscounts());
         finalNumber.setText("$" +thisOrder.getFinalPrice());
-        
+    	
+        mainArray = MainMenuActivity.changeArray;
+        changeOrder = ChangeOrderActivity.changeOrder;
+        if(changeOrder!= null && changeOrder){
+    		continueChangedOrder();
+    	}
+    	else{
+    		
+       	}       
     }
     
     /*
@@ -281,29 +294,18 @@ public class PaymentOptionActivity extends Activity {
     		}
     	}
     	clearListOfMessages();
-//    	if(!va){
-//    		message = message + "Invalid Address" + "\n";
-//    	}
-//    	if(!vpn){
-//    		message = message + "Invalid Phone Number" + "\n";
-//    	}
-//    	if(!vem){
-//    		message = message + "Invalid E-Mail" + "\n";
-//    	}
-//    	if(!vp){
-//    		message = message + "Invalid Credit Card Number" + "\n";
-//    	}    	
+    	
     	if(va && vpn && vem && vp){
-    		//finish();
-    		//output this info to the database and start a final activity
-    		System.out.println(getPhoneNumber());
-    		System.out.println(getAddress());
-    		System.out.println(geteMail());
-    		System.out.println(getPayment());
-    		System.out.println(MainMenuActivity.mainOrder);
-    		Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
-    		intent.putExtra("UserEmail", geteMail());
-            startActivity(intent);
+    		if(!changeOrder){
+    			Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
+    			intent.putExtra("UserEmail", geteMail());
+    			startActivity(intent);
+    		}
+    		else{
+    			Intent intent = new Intent(this, ConfirmChangedOrderActivity.class);
+    			intent.putExtra("UserEmail", geteMail());
+    			startActivity(intent);
+    		}
     	}
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
     	messageTextView.setText(message);
@@ -446,6 +448,53 @@ public class PaymentOptionActivity extends Activity {
 		return listOfMessages;
 	}
 
+	public void continueChangedOrder(){		
+		ArrayList<Object> changeArray = mainArray;
+		String confID = (String) changeArray.get(0);
+    	String phoneNumber = (String) changeArray.get(1);
+    	String street = (String) changeArray.get(2);
+    	String city = (String) changeArray.get(3);
+    	String state = (String) changeArray.get(4);
+    	String zipCode = (String) changeArray.get(5);
+    	String email = (String) changeArray.get(6);
+    	String paymentType = (String) changeArray.get(7);
+    	String creditCard = (String) changeArray.get(8);
+    	//String discountCode = (String) changeArray.get(9);
+    	//Order myOrder = (Order) changeArray.get(10);
+    	//String timestamp = (String) changeArray.get(11);
+		
+    	confId = confID;    	
+		EditText addressField = (EditText) findViewById(R.id.address_field);
+    	addressField.setText(street);
+    	
+    	EditText cityField = (EditText) findViewById(R.id.city_field);
+    	cityField.setText(city);
+    	
+    	EditText stateField = (EditText) findViewById(R.id.state_field);
+    	stateField.setText(state);
+    	
+    	EditText zipField = (EditText) findViewById(R.id.zip_field);
+    	zipField.setText(zipCode);
+    	
+    	EditText phoneField = (EditText) findViewById(R.id.phone_number_field);
+    	phoneField.setText(phoneNumber);
+    	
+    	EditText emailField = (EditText) findViewById(R.id.email_field);
+    	emailField.setText(email);
+    	
+    	if(!paymentType.equals("Cash")){
+    		EditText creditText = (EditText) findViewById(R.id.credit_card_field);
+    		creditText.setText(creditCard);
+        	creditText.setVisibility(View.VISIBLE);
+        	
+        	RadioButton cashButton = (RadioButton) findViewById(R.id.cash_option);
+        	RadioButton creditButton = (RadioButton) findViewById(R.id.credit_card_option);
+        	
+        	cashButton.setChecked(false);
+        	creditButton.setChecked(true);
+    	}
+	}
+	
 	//@Override
     //public void onBackPressed() {//disable the back button
     //}

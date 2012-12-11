@@ -6,6 +6,12 @@ import android.view.View;
 //import android.widget.CheckBox;
 import android.widget.RadioButton;
 
+/*
+ * This class is an extension of an order and is created when the
+ * user presses the 'Add Pop' button on the MainMenuActivity page.
+ * It is responsible having the user input a pop type and size,
+ * creating the Pop object and adding that Pop to the main order. 
+ */
 public class AddPopActivity extends Activity {
 	
 	private static final String POP_SIZE_2_LITER = "2-Liter";

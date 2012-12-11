@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
+/*
+ * This class is an extension of an order and is created when the
+ * user presses the 'Add Pizza' button on the MainMenuActivity page.
+ * It is responsible having the user input a pizza with various toppings,
+ * creating the Pizza object and adding that Pizza to the main order. 
+ */
 public class AddPizzaActivity extends Activity {
 	
 	private static final String LARGE = "Large";
