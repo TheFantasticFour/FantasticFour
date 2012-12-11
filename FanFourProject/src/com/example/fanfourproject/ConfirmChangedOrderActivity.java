@@ -1,32 +1,23 @@
 package com.example.fanfourproject;
 
-import java.util.Random;
-
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
-public class ReceiveConfirmationActivity extends Activity {
+public class ConfirmChangedOrderActivity extends Activity {
 
-	public String confirmationID = "";
 	private DBHelperActivity myHelper = new DBHelperActivity();
 	private Order myOrder = MainMenuActivity.mainOrder;
-	
-	public ReceiveConfirmationActivity(){
-		
-	}
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receive_confirmation);
-        setConfirmationID(generateConfID());
+        setContentView(R.layout.activity_confirm_changed_order);
         
-        TextView idTextView = (TextView) findViewById(R.id.actual_id);
-        idTextView.setText(confirmationID);
+        TextView confIdText = (TextView) findViewById(R.id.actual_id);
+        confIdText.setText(PaymentOptionActivity.confId);
         
         TextView emailTextView = (TextView) findViewById(R.id.email_holder);
         emailTextView.setText(PaymentOptionActivity.geteMail());
@@ -38,8 +29,8 @@ public class ReceiveConfirmationActivity extends Activity {
         	cardNum = PaymentOptionActivity.getPayment();
         }
         
-        myHelper.addOrderToDatabase(
-        		getConfirmationID(), 
+        myHelper.editOrderInDatabase(
+        		PaymentOptionActivity.confId, 
         		PaymentOptionActivity.getPhoneNumber(), 
         		PaymentOptionActivity.getAddressStreet(), 
         		PaymentOptionActivity.getAddressCity(), 
@@ -51,46 +42,13 @@ public class ReceiveConfirmationActivity extends Activity {
         		MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
         		myOrder);
     }
-
-    public String generateConfID(){
-    	Random generator = new Random();
-        String conf = "";
-        
-        for(int j = 0; j < 10; j++){
-            int i = generator.nextInt(36);
-            while(i == 0 || i == 24){//removes O's and 0's 
-                i = generator.nextInt(36);
-            }
-            if(i < 10){
-                conf = conf + i;
-            }
-            else{
-                conf = conf + ((char) (i+55));
-            }
-        }
-    	return conf;
-    }
-     
+    
     public void closeAndRestart(View view){        
         Intent intent = new Intent(this, HomePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
-	/**
-	 * @return the confirmationID
-	 */
-	public String getConfirmationID() {
-		return confirmationID;
-	}
-
-	/**
-	 * @param confirmationID the confirmationID to set
-	 */
-	public void setConfirmationID(String confirmationID) {
-		this.confirmationID = confirmationID;
-	}
-	
-	@Override
+    
+    @Override
     public void onBackPressed() {}//disable the back button
 }

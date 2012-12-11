@@ -4,13 +4,22 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
+/*
+ * This class is called when the user clicks the 'Change Order' button
+ * on the Home Page. The user inputs their Confirmation ID and provided
+ * it is valid, they can proceed to edit their order.
+ */
 public class ChangeOrderActivity extends Activity {
 
 	private DBHelperActivity dbHelper = new DBHelperActivity();
+	
+	public static ArrayList<Object> mainArray = new ArrayList<Object>();
+	
+	public static boolean changeOrder = false;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,7 +34,7 @@ public class ChangeOrderActivity extends Activity {
     	ArrayList<Object> mainArray = new ArrayList<Object>();
     	mainArray = dbHelper.getOrderFromDatabase(confirmationCode);
     	
-    	String confID = (String) mainArray.get(0);
+    	/*String confID = (String) mainArray.get(0);
     	String phoneNumber = (String) mainArray.get(1);
     	String street = (String) mainArray.get(2);
     	String city = (String) mainArray.get(3);
@@ -37,7 +46,7 @@ public class ChangeOrderActivity extends Activity {
     	String discountCode = (String) mainArray.get(9);
     	Order myOrder = (Order) mainArray.get(10);
     	String timestamp = (String) mainArray.get(11);
-    	
+
     	TextView orderText = (TextView) findViewById(R.id.orderArea);
     	
     	//USE THIS INFO TO CONSTRUCT THE ORDER!
@@ -53,11 +62,13 @@ public class ChangeOrderActivity extends Activity {
     					  discountCode + "\n" + 
     					  myOrder + "\n" + 
     					  timestamp + "\n");
-    	orderText.setVisibility(View.VISIBLE);
+    	orderText.setVisibility(View.VISIBLE);*/
     	
-    }
-    
-    
-    
-    
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        ChangeOrderActivity.mainArray = mainArray;
+        changeOrder= true;
+        startActivity(intent);
+        
+        finish();    	
+    }    
 }
