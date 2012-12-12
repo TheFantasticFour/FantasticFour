@@ -39,14 +39,18 @@ if (isset($_POST['confID']) && isset($_POST['phoneNumber']) && isset($_POST['str
     // check if row inserted or not
     if ($result) {
         // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = 'Order successfully created.';
+        $response['success'] = 1;
+        $response['message'] = 'Order successfully created.';
         
-        $subject = "Thank you for your Order!";
-        $message = "Thank you for your Order! \n Your confirmation ID is: " + $confID;
-        $from = "";
-        $headers = "From:" . $from;
-        mail($email,$subject,$message,$headers);
+ 		  $subject = 'Garys\'s Confirmation Order';        
+        $body = 'THANK YOU FOR YOUR \ORDER. Your Confirmation ID is: '.$confID;
+        mail($email, $subject, $body)
+        
+        //$subject = "Thank you for your Order!";
+        //$message = "Thank you for your Order! \n Your confirmation ID is: " + $confID;
+        //$from = "";
+        //$headers = "From:" . $from;
+        //mail($email,$subject,$message,$headers);
 
         echo json_encode($response);
     } 
