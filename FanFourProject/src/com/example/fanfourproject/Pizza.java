@@ -13,27 +13,51 @@ public class Pizza {
 		}
 		this.pizzaSize = size;
 	}
-	
+	/**
+	 * Gets pizza size
+	 * 
+	 * @return Size returned
+	 */
 	public String getPizzaSize(){
 		return pizzaSize;
 	}
+	/**
+	 * Sets pizza size
+	 * 
+	 * @param size size to be set
+	 */
 	
 	public void setPizzaSize(String size){
 		pizzaSize = size;
 	}
-	
+	/**
+	 * Gets pizza toppings
+	 * 
+	 * @return ArrayList of Strings which are the toppings.
+	 */
 	public ArrayList<String> getPizzaToppings(){
 		return toppings;
 	}
-	
+	/**
+	 * Adds pizza toppings
+	 * 
+	 * @param top Topping to be added
+	 */
 	public void addPizzaToppings(String top){
 		toppings.add(top);
 	}
-	
+	/**
+	 * Clears pizza toppings
+	 * 
+	 */
 	public void clearPizzaToppings(){
 		toppings = new ArrayList<String>();
 	}
-	
+	/**
+	 * Converts pizza object to a string. Aids in displaying
+	 * 
+	 * @return String of the pizza.
+	 */
 	public String toString(){
 		String s = "";
 		if(toppings.size()>1){

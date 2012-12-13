@@ -1,3 +1,8 @@
+/**
+ * This class is called when the User selects the 'Menu' button from the HomePageActivity. Displays order page if no order is underway, else it displays options.
+ * 
+ *  @author FantasticFour
+ */
 package com.example.fanfourproject;
 
 import java.text.DecimalFormat;
@@ -41,6 +46,10 @@ public class MainMenuActivity extends Activity {
 	private int pizzaSize;
 	
 	@Override
+	/**
+	 * Initializes the Activity. Checks to see if order has been already created. Else it creates a new one.
+	 * 
+	 */
     public void onCreate(Bundle savedInstanceState) {
 		changeOrder = ChangeOrderActivity.changeOrder;
 		
@@ -64,25 +73,41 @@ public class MainMenuActivity extends Activity {
 		}
     }
 	
-    /** Called when the user clicks the 'Add Pizza' button */
+    /** 
+     * Called when the user clicks the 'Add Pizza' button. Takes User to AddPizzaActivity.
+     * 
+     * @param view
+     */
     public void addPizza(View view) {
         Intent intent = new Intent(this, AddPizzaActivity.class);
         startActivity(intent);
     }
     
-    /** Called when the user clicks the 'Add Pop' button */
+    /** 
+     * Called when the user clicks the 'Add Pop' button. Takes User to AddPopActivity.
+     * 
+     * @param view
+     */
     public void addPop(View view) {
     	Intent intent = new Intent(this, AddPopActivity.class);
         startActivity(intent);
     }
     
-    /** Called when the user clicks the 'Add Discounts' button */
+    /** 
+     * Called when the user clicks the 'Add Discounts' button. Takes User to AddDiscountActivity.
+     * 
+     * @param view
+     */
     public void addDiscount(View view) {
     	Intent intent = new Intent(this, AddDiscountActivity.class);
         startActivity(intent);
     }
     
-    /** Called when the user clicks the 'Finalize Order' button */
+    /** 
+     * Called when the user clicks the 'Finalize Order' button. Takes user to PaymentOptionActivity.
+     * 
+     * @param view
+     */
     public void finalizeOrder(View view){
         //if(changeOrder){
         	Intent intent = new Intent(this, PaymentOptionActivity.class);
@@ -96,7 +121,11 @@ public class MainMenuActivity extends Activity {
         //}
     }
         
-    /** Called when the user clicks removes or adds an item */
+    /** 
+     * Called when the user clicks removes or adds an item. Checks the status of the order and displays it for the User.
+     *
+     */
+    
     public void onResume(){
     	super.onResume();
     	
@@ -205,7 +234,11 @@ public class MainMenuActivity extends Activity {
     	TextView totalDisplay = (TextView) findViewById(R.id.total_text);
     	totalDisplay.setText("$" + mainOrder.getInitialPrice());
     }
-    
+    /**
+     * Removes Item one from the order.
+     * 
+     * @param view
+     */
     public void removeItem1(View view) {
     	if(pizzaSize > 0){
     		mainOrder.getPizzas().remove(0);
@@ -215,6 +248,11 @@ public class MainMenuActivity extends Activity {
     	}    	
     	onResume();  	
     }
+    /**
+     * Removes Item 2 from the order.
+     * 
+     * @param view
+     */
 
 	public void removeItem2(View view) {
 		if(pizzaSize > 1){
@@ -225,7 +263,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 3 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem3(View view) {
 		if(pizzaSize > 2){
 			mainOrder.getPizzas().remove(2);
@@ -235,7 +277,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 4 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem4(View view) {
 		if(pizzaSize > 3){
 			mainOrder.getPizzas().remove(3);
@@ -245,7 +291,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 5 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem5(View view) {
 		if(pizzaSize > 4){
 			mainOrder.getPizzas().remove(4);
@@ -255,7 +305,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 6 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem6(View view) {
 		if(pizzaSize > 5){
 			mainOrder.getPizzas().remove(5);
@@ -265,7 +319,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 7 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem7(View view) {
 		if(pizzaSize > 6){
 			mainOrder.getPizzas().remove(6);
@@ -275,7 +333,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 8 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem8(View view) {
 		if(pizzaSize > 7){
 			mainOrder.getPizzas().remove(7);
@@ -285,7 +347,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 9 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem9(View view) {
 		if(pizzaSize > 8){
 			mainOrder.getPizzas().remove(8);
@@ -295,7 +361,11 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-
+    /**
+     * Removes Item 10 from the order.
+     * 
+     * @param view
+     */
 	public void removeItem10(View view) {
 		if(pizzaSize > 9){
 			mainOrder.getPizzas().remove(9);
@@ -305,15 +375,27 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
-	
+	/**
+	 * Takes a Pizza as a parameter then adds it to mainOrder.
+	 * 
+	 * @param piz Pizza object to be added to the order.
+	 */
 	public static void addPizzaToOrder(Pizza piz){
 		mainOrder.addPizza(piz);
 	}
-	
+	/**
+	 * Takes a Pop as a parameter then adds it to mainOrder.
+	 * 
+	 * @param pop
+	 */
 	public static void addPopToOrder(Pop pop){
 		mainOrder.addPop(pop);
 	}
-	
+	/**
+	 * Takes a ArrayList of Objects as a parameter and sets the mainOrder equal to the specified order.
+	 * 
+	 * @param changedOrderArray The incoming order to be edited.
+	 */
 	public void startChangedOrder(ArrayList<Object> changedOrderArray){
 		
 		mainOrder = (Order) changedOrderArray.get(10);
@@ -327,13 +409,24 @@ public class MainMenuActivity extends Activity {
 		changeArray = changedOrderArray;
 		onResume();
 	}
+	/**
+	 * Helper method for setting the price given a position, cost and array.
+	 * 
+	 * @param i Size of the pizza. 
+	 * @param cost Cost
+	 * @param toppingArray Array of toppings.
+	 */
 	
-	//Helper method for setting the price given a position, cost and array
     public void setPriceArrayText(int i, Double cost, ArrayList<String> toppingArray){
     	priceArray.get(i).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+toppingArray.size()))).toString());
 	}
+	/**
+	 * Helper method for formatting
+	 * 
+	 * @param d The incoming double.
+	 * @return The Double rounded to two decimal places.
+	 */
 	
-	//Helper method for formatting
 	private Double roundTwoDecimals(double d) {
     	DecimalFormat twoDForm = new DecimalFormat("#.##");
     	return Double.valueOf(twoDForm.format(d));

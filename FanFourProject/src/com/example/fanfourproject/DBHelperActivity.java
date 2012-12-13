@@ -1,3 +1,9 @@
+/**
+ * This Class serves as the intermediary between the User interface and the Database functions. Specifically adds the functionality of adding, retrieving, editing, and deleting both reviews and orders.
+ * 
+ * @author FantasticFour 
+ */
+
 package com.example.fanfourproject;
 
 import java.util.ArrayList;
@@ -50,11 +56,23 @@ public class DBHelperActivity extends Activity {
 
 	
 	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
+	/**
+	 * Sets the ThreadPolicy to permit all. 
+	 * 
+	 */
+	
 	public DBHelperActivity(){
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy); 		
 	}
     
+	/**
+	 * Using a confirmation ID calls on the database and retrieves the order specific to that ID.
+	 * 
+	 * @param confirmationID The confirmation ID for a specific order.
+	 * @return Returns a ArrayList the specifics of the order if successful. If unsuccessful it returns NULL.
+	 */
+	
     public ArrayList<Object> getOrderFromDatabase(String confirmationID){
     	confID = confirmationID; 
     	RetrieveOrder ro = new RetrieveOrder();
@@ -80,6 +98,21 @@ public class DBHelperActivity extends Activity {
     	returnOrder.add(timestamp);
     	return returnOrder;
     }
+    /**
+     * Adds a specific order to a database. Takes the parameters, creates an instance of CreateNewOrder which it then excecutes.
+     * 
+     * @param confID Confirmation ID for the Order.
+     * @param phoneNumber Phone Number for the Order.
+     * @param street Street Line of the addres for the Order.
+     * @param city City for the address for the Order.
+     * @param state State for the address for the Order.
+     * @param zipCode ZIP code for the address for the Order.
+     * @param email Email for the Order.
+     * @param paymentType Payment Type for the Order.
+     * @param creditCard Credit Card for the Order.
+     * @param discountCode Discount Code for the Order.
+     * @param myOrder The final Price.
+     */
     
     public void addOrderToDatabase(	
     		String confID, 
@@ -106,7 +139,22 @@ public class DBHelperActivity extends Activity {
     	this.myOrder = myOrder;
     	new CreateNewOrder().execute();
     }
-    
+    /**
+     * Takes the elements of a Order, creates an instance of CreateNewOrder and then executes.
+     * 
+     * 
+     * @param confID Confirmation ID for the Order.
+     * @param phoneNumber Phone Number for the Order.
+     * @param street Street Line of the addres for the Order.
+     * @param city City for the address for the Order.
+     * @param state State for the address for the Order.
+     * @param zipCode ZIP code for the address for the Order.
+     * @param email Email for the Order.
+     * @param paymentType Payment Type for the Order.
+     * @param creditCard Credit Card for the Order.
+     * @param discountCode Discount Code for the Order.
+     * @param myOrder The final Price for the Order.
+     */
     public void editOrderInDatabase(	
     		String confID, 
     		String phoneNumber, 
@@ -141,7 +189,14 @@ public class DBHelperActivity extends Activity {
     	
     	new CreateNewOrder().execute();
     }
-    
+    /**
+     * This method takes the pizza type, rating, and comment then creates an instance of CreateNewReview then executes.
+     * 
+     * 
+     * @param pizzaType Type of pizza
+     * @param pizzaRating Rating given for the pizza.
+     * @param comment Comment made for the pizza.
+     */
 	public void addReviewToDatabase(String pizzaType, Double pizzaRating, String comment){
 		this.pizzaType = pizzaType;
 		this.pizzaRating = pizzaRating;
@@ -149,7 +204,11 @@ public class DBHelperActivity extends Activity {
 		
 		new CreateNewReview().execute();		
 	}
-	
+	/**
+	 * Simple method which retrieves all reviews from the database.
+	 * 
+	 * @return Returns a ArrayList of Reviews if successful, NULL if unsuccessful.
+	 */
 	public ArrayList<Review> getAllReviewsFromDatabase(){
 		GetAllReviews gar = new GetAllReviews();
     	gar.execute();
@@ -162,7 +221,12 @@ public class DBHelperActivity extends Activity {
     	    	
     	return reviewArray;    	
 	}
-    
+    /**
+     * This method takes the full string of an order and divides it into the necessary categories, Pizza and Pop.
+     * 
+     * @param fullOrder The complete order in one string. 
+     * @return Returns an Order where pizza and pop are in seperate objects.
+     */
     
     public Order convertOrderFromDatabase(String fullOrder){
     	Order myOrder = new Order();
@@ -185,7 +249,12 @@ public class DBHelperActivity extends Activity {
     	
     	return myOrder;    	
     }
-    
+    /**
+     * Method converts an order in order for it to be properly sent to the database.
+     * 
+     * @param fullOrder Takes the original Order.
+     * @return A string with breaks specified.
+     */
     public String convertOrderToDatabase(Order fullOrder){
     	ArrayList<Pizza> pizzas = new ArrayList<Pizza>();
     	ArrayList<Pop> pops = new ArrayList<Pop>();
@@ -211,6 +280,12 @@ public class DBHelperActivity extends Activity {
     	}
     	return s;
     }
+    /**
+     * Converts a String into a Pizza Object. 
+     * 
+     * @param databasePizza The original String. 
+     * @return A Pizza that may be added to the database.
+     */
     
     public Pizza convertStringToPizza(String databasePizza){
     	ArrayList<String> toppings = new ArrayList<String>();
@@ -237,7 +312,12 @@ public class DBHelperActivity extends Activity {
     	
     	return null;
     }
-    
+    /**
+     * Converts a String into a Pop Object. 
+     * 
+     * @param databasePop The original String. 
+     * @return A Pop that may be added to the database.
+     */
     public Pop convertStringToPop(String databasePop){
     	String[] sentence = databasePop.split(" ");
     	if(sentence.length == 3){
@@ -257,6 +337,12 @@ public class DBHelperActivity extends Activity {
     }
     
 /*******************************************************/
+    
+    /**
+     * This Class when initialized retrieves a specified order. 
+     * 
+     * @author FantasticFour
+     */
 	class RetrieveOrder extends AsyncTask<String, String, String> {
 
 		protected String doInBackground(String... args) {
@@ -306,6 +392,12 @@ public class DBHelperActivity extends Activity {
 	}
 	
 /*******************************************************/
+	/**
+	 * This Class when initialized creates a new order to be sent to the database. On Failure returns NULL.
+	 * 
+	 * @author FantasticFour
+	 *
+	 */
 	class CreateNewOrder extends AsyncTask<String, String, String> {
 
 		protected String doInBackground(String... args) {
@@ -339,6 +431,12 @@ public class DBHelperActivity extends Activity {
 		}
 	}
 /*******************************************************/
+	/**
+	 * This Class when initialized Deletes a specified Order. On failure returns NULL.
+	 * 
+	 * @author wjradomski
+	 *
+	 */
 	class DeleteOrder extends AsyncTask<String, String, String>{
 
 		protected String doInBackground(String... args) {
@@ -370,6 +468,13 @@ public class DBHelperActivity extends Activity {
 	}
 	
 /*******************************************************/
+	
+	/**
+	 * This Class when initialized creates a new review to be sent to the database. On failure returns NULL.
+	 * 
+	 * @author FantasticFour
+	 *
+	 */
 	class CreateNewReview extends AsyncTask<String, String, String> {
 
 		protected String doInBackground(String... args) {
@@ -398,6 +503,12 @@ public class DBHelperActivity extends Activity {
 	}
 
 /*******************************************************/
+	/**
+	 * When initialized, returns all reviews from the database. On failure returns NULL.
+	 * 
+	 * @author FantasticFour
+	 *
+	 */
 	class GetAllReviews extends AsyncTask<String, String, String> {
 
 		/**

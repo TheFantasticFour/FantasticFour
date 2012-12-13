@@ -1,3 +1,12 @@
+/**
+ * This class is an extension of an order and is created when the
+ * user presses the 'Add Pizza' button on the MainMenuActivity page.
+ * It is responsible having the user input a pizza with various toppings,
+ * creating the Pizza object and adding that Pizza to the main order. 
+ * 
+ * 
+ * @author FantasticFour
+ */
 package com.example.fanfourproject;
 
 import java.util.ArrayList;
@@ -8,12 +17,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
-/*
- * This class is an extension of an order and is created when the
- * user presses the 'Add Pizza' button on the MainMenuActivity page.
- * It is responsible having the user input a pizza with various toppings,
- * creating the Pizza object and adding that Pizza to the main order. 
- */
 public class AddPizzaActivity extends Activity {
 	
 	private static final String LARGE = "Large";
@@ -32,7 +35,11 @@ public class AddPizzaActivity extends Activity {
         setContentView(R.layout.activity_add_pizza);
     }
     
-    /** Called when the user clicks the 'Finished Adding Pizza' button */
+    /** 
+     * Called when the user clicks the 'Finished Adding Pizza' button, gathers the chosen information for a particular pizza.
+     * 
+     * 
+     */
     public void donePizza(View view) {
     	getPizzaSize();
     	getPizzaCheese();
@@ -57,6 +64,11 @@ public class AddPizzaActivity extends Activity {
     	
     	finish();
     }
+    /**
+     * A simple method which finds the size chosen for the pizza. 
+     * 
+     *       
+     */
     
     private void getPizzaSize(){
     	if(checkRadioButton(R.id.size_small)){
@@ -69,6 +81,10 @@ public class AddPizzaActivity extends Activity {
     		pizzaSize = LARGE;
     	}    	
     }
+    /**
+     * A simple method which finds the cheeses chosen for the pizza. 
+     * 
+     */
     
     private void getPizzaCheese(){
     	if(checkCheckBox(R.id.cheese_american)){
@@ -81,6 +97,10 @@ public class AddPizzaActivity extends Activity {
 			pizzaCheese.add("Mozarella");	
 		}
     }
+    /**
+     * A simple method which finds the meats chosen for the pizza.
+     * 
+     */
     
     private void getPizzaMeat(){
     	if(checkCheckBox(R.id.meat_pepperoni)){
@@ -99,6 +119,10 @@ public class AddPizzaActivity extends Activity {
 			pizzaMeats.add("Chicken");	
 		}		
     }
+    /**
+     * Finds the Vegetables chosen for the pizza. 
+     * 
+     */
     
     private void getPizzaVeggies(){
     	if(checkCheckBox(R.id.veggie_tomato)){
@@ -117,13 +141,23 @@ public class AddPizzaActivity extends Activity {
 			pizzaVeggies.add("Jalapeno");	
 		}
     }
-    
+    /**
+     * A helper method for CheckBox which aids in finding the value of a check box. 
+     * 
+     * @param idName The ID for a particular box.
+     * @return Returns a boolean whether or not a particular box is checked.
+     */
     //Helper method for CheckBox
     private boolean checkCheckBox(int idName){
     	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
     	return myCheckBox1.isChecked();
     }
-    
+    /**
+     * A helper method for Radio Buttons which aids in finding the value of a check box. 
+     * 
+     * @param idName The ID for a particular button.
+     * @return Returns a boolean whether or not a particular button is checked.
+     */
     //Helper method for RadioButton
     private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	

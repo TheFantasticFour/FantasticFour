@@ -1,3 +1,7 @@
+/**
+ * Class which generates the confirmation ID for a given order once it has been submitted. 
+ * 
+ */
 package com.example.fanfourproject;
 
 import java.util.Random;
@@ -20,6 +24,11 @@ public class ReceiveConfirmationActivity extends Activity {
 	}
 	
     @Override
+    /**
+     * Initializes the activity. Gathers Confirmation ID and displays it.
+     * 
+     * @param savedInstanceState
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_confirmation);
@@ -51,7 +60,11 @@ public class ReceiveConfirmationActivity extends Activity {
         		MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
         		myOrder);
     }
-
+    /**
+     * Generates new confirmation ID
+     * 
+     * @return String of the confirmation ID generated
+     */
     public String generateConfID(){
     	Random generator = new Random();
         String conf = "";
@@ -70,7 +83,11 @@ public class ReceiveConfirmationActivity extends Activity {
         }
     	return conf;
     }
-     
+     /**
+      * Clears the information when Activity is closed, to avoid multiple copies.
+      * 
+      * @param view
+      */
     public void closeAndRestart(View view){        
         Intent intent = new Intent(this, HomePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -78,6 +95,8 @@ public class ReceiveConfirmationActivity extends Activity {
     }
 
 	/**
+	 * Gets confirmation ID
+	 * 
 	 * @return the confirmationID
 	 */
 	public String getConfirmationID() {
@@ -85,12 +104,19 @@ public class ReceiveConfirmationActivity extends Activity {
 	}
 
 	/**
+	 * Sets the confirmation ID
+	 * 
 	 * @param confirmationID the confirmationID to set
-	 */
+	 * @param savedInstanceState
+     */
 	public void setConfirmationID(String confirmationID) {
 		this.confirmationID = confirmationID;
 	}
 	
 	@Override
+	/**
+	 * Ensures when 'Back' is pressed nothing happens.
+	 * 
+	 */
     public void onBackPressed() {}//disable the back button
 }

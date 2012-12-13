@@ -1,3 +1,7 @@
+/**
+ * This class is called when the User selects the 'Proceed' button from the MainMenuActivity. Displays payment options.
+ * 
+ */
 package com.example.fanfourproject;
 
 import java.util.ArrayList;
@@ -58,6 +62,10 @@ public class PaymentOptionActivity extends Activity {
 	}	
 	
     @Override
+    /**
+     * Initializes the Activity. Gathers data from the current order and displays the necessary information.
+     * 
+     */
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_option);
@@ -85,27 +93,32 @@ public class PaymentOptionActivity extends Activity {
        	}       
     }
     
-    /*
+    /**
      * This is a method that runs when the Cash radio button is pressed.
      * It will set the visibility of the credit card field to invisible
+     * 
+     * @param view
      */
     public void clickCash(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.INVISIBLE);
     }
     
-    /*
+    /**
      * This is a method that runs when the Credit Card radio button is pressed.
      * It will set the visibility of the credit card field to visible
+     * 
+     * @param view
      */
     public void clickCredit(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.VISIBLE);
     }   
     
-    /*
+    /**
      * This method verifies all aspects of the user's address. It will get the street, city,
      * state and zip-code and only approve of the address if certain criteria are met. 
+     *
      */
     public boolean verifyAddress(){
     	boolean va = false;
@@ -135,9 +148,12 @@ public class PaymentOptionActivity extends Activity {
     	}
     }
     
-    /*
+    /**
      * This method verifies the user's phone number. Currently, a valid phone number has length 10
      * after the optional dashes are removed. 
+     * 
+     * @return Boolean whether or not Phone Number entered is valid.
+     *
      */
     public boolean verifyPhoneNumber(){
     	boolean vpn = false;
@@ -169,9 +185,11 @@ public class PaymentOptionActivity extends Activity {
  
     }
     
-    /*
+    /**
      * This method verifies the user's e-mail address. Currently, a valid e-mail contains
      * an @ symbol. 
+     * 
+     * @return Boolean returns true if email contains '@' 
      */
     public boolean verifyEmail(){
     	boolean vem = false;
@@ -195,9 +213,11 @@ public class PaymentOptionActivity extends Activity {
 		}
     }
     
-    /*
+    /**
      * This method verifies the user's payment info. If the credit card option is chosen,
      * payment is set to the credit card number which currently accepts an even number.
+     *
+     * @return Boolean returns true if Payment information is properly submitted
      */
     public boolean verifyPayment(){
     	boolean vp = false;
@@ -229,9 +249,11 @@ public class PaymentOptionActivity extends Activity {
 		}
     }
     
-    /*
+    /**
      * This method is run when the user hits the submit order button. It checks whether each of the
      * verifications passed and if one does not, the message is altered and the order is not submitted.
+     *
+     * @param view
      */
     public void submitOrder(View view){
     	setAddressStreet(getUserInputString(R.id.address_field));
@@ -310,28 +332,40 @@ public class PaymentOptionActivity extends Activity {
     	TextView messageTextView = (TextView) findViewById(R.id.message_area);
     	messageTextView.setText(message);
     }
-    
-  //Helper method for EditText
+  /**
+   * Helper method for EditText
+   * 
+   * @param idNumber ID number for a given text field.
+   * @return String of a given text field.
+   */
     private String getUserInputString(int idNumber){
     	EditText myStreet = (EditText) findViewById(idNumber);
     	String returnString = myStreet.getText().toString();   	
     	return returnString;
     }
     
-    //Helper method for RadioButton
+    /**
+     * Helper method for RadioButton
+     * 
+     * @param idNumber ID number for a given radio button.
+     * @return Boolean true if the radio button is selected.
+     */
     public boolean getUserInputRadio(int idNumber){
     	boolean returnBoolean = ((RadioButton) findViewById(idNumber)).isChecked();  	
     	return returnBoolean;
     }
     
     /**
-	 * @return the address
+     * Gets address submitted. 
+     * 
+	 * @return The address
 	 */
 	public static String getAddress() {
 		return address;
 	}
 
 	/**
+	 * Sets Address for a Order
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
@@ -339,13 +373,15 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
-	 * @return the phoneNumber
+	 * Gets phone number submitted
+	 * @return The phoneNumber
 	 */
 	public static String getPhoneNumber() {
 		return phoneNumber;
 	}
 
 	/**
+	 * Sets the phone number
 	 * @param phoneNumber the phoneNumber to set
 	 */
 	public void setPhoneNumber(String phoneNumber) {
@@ -353,6 +389,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets the phone number
 	 * @return the eMail
 	 */
 	public static String geteMail() {
@@ -360,6 +397,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets the email
 	 * @param eMail the eMail to set
 	 */
 	public void seteMail(String eMail) {
@@ -367,6 +405,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets type of payment
 	 * @return the payment
 	 */
 	public static String getPayment() {
@@ -374,6 +413,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets type of payment
 	 * @param payment the payment to set
 	 */
 	public void setPayment(String payment) {
@@ -381,6 +421,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets street address
 	 * @return the addressStreet
 	 */
 	public static String getAddressStreet() {
@@ -388,6 +429,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets the street address
 	 * @param addressStreet the addressStreet to set
 	 */
 	public void setAddressStreet(String addressStreet) {
@@ -395,6 +437,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets the city
 	 * @return the addressCity
 	 */
 	public static String getAddressCity() {
@@ -402,6 +445,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets the city
 	 * @param addressCity the addressCity to set
 	 */
 	public void setAddressCity(String addressCity) {
@@ -409,6 +453,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets the state
 	 * @return the addressState
 	 */
 	public static String getAddressState() {
@@ -416,6 +461,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets the state
 	 * @param addressState the addressState to set
 	 */
 	public void setAddressState(String addressState) {
@@ -423,6 +469,7 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Gets the ZIP
 	 * @return the addressZip
 	 */
 	public static String getAddressZip() {
@@ -430,16 +477,23 @@ public class PaymentOptionActivity extends Activity {
 	}
 
 	/**
+	 * Sets the ZIP
 	 * @param addressZip the addressZip to set
 	 */
 	public void setAddressZip(String addressZip) {
 		PaymentOptionActivity.addressZip = addressZip;
 	}
-	
+	/**
+	 * Adds to list of messages
+	 * @param myInt Number of messages
+	 */
 	public void addToListOfMessages(Integer myInt){
 		listOfMessages.add(myInt);
 	}
-	
+	/**
+	 * Clears list of messages
+	 * 
+	 */
 	public void clearListOfMessages(){
 		listOfMessages = new ArrayList<Integer>();
 	}
@@ -447,7 +501,10 @@ public class PaymentOptionActivity extends Activity {
 	public ArrayList<Integer> getListOfMessages(){
 		return listOfMessages;
 	}
-
+	/**
+	 * Brings in data to continue an order
+	 * 
+	 */
 	public void continueChangedOrder(){		
 		ArrayList<Object> changeArray = mainArray;
 		String confID = (String) changeArray.get(0);

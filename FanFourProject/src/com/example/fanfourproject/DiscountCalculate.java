@@ -1,3 +1,8 @@
+/**
+ * This Class aids in gathering comparing the User input to a desired discount code and returning whether the code given is valid.
+ * 
+ * @author FantasticFour
+ */
 package com.example.fanfourproject;
 
 import java.math.BigDecimal;
@@ -17,18 +22,35 @@ public class DiscountCalculate {
 	private String code = "";
 	private String price = "";
 	private String id = "";
-
+	
+	/**
+	 * Constructor for when user uses a non-Banner ID code.
+	 * 
+	 * @param code The discount code entered.
+	 * @param price The original price.
+	 */
+	
 	public DiscountCalculate(String code, String price) {
 		this.code = code;
 		this.price = price;
 	}
-
+	/**
+	 * Constructor for when user uses a Banner ID code.
+	 * 
+	 * @param code The discount code entered.
+	 * @param id The Banner ID for the User.
+	 * @param price The original price.
+	 */
 	public DiscountCalculate(String code, String id, String price) {
 		this.code = code;
 		this.id = id;
 		this.price = price;
 	}
-	
+	/**
+	 *  This method takes the original amounts and codes and determines the new price for a given User.
+	 * 
+	 * @return Returns the string of the new amount.
+	 */
 	public String getDiscountAmount(){
 		String discountAmount1 = "0.0";
 		String discountAmount2 = "0.0";
@@ -76,8 +98,12 @@ public class DiscountCalculate {
 		
 		return getBigDecimalString(totalDiscount);
 	}
-	
-	//Helper method for formatting
+	/**
+	 * Helper method for formatting
+	 * 
+	 * @param temp The original double value.
+	 * @return String of the corresponding value.
+	 */
 	private String getBigDecimalString(double temp){
 		BigDecimal bd = new BigDecimal(temp);
 		bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);

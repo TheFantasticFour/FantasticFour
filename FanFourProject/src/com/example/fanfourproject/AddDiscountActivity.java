@@ -1,3 +1,9 @@
+/**
+ * 
+ * 
+ * 
+ * 
+ */
 package com.example.fanfourproject;
 
 import android.os.Bundle;
@@ -7,21 +13,27 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-/*
- * This class is an extension of an order and is created when the
- * user presses the 'Add Discount' button on the MainMenuActivity page.
- * It is responsible having the user input a discount code and/or
- * a banner ID number
- */
+
 public class AddDiscountActivity extends Activity {
 	
+	/**
+	 * Method which generates the New Activity
+	 * 
+	 * @param savedInstanceState The saved state of the activity it it exists. 
+	 */
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_discount);
     }
-
+    
+    /**
+     * Method which applies the discounts as they are entered on the page.
+     * 
+     * @param view The total view of the current activity.
+     */
+    
     public void applyDiscounts(View view){
     	EditText codeHolder = (EditText) findViewById(R.id.code_holder);
     	EditText bannerHolder = (EditText) findViewById(R.id.banner_holder);
@@ -144,6 +156,12 @@ public class AddDiscountActivity extends Activity {
     	TextView messageViewer = (TextView) findViewById(R.id.message_viewer);
     	messageViewer.setText(codeMessage + "\n" + bannerMessage);
     }
+    
+    /**
+     * Closes the current activity.
+     * 
+     * @param view The total view of the current activity.
+     */
     
     public void backToOrderMenu(View view){
     	finish();

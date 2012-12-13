@@ -1,3 +1,7 @@
+/**
+ * Class which describes the contents of a review.
+ * 
+ */
 package com.example.fanfourproject;
 
 public class Review {
@@ -9,7 +13,14 @@ public class Review {
 	
 	private String longType = "";
 	
-	
+	/**
+	 * Constructor for a review
+	 * 
+	 * @param type Type of Pizza being reviewed
+	 * @param rating Rating given
+	 * @param comment Comment on item
+	 * @param timestamp Time review made
+	 */
 	public Review(String type, Double rating, String comment, String timestamp){
 		this.type = type;
 		this.rating = rating;
@@ -17,6 +28,14 @@ public class Review {
 		this.timestamp = timestamp;
 		setLongType();
 	}
+	/**
+	 * Constructor for a review
+	 * 
+	 * @param type Type of Pizza being reviewed
+	 * @param rating Rating given
+	 * @param comment Comment on item
+	 * @param timestamp Time review made
+	 */
 	
 	public Review(String type, Double rating, String comment){
 		this.type = type;
@@ -25,7 +44,10 @@ public class Review {
 		this.timestamp = null;
 		setLongType();
 	}
-	
+	/**
+	 * Sets the type of pizza for the review
+	 * 
+	 */
 	public void setLongType(){
 		switch (Integer.valueOf(type)) {
         case 1:  longType = "Meat-Lovers Pizza";
@@ -47,6 +69,7 @@ public class Review {
 	}
 	
 	/**
+	 * Gets type of pizza
 	 * @return the type
 	 */
 	public String getType() {
@@ -54,6 +77,7 @@ public class Review {
 	}
 	
 	/**
+	 * Gets the long of the type
 	 * @return the type
 	 */
 	public String getLongType() {
@@ -61,6 +85,7 @@ public class Review {
 	}
 
 	/**
+	 * Gets the rating
 	 * @return the rating
 	 */
 	public Double getRating() {
@@ -68,6 +93,7 @@ public class Review {
 	}
 
 	/**
+	 * Gets the comment
 	 * @return the comment
 	 */
 	public String getComment() {
@@ -75,12 +101,16 @@ public class Review {
 	}
 
 	/**
+	 * Gets the timestamp
 	 * @return the timestamp
 	 */
 	public String getTimestamp() {
 		return timestamp;
 	}
-	
+	/**
+	 * converts a review into a string
+	 * @return String of the review
+	 */
 	public String toString(){
 		if(timestamp!=null){
 			return type + ", " + rating + ", " + comment + ", " + timestamp;

@@ -1,3 +1,7 @@
+/**
+ * Class which aids in calculating the value of a item.
+ * 
+ */
 package com.example.fanfourproject;
 
 import java.util.ArrayList;
@@ -7,7 +11,12 @@ public class ReviewCalculator {
 	
 	public static final String currentYear = "2012";
 	public static final String currentMonth = "12";
-
+	/**
+	 * Calculates the value of a particular item based on the reviews and ratings.
+	 * 
+	 * @param reviewArray Array of reviews
+	 * @return Ordered list of Pizzas
+	 */
 	public ArrayList<String> calculatePizzaOrder(ArrayList<Review> reviewArray){
 		ArrayList<String> returnArray = new ArrayList<String>();
 		
@@ -61,7 +70,12 @@ public class ReviewCalculator {
 		}
 		return returnArray;
 	}
-	
+	/**
+	 * Calculates the score of a Array of reviews.
+	 * 
+	 * @param reviewArray Array of reviews
+	 * @return Score of the pizza
+	 */
 	public Double calculateScore(ArrayList<Review> reviewArray){
 		Double score = 0.0;
 		Double weight = 0.0;
@@ -83,7 +97,12 @@ public class ReviewCalculator {
 		
 		return score;
 	}
-	
+	/**
+	 * Calculates the age of a review
+	 * 
+	 * @param timeStamp Time of review
+	 * @return Integer age of the review in hours
+	 */
 	public Integer calculateHours(String timeStamp){
 		Integer returnInt = 1;
 		
@@ -104,7 +123,12 @@ public class ReviewCalculator {
 		System.out.println("RI: " + returnInt);
 		return returnInt;
 	}
-	
+	/**
+	 * Places reviews in order from high to low.
+	 * 
+	 * @param reviewArray ArrayList of reviews
+	 * @return Ordered ArrayList of reviews
+	 */
 	public ArrayList<Review> putReviewsInOrder(ArrayList<Review> reviewArray){
     	ArrayList<Review> returnArray = new ArrayList<Review>();
     	
