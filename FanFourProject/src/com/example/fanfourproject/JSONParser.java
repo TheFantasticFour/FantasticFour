@@ -1,3 +1,7 @@
+/**
+ * Parses and accepts text that is not strictly JSON-compliant to the database.
+ * 
+ */
 package com.example.fanfourproject;
 
 import java.io.BufferedReader;

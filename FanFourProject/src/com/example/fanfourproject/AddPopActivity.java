@@ -1,3 +1,12 @@
+/**
+ * This class is an extension of an order and is created when the
+ * user presses the 'Add Pop' button on the MainMenuActivity page.
+ * It is responsible having the user input a pop type and size,
+ * creating the Pop object and adding that Pop to the main order. 
+ * 
+ * @author FantasticFour
+ */
+
 package com.example.fanfourproject;
 
 import android.app.Activity;
@@ -24,7 +33,10 @@ public class AddPopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pop);
     }
-    
+    /**
+     * Checks values selected in the Liter Column.
+     * 
+     */
     private void checkLiterChoice(){
     	if(checkRadioButton(R.id.liter_coka_coke)){
     		popLiterFlavor = getRadioButtonText(R.id.liter_coka_coke);
@@ -51,6 +63,10 @@ public class AddPopActivity extends Activity {
     		popLiterFlavor = getRadioButtonText(R.id.liter_sprite);
     	}// else{\\pop liter type set to ""}
     }
+    /**
+     * Checks values selected in the Can Column.
+     * 
+     */
     
     private void checkCanChoice(){
     	if(checkRadioButton(R.id.can_coka_cola)){
@@ -81,7 +97,10 @@ public class AddPopActivity extends Activity {
     
     
 
-    /** Called when the user clicks the 'Finished Adding Pop' button */
+    /**
+     * Called when the user clicks the 'Finished Adding Pop' button
+     *
+     */
     public void donePop(View view) {
     	
     	checkLiterChoice();
@@ -98,13 +117,24 @@ public class AddPopActivity extends Activity {
     	   	
     	finish();
     }
+    /**
+     * A helper method for CheckBox which aids in finding the value of a check box. 
+     * 
+     * @param idName The ID for a particular box.
+     * @return Returns a boolean whether or not a particular box is checked.
+     */
     
     //Helper method for RadioButton
     private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
     	return myButton1.isChecked();
     }
-    
+    /**
+     * A helper method for Radio Buttons which aids in finding the value of a button. 
+     * 
+     * @param idName The ID for a particular button.
+     * @return Returns a boolean whether or not a particular button is checked.
+     */
     //Helper method for RadioButton text
     private String getRadioButtonText(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	

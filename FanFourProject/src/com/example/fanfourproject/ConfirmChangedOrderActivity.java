@@ -1,3 +1,9 @@
+/**
+ * This Class is called when the Confirmation ID of a user is confirmed from the ChangeOrderActivity and grabs the Order attached to the specified Confirmation ID.
+ * 
+ * @author FantasticFour
+ */
+
 package com.example.fanfourproject;
 
 import android.os.Bundle;
@@ -12,6 +18,10 @@ public class ConfirmChangedOrderActivity extends Activity {
 	private Order myOrder = MainMenuActivity.mainOrder;
 	
     @Override
+    /**
+     * Initializes the Activity.
+     * 
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_changed_order);
@@ -42,7 +52,11 @@ public class ConfirmChangedOrderActivity extends Activity {
         		MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
         		myOrder);
     }
-    
+    /**
+     * Closes the current Activity and directs the User to the HomePageActivity. 
+     * 
+     * @param view The current viewpane and corresponding data.
+     */
     public void closeAndRestart(View view){        
         Intent intent = new Intent(this, HomePageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -50,5 +64,9 @@ public class ConfirmChangedOrderActivity extends Activity {
     }
     
     @Override
+    /**
+     * Used when 'Back' button is pressed. Overrides and does nothing.
+     * 
+     */
     public void onBackPressed() {}//disable the back button
 }

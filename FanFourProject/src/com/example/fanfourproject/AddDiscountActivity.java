@@ -23,7 +23,13 @@ public class AddDiscountActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_discount);
     }
-
+    
+    /**
+     * Method which applies the discounts as they are entered on the page.
+     * 
+     * @param view The total view of the current activity.
+     */
+    
     public void applyDiscounts(View view){
     	EditText codeHolder = (EditText) findViewById(R.id.code_holder);
     	EditText bannerHolder = (EditText) findViewById(R.id.banner_holder);
@@ -40,7 +46,7 @@ public class AddDiscountActivity extends Activity {
     	
     	String codeMessage = "";
     	String bannerMessage = "";
-    	
+
     	if(codeString.equals("")){
     		codeMessage = "";
     	}
@@ -48,7 +54,7 @@ public class AddDiscountActivity extends Activity {
     		codeMessage = "A 10% discount will be added for that code!";
     		MainMenuActivity.codeString = DiscountCalculate.CODE_1;
     	}
-    	else if(codeString.equals(DiscountCalculate.CODE_2)){
+       	else if(codeString.equals(DiscountCalculate.CODE_2)){
     		codeMessage = "A 15% discount will be added for that code!";
     		MainMenuActivity.codeString = DiscountCalculate.CODE_2;
     	}
@@ -85,6 +91,12 @@ public class AddDiscountActivity extends Activity {
     	TextView messageViewer = (TextView) findViewById(R.id.message_viewer);
     	messageViewer.setText(codeMessage + "\n" + bannerMessage);
     }
+    
+    /**
+     * Closes the current activity.
+     * 
+     * @param view The total view of the current activity.
+     */
     
     public void backToOrderMenu(View view){
     	finish();
