@@ -257,7 +257,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="#99FF66"
+        android:background="#33CCFF"
         android:onClick="submitOrder"
         android:text="Submit Order" />
 

@@ -419,6 +419,7 @@ public class MainMenuActivity extends Activity {
     public void setPriceArrayText(int i, Double cost, ArrayList<String> toppingArray){
     	priceArray.get(i).setText("$" + roundTwoDecimals(Double.valueOf((cost+toppingArray.size()))).toString());
 	}
+    
 	/**
 	 * Helper method for formatting
 	 * 

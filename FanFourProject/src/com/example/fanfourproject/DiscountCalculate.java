@@ -8,8 +8,6 @@ package com.example.fanfourproject;
 import java.math.BigDecimal;
 
 public class DiscountCalculate {
-
-	//private boolean discounted = false;
 	
 	public static final String CODE_1 = "DISC10";
 	public static final String CODE_2 = "DISC15";
@@ -34,6 +32,7 @@ public class DiscountCalculate {
 		this.code = code;
 		this.price = price;
 	}
+	
 	/**
 	 * Constructor for when user uses a Banner ID code.
 	 * 
@@ -46,6 +45,7 @@ public class DiscountCalculate {
 		this.id = id;
 		this.price = price;
 	}
+	
 	/**
 	 *  This method takes the original amounts and codes and determines the new price for a given User.
 	 * 
@@ -98,6 +98,7 @@ public class DiscountCalculate {
 		
 		return getBigDecimalString(totalDiscount);
 	}
+	
 	/**
 	 * Helper method for formatting
 	 * 
