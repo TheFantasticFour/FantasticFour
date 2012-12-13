@@ -21,7 +21,7 @@ public class ContactPageActivity extends Activity {
         setContentView(R.layout.activity_contact_page);
     }
     /**
-     * Closes the current activity.0
+     * Closes the current activity.
      * 
      * @param view The current View and data. 
      */

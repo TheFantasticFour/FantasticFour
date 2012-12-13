@@ -14,6 +14,7 @@ public class Pizza {
 		}
 		this.pizzaSize = size;
 	}
+	
 	public Pizza(int specialtyType){
 		pizzaSize = "Special";
 		toppings = new ArrayList<String>();

@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#99FFCC">
+    android:layout_height="wrap_content" >
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentTop="true"
-    android:background="#99CCFF"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/contactUs"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="italic"
-        android:textSize="20dp"
-        android:text="@string/contact_us"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:background="#000000"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/phoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/phone_number"
-        android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/contactUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_us"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="italic" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="   Hours: 4:00 pm - 2:00 am daily"
-        android:textSize="15dp" />
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="     Phone: 320–363–7261"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/email_address"
-        android:textSize="15dp"/>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Hours: 4:00 pm - 2:00 am daily"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/zipCodes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="   Serving zip codes: 56321 and 56374"/>
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="     Email: garys@csbsju.edu"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="244dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:background="#FFFFFF"
-        android:onClick="backToMain"
-        android:text="@string/back_to_home_page" />
+        <TextView
+            android:id="@+id/zipCodes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Serving zip codes: 56321 and 56374"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:onClick="backToMain"
+            android:text="@string/back_to_home_page"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
 </RelativeLayout>

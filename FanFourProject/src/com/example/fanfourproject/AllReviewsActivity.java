@@ -59,6 +59,7 @@ public class AllReviewsActivity extends Activity {
 
         listView.setAdapter(adapter);
     }
+	
 	/**
 	 * Closes the current Activity and returns the user to HomePageActivity.
 	 * 
@@ -71,11 +72,12 @@ public class AllReviewsActivity extends Activity {
         startActivity(intent);
     }
 
-	@Override
+	
 	/**
 	 * When 'Back' button on device is pressed the method overrides and nothing occurs.
 	 * 
 	 */
+	@Override
     public void onBackPressed() {}//disable the back button
 
 }

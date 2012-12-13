@@ -39,8 +39,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:onClick="closeAndRestart"
         android:background="#99FF66"
+        android:onClick="closeAndRestart"
         android:text="Back to Android Menu" />
 
     <TextView

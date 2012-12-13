@@ -14,8 +14,8 @@
             android:id="@+id/addItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addToOrder"
             android:background="#99FF66"
+            android:onClick="addToOrder"
             android:text="Add to Order" />
     </LinearLayout>
 
@@ -43,8 +43,8 @@
 
                     <TextView
                         android:id="@+id/TextView_order_1"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Please add an item to your Order!"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -61,20 +61,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem1"
                         android:text="X"
-                        android:textSize="10dp"
-            			android:onClick="removeItem1" />
+                        android:textSize="10dp" />
                 </LinearLayout>
-				<LinearLayout
+
+                <LinearLayout
                     android:id="@+id/ll_order_2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-    				android:visibility="invisible" >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_2"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -91,19 +92,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem2"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem2" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"  
-    				android:visibility="invisible" >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_3"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -120,19 +123,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem3"
                         android:text="X"
-                        android:textSize="10dp"
-                        android:onClick="removeItem3"  />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"  
-    				android:visibility="invisible" >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_4"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -149,19 +154,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem4"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem4" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_5"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-    				android:visibility="invisible"  >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_5"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -178,19 +185,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem5"
                         android:text="X"
-                        android:textSize="10dp"
-                        android:onClick="removeItem5"  />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_6"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-    				android:visibility="invisible"  >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_6"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -207,19 +216,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem6"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem6" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_7"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"  
-    				android:visibility="invisible" >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_7"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -236,19 +247,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem7"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem7" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-    				android:visibility="invisible"  >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_8"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -265,19 +278,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem8"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem8" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_9"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" 
-    				android:visibility="invisible"  >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_9"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -294,19 +309,21 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem9"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem9" />
-                </LinearLayout><LinearLayout
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/ll_order_10"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"  
-    				android:visibility="invisible" >
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" >
 
                     <TextView
                         android:id="@+id/TextView_order_10"
-            			android:layout_width="match_parent"
-            			android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Small Text"
                         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -323,9 +340,9 @@
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:onClick="removeItem10"
                         android:text="X"
-                        android:textSize="10dp" 
-                        android:onClick="removeItem10" />
+                        android:textSize="10dp" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
@@ -376,8 +393,8 @@
             android:id="@+id/finalize_order"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="finalizeOrder"
             android:background="#99FF66"
+            android:onClick="finalizeOrder"
             android:text="Finalize Order" />
     </LinearLayout>
 

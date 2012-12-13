@@ -11,6 +11,7 @@ public class ReviewCalculator {
 	
 	public static final String currentYear = "2012";
 	public static final String currentMonth = "12";
+	
 	/**
 	 * Calculates the value of a particular item based on the reviews and ratings.
 	 * 
@@ -70,6 +71,7 @@ public class ReviewCalculator {
 		}
 		return returnArray;
 	}
+	
 	/**
 	 * Calculates the score of a Array of reviews.
 	 * 
@@ -97,6 +99,7 @@ public class ReviewCalculator {
 		
 		return score;
 	}
+	
 	/**
 	 * Calculates the age of a review
 	 * 
@@ -122,6 +125,7 @@ public class ReviewCalculator {
 		
 		return returnInt;
 	}
+	
 	/**
 	 * Places reviews in order from high to low.
 	 * 

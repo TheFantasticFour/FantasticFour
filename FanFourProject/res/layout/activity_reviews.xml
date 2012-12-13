@@ -23,8 +23,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="#33CCFF"
         android:onClick="submitReview"
-        android:background="#99FF66"
         android:text="Submit Review" />
 
     <Button
@@ -34,8 +34,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:background="#33CCFF"
         android:onClick="skipReview"
-        android:background="#99FF66"
         android:text="Skip to all reviews" />
 
     <TextView
