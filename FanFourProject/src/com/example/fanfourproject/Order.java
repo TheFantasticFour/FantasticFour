@@ -62,6 +62,7 @@ public class Order {
 		}
 		return checkDecimals(total);
 	}
+	
 	/**
 	 * Calculates the tax necessary for a price of an order.
 	 * 
@@ -74,7 +75,6 @@ public class Order {
 		return dis;
 	}
 	
-	//Use DiscountCalculate Class
 	/**
 	 * Gathers Discounts applied to the order. (unused)
 	 * 
@@ -86,12 +86,12 @@ public class Order {
 		
 		return dc.getDiscountAmount();
 	}
+	
 	/**
 	 * Returns final price for an order.
 	 * 
 	 * @return String of the final price.
-	 */
-	
+	 */	
 	public String getFinalPrice(){
 		Double price =  Double.valueOf(getInitialPrice())+Double.valueOf(getTax())-Double.valueOf(getDiscounts());
 		
@@ -99,6 +99,7 @@ public class Order {
 		
 		return finalPrice;
 	}
+	
 	/**
 	 * Retrieves Pizza's in an order.
 	 * 
@@ -107,6 +108,7 @@ public class Order {
 	public ArrayList<Pizza> getPizzas(){
 		return pizzas;
 	}
+	
 	/**
 	 * Retrieves Pop's in an order.
 	 * 
@@ -115,6 +117,7 @@ public class Order {
 	public ArrayList<Pop> getPop(){
 		return pops;
 	}
+	
 	/**
 	 * Adds a pizza to the order.
 	 * 
@@ -123,6 +126,7 @@ public class Order {
 	public void addPizza(Pizza newPiz){
 		pizzas.add(newPiz);
 	}
+	
 	/**
 	 * Adds a pop to the order.
 	 * 
@@ -138,6 +142,7 @@ public class Order {
 	public void clearPizzas(){
 		pizzas = new ArrayList<Pizza>();
 	}
+	
 	/**
 	 * Clears the array of Pops.
 	 * 
@@ -146,6 +151,7 @@ public class Order {
 	public void clearPops(){
 		pops = new ArrayList<Pop>();
 	}
+	
 	/**
 	 * Ensures prices are rounded accordingly.
 	 * 
@@ -158,8 +164,10 @@ public class Order {
 		String value = bd.toString();
 		return value;
 	}
+	
 	/**
-	 * Converts the ArrayLists (Pizza and Pop both) onto one string. Pizzas first followed by pop.
+	 * Converts the ArrayLists (Pizza and Pop both) onto one string. Pizzas
+	 * first followed by pop.
 	 * 
 	 */
 	public String toString(){

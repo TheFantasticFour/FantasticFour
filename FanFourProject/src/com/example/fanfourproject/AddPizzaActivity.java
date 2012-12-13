@@ -147,7 +147,6 @@ public class AddPizzaActivity extends Activity {
      * @param idName The ID for a particular box.
      * @return Returns a boolean whether or not a particular box is checked.
      */
-    //Helper method for CheckBox
     private boolean checkCheckBox(int idName){
     	CheckBox myCheckBox1 = (CheckBox) findViewById(idName);    	
     	return myCheckBox1.isChecked();
@@ -158,7 +157,6 @@ public class AddPizzaActivity extends Activity {
      * @param idName The ID for a particular button.
      * @return Returns a boolean whether or not a particular button is checked.
      */
-    //Helper method for RadioButton
     private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
     	return myButton1.isChecked();

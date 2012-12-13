@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:onClick="donePop"
         android:background="#99FF66"
+        android:onClick="donePop"
         android:text="Finish Adding Pop" />
 
     <LinearLayout
@@ -109,9 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sprite" />
-
                 </RadioGroup>
-
             </LinearLayout>
 
             <LinearLayout
@@ -200,7 +198,6 @@
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>

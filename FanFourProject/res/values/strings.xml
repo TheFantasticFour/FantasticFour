@@ -12,8 +12,6 @@
     <!-- Contact Page Activity -->
     <string name="title_activity_contact_page">Contact Information</string>
     <string name="contact_us">Contact Us:</string>
-    <string name="phone_number">   Phone: 320–363–7261</string>
-    <string name="email_address">   Email: garys@csbsju.edu</string>
     <string name="back_to_home_page">   Back to Home Page</string>
 
     <!-- Main Menu Activity -->
