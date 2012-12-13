@@ -43,16 +43,7 @@ public class PaymentOptionActivity extends Activity {
 	static String addressZip = "";
 	
 	//This is an Array List of integers to hold different messages to convey to the user
-	static ArrayList<Integer> listOfMessages = new ArrayList<Integer>();
-	// 1 --> "Invalid Street Address"
-	// 2 --> "Invalid City"
-	// 3 --> "Invalid State"
-	// 4 --> "Invalid ZipCode"
-	// 5 --> "Invalid Address"
-	// 6 --> "Invalid Phone Number"
-	// 7 --> "Invalid Email"
-	// 8 --> "Invalid Credit Card Number"
-	
+	static ArrayList<Integer> listOfMessages = new ArrayList<Integer>();	
 	
 	public static Boolean changeOrder = false;
 	public static String confId = "";
@@ -62,12 +53,12 @@ public class PaymentOptionActivity extends Activity {
 	public PaymentOptionActivity(){
 		
 	}	
-	
-    @Override
+   
     /**
      * Initializes the Activity. Gathers data from the current order and displays the necessary information.
      * 
      */
+	@Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_option);
@@ -89,39 +80,37 @@ public class PaymentOptionActivity extends Activity {
         changeOrder = ChangeOrderActivity.changeOrder;
         if(changeOrder!= null && changeOrder){
     		continueChangedOrder();
-    	}
-    	else{
-    		
-       	}       
+    	}      
     }
     
-    /**
-     * This is a method that runs when the Cash radio button is pressed.
-     * It will set the visibility of the credit card field to invisible
-     * 
-     * @param view
-     */
+	/**
+	 * This is a method that runs when the Cash radio button is pressed. It will
+	 * set the visibility of the credit card field to invisible
+	 * 
+	 * @param view
+	 */
     public void clickCash(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.INVISIBLE);
     }
     
-    /**
-     * This is a method that runs when the Credit Card radio button is pressed.
-     * It will set the visibility of the credit card field to visible
-     * 
-     * @param view
-     */
+	/**
+	 * This is a method that runs when the Credit Card radio button is pressed.
+	 * It will set the visibility of the credit card field to visible
+	 * 
+	 * @param view
+	 */
     public void clickCredit(View view){
     	EditText creditText = (EditText) findViewById(R.id.credit_card_field);
     	creditText.setVisibility(View.VISIBLE);
     }   
     
-    /**
-     * This method verifies all aspects of the user's address. It will get the street, city,
-     * state and zip-code and only approve of the address if certain criteria are met. 
-     *
-     */
+	/**
+	 * This method verifies all aspects of the user's address. It will get the
+	 * street, city, state and zip-code and only approve of the address if
+	 * certain criteria are met.
+	 * 
+	 */
     public boolean verifyAddress(){
     	boolean va = false;
     	
@@ -155,13 +144,13 @@ public class PaymentOptionActivity extends Activity {
     	}
     }
     
-    /**
-     * This method verifies the user's phone number. Currently, a valid phone number has length 10
-     * after the optional dashes are removed. 
-     * 
-     * @return Boolean whether or not Phone Number entered is valid.
-     *
-     */
+	/**
+	 * This method verifies the user's phone number. Currently, a valid phone
+	 * number has length 10 after the optional dashes are removed.
+	 * 
+	 * @return Boolean whether or not Phone Number entered is valid.
+	 * 
+	 */
     public boolean verifyPhoneNumber(){
     	boolean vpn = false;
     	String tempPhoneNumber = getPhoneNumber();
@@ -192,12 +181,12 @@ public class PaymentOptionActivity extends Activity {
  
     }
     
-    /**
-     * This method verifies the user's e-mail address. Currently, a valid e-mail contains
-     * an @ symbol. 
-     * 
-     * @return Boolean returns true if email contains '@' 
-     */
+	/**
+	 * This method verifies the user's e-mail address. Currently, a valid e-mail
+	 * contains an @ symbol.
+	 * 
+	 * @return Boolean returns true if email contains '@'
+	 */
     public boolean verifyEmail(){
     	boolean vem = false;
     	String tempEmail = eMail;
@@ -220,12 +209,13 @@ public class PaymentOptionActivity extends Activity {
 		}
     }
     
-    /**
-     * This method verifies the user's payment info. If the credit card option is chosen,
-     * payment is set to the credit card number which currently accepts an even number.
-     *
-     * @return Boolean returns true if Payment information is properly submitted
-     */
+	/**
+	 * This method verifies the user's payment info. If the credit card option
+	 * is chosen, payment is set to the credit card number which currently
+	 * accepts an even number.
+	 * 
+	 * @return Boolean returns true if Payment information is properly submitted
+	 */
     public boolean verifyPayment(){
     	boolean vp = false;
     	String tempCreditCard = "";
@@ -256,12 +246,13 @@ public class PaymentOptionActivity extends Activity {
 		}
     }
     
-    /**
-     * This method is run when the user hits the submit order button. It checks whether each of the
-     * verifications passed and if one does not, the message is altered and the order is not submitted.
-     *
-     * @param view
-     */
+	/**
+	 * This method is run when the user hits the submit order button. It checks
+	 * whether each of the verifications passed and if one does not, the message
+	 * is altered and the order is not submitted.
+	 * 
+	 * @param view
+	 */
     public void submitOrder(View view){
     	setAddressStreet(getUserInputString(R.id.address_field));
     	setAddressCity(getUserInputString(R.id.city_field));
@@ -283,118 +274,102 @@ public class PaymentOptionActivity extends Activity {
     	boolean vpn = verifyPhoneNumber();
     	boolean vem = verifyEmail();
     	boolean vp = verifyPayment();
-    	
-    	String message = "";
-    	//System.out.println("" + va + vpn + vem + vp);
-    	
-    	// 1 --> "Invalid Street Address"
-    	// 2 --> "Invalid City"
-    	// 3 --> "Invalid State"
-    	// 4 --> "Invalid ZipCode"
-    	// 5 --> "Invalid Address"
-    	// 6 --> "Invalid Phone Number"
-    	// 7 --> "Invalid Email"
-    	// 8 --> "Invalid Credit Card Number"
+
     	
     	for(Integer myInt: listOfMessages){
     		if(myInt == 1){
-    			//message = message + "Invalid Street Address" + "\n";
     			String toastMessage = "Invalid Street Address";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 2){
-    			//message = message + "Invalid City" + "\n";
     			String toastMessage = "Invalid City";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();    			
     		}
     		else if(myInt == 3){
-    			//message = message + "Invalid State" + "\n";
     			String toastMessage = "Invalid State";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 4){
-    			//message = message + "Invalid ZipCode" + "\n";
     			String toastMessage = "Invalid ZipCode";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 5){
-    			//message = message + "Invalid Address" + "\n";
     			String toastMessage = "Invalid Address";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 6){
-    			//message = message + "Invalid Phone Number" + "\n";
     			String toastMessage = "Invalid Phone Number";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 7){
-    			//message = message + "Invalid Email" + "\n";
     			String toastMessage = "Invalid Email";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     		else if(myInt == 8){
-    			//message = message + "Invalid Credit Card Number" + "\n";
     			String toastMessage = "Invalid Credit Card Number";
         		Context context = getApplicationContext();
-        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT);
         		toast.show();
     		}
     	}
     	clearListOfMessages();
     	
     	if(va && vpn && vem && vp){
-    		if(!changeOrder){
-    			Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
+    		if(changeOrder){
+    			Intent intent = new Intent(this, ConfirmChangedOrderActivity.class);
     			intent.putExtra("UserEmail", geteMail());
     			startActivity(intent);
     		}
     		else{
-    			Intent intent = new Intent(this, ConfirmChangedOrderActivity.class);
+    			Intent intent = new Intent(this, ReceiveConfirmationActivity.class);
     			intent.putExtra("UserEmail", geteMail());
     			startActivity(intent);
     		}
     	}
     }
-  /**
-   * Helper method for EditText
-   * 
-   * @param idNumber ID number for a given text field.
-   * @return String of a given text field.
-   */
+    
+	/**
+	 * Helper method for EditText
+	 * 
+	 * @param idNumber
+	 *            ID number for a given text field.
+	 * @return String of a given text field.
+	 */
     private String getUserInputString(int idNumber){
     	EditText myStreet = (EditText) findViewById(idNumber);
     	String returnString = myStreet.getText().toString();   	
     	return returnString;
     }
     
-    /**
-     * Helper method for RadioButton
-     * 
-     * @param idNumber ID number for a given radio button.
-     * @return Boolean true if the radio button is selected.
-     */
+	/**
+	 * Helper method for RadioButton
+	 * 
+	 * @param idNumber
+	 *            ID number for a given radio button.
+	 * @return Boolean true if the radio button is selected.
+	 */
     public boolean getUserInputRadio(int idNumber){
     	boolean returnBoolean = ((RadioButton) findViewById(idNumber)).isChecked();  	
     	return returnBoolean;
     }
     
-    /**
-     * Gets address submitted. 
-     * 
+	/**
+	 * Gets address submitted.
+	 * 
 	 * @return The address
 	 */
 	public static String getAddress() {
@@ -588,8 +563,4 @@ public class PaymentOptionActivity extends Activity {
         	creditButton.setChecked(true);
     	}
 	}
-	
-	//@Override
-    //public void onBackPressed() {//disable the back button
-    //}
 }

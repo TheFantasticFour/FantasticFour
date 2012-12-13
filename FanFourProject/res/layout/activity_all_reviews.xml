@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="#99FF66"
+        android:background="#33CCFF"
         android:onClick="closeAndRestart"
         android:text="Back to Main Menu" />
 
@@ -17,13 +17,8 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"        
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/back_to_menu" >
-        <!-- 
-        android:background="#FFFF00" yellow
-        android:background="#00FF00" green-->
-
     </ListView>
-    <!-- android:id="@android:id/list"-->
 
 </RelativeLayout>

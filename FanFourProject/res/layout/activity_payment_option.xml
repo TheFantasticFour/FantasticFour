@@ -107,31 +107,33 @@
                 android:inputType="textEmailAddress" />
         </LinearLayout>
 
-        <!-- LinearLayout
+        <!--
+             LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" -->
+            android:layout_height="wrap_content"
+        -->
 
-            <RadioGroup
-                android:id="@+id/radioGroup1"
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/cash_option"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:onClick="clickCash"
+                android:text="Cash" />
 
-                <RadioButton
-                    android:id="@+id/cash_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:onClick="clickCash"
-                    android:text="Cash" />
-
-                <RadioButton
-                    android:id="@+id/credit_card_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="clickCredit"
-                    android:text="Credit Card" />
-            </RadioGroup>
-        <!--  /LinearLayout-->
+            <RadioButton
+                android:id="@+id/credit_card_option"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clickCredit"
+                android:text="Credit Card" />
+        </RadioGroup>
+        <!-- /LinearLayout -->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -255,8 +257,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="submitOrder"
         android:background="#99FF66"
+        android:onClick="submitOrder"
         android:text="Submit Order" />
 
 </RelativeLayout>

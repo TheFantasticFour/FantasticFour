@@ -33,6 +33,28 @@ public class AddPopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pop);
     }
+    
+    /**
+     * Called when the user clicks the 'Finished Adding Pop' button
+     *
+     */
+    public void donePop(View view) {
+    	
+    	checkLiterChoice();
+    	checkCanChoice(); 
+    	
+    	if(!popLiterFlavor.equals("")){
+    		Pop tempPop = new Pop(POP_SIZE_2_LITER, popLiterFlavor);
+    		MainMenuActivity.addPopToOrder(tempPop);
+    	}
+    	if(!popCanFlavor.equals("")){
+    		Pop tempPop = new Pop(POP_SIZE_CAN, popCanFlavor);
+    		MainMenuActivity.addPopToOrder(tempPop);
+    	}
+    	   	
+    	finish();
+    }
+    
     /**
      * Checks values selected in the Liter Column.
      * 
@@ -95,28 +117,6 @@ public class AddPopActivity extends Activity {
     	}// else{\\pop can type set to ""}
     }
     
-    
-
-    /**
-     * Called when the user clicks the 'Finished Adding Pop' button
-     *
-     */
-    public void donePop(View view) {
-    	
-    	checkLiterChoice();
-    	checkCanChoice(); 
-    	
-    	if(!popLiterFlavor.equals("")){
-    		Pop tempPop = new Pop(POP_SIZE_2_LITER, popLiterFlavor);
-    		MainMenuActivity.addPopToOrder(tempPop);
-    	}
-    	if(!popCanFlavor.equals("")){
-    		Pop tempPop = new Pop(POP_SIZE_CAN, popCanFlavor);
-    		MainMenuActivity.addPopToOrder(tempPop);
-    	}
-    	   	
-    	finish();
-    }
     /**
      * A helper method for CheckBox which aids in finding the value of a check box. 
      * 
@@ -124,7 +124,6 @@ public class AddPopActivity extends Activity {
      * @return Returns a boolean whether or not a particular box is checked.
      */
     
-    //Helper method for RadioButton
     private boolean checkRadioButton(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
     	return myButton1.isChecked();
@@ -135,7 +134,6 @@ public class AddPopActivity extends Activity {
      * @param idName The ID for a particular button.
      * @return Returns a boolean whether or not a particular button is checked.
      */
-    //Helper method for RadioButton text
     private String getRadioButtonText(int idName){
     	RadioButton myButton1 = (RadioButton) findViewById(idName);    	
     	return myButton1.getText().toString();

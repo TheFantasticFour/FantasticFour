@@ -13,6 +13,14 @@ public class Review {
 	
 	private String longType = "";
 	
+	private static String PIZZA_1_TAG = "Meat-Lovers Pizza";
+	private static String PIZZA_2_TAG = "Taco Pizza";
+	private static String PIZZA_3_TAG = "Veggie Pizza";
+	private static String PIZZA_4_TAG = "Fajita Pizza";
+	private static String PIZZA_5_TAG = "Buffalo-Chicken Pizza";
+	private static String PIZZA_6_TAG = "Bacon-Cheeseburger Pizza";
+	private static String PIZZA_7_TAG = "Dessert Pizza";
+	
 	/**
 	 * Constructor for a review
 	 * 
@@ -28,13 +36,13 @@ public class Review {
 		this.timestamp = timestamp;
 		setLongType();
 	}
+	
 	/**
 	 * Constructor for a review
 	 * 
 	 * @param type Type of Pizza being reviewed
 	 * @param rating Rating given
 	 * @param comment Comment on item
-	 * @param timestamp Time review made
 	 */
 	
 	public Review(String type, Double rating, String comment){
@@ -44,25 +52,26 @@ public class Review {
 		this.timestamp = null;
 		setLongType();
 	}
+	
 	/**
 	 * Sets the type of pizza for the review
 	 * 
 	 */
 	public void setLongType(){
 		switch (Integer.valueOf(type)) {
-        case 1:  longType = "Meat-Lovers Pizza";
+        case 1:  longType = PIZZA_1_TAG;
                  break;
-        case 2:  longType = "Taco Pizza";
+        case 2:  longType = PIZZA_2_TAG;
                  break;
-        case 3:  longType = "Veggie Pizza";
+        case 3:  longType = PIZZA_3_TAG;
                  break;
-        case 4:  longType = "Fajita Pizza";
+        case 4:  longType = PIZZA_4_TAG;
                  break;
-        case 5:  longType = "Buffalo-Chicken Pizza";
+        case 5:  longType = PIZZA_5_TAG;
                  break;
-        case 6:  longType = "Bacon-Cheeseburger Pizza";
+        case 6:  longType = PIZZA_6_TAG;
                  break;
-        case 7:  longType = "Dessert Pizza";
+        case 7:  longType = PIZZA_7_TAG;
                  break;
 		}
 		
@@ -107,6 +116,7 @@ public class Review {
 	public String getTimestamp() {
 		return timestamp;
 	}
+	
 	/**
 	 * converts a review into a string
 	 * @return String of the review

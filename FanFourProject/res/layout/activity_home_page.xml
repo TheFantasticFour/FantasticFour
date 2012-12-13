@@ -2,52 +2,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:background="#000000">
-    
+    android:layout_height="wrap_content"
+    android:background="#000000" >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        
         android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="161dp"
-        android:background="@drawable/garyslogo" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="161dp"
+            android:background="@drawable/garyslogo" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="goToMenu"
-        android:textColor="#FFFFFF"
-        android:text="@string/button_menu" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToMenu"
+            android:text="@string/button_menu"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="goToContact"
-        android:textColor="#FFFFFF"
-        android:text="@string/button_contact_us" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToContact"
+            android:text="@string/button_contact_us"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="goToChangeOrder"
-        android:textColor="#FFFFFF"
-        android:text="Change Order" />
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToChangeOrder"
+            android:text="Change Order"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="goToReviewsActivity"
-        android:textColor="#FFFFFF"
-        android:text="Specialty Reviews" />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goToReviewsActivity"
+            android:text="Specialty Reviews"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
-</LinearLayout>
 </RelativeLayout>

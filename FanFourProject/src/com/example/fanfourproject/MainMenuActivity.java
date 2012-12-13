@@ -33,8 +33,6 @@ public class MainMenuActivity extends Activity {
 	
 	private static final String LITER_TAG = "2-Liter";
 	
-	private static int TOAST_LONG = Toast.LENGTH_LONG;
-	
 	public static TextView tv1;
 	public static Order mainOrder;
 	public static String codeString;
@@ -84,36 +82,6 @@ public class MainMenuActivity extends Activity {
 		Intent intent = new Intent(this, MenuInterfaceActivity.class);
         startActivity(intent);
 	}
-	
-//    /** 
-//     * Called when the user clicks the 'Add Pizza' button. Takes User to AddPizzaActivity.
-//     * 
-//     * @param view
-//     */
-//    public void addPizza(View view) {
-//        Intent intent = new Intent(this, AddPizzaActivity.class);
-//        startActivity(intent);
-//    }
-//    
-//    /** 
-//     * Called when the user clicks the 'Add Pop' button. Takes User to AddPopActivity.
-//     * 
-//     * @param view
-//     */
-//    public void addPop(View view) {
-//    	Intent intent = new Intent(this, AddPopActivity.class);
-//        startActivity(intent);
-//    }
-//    
-//    /** 
-//     * Called when the user clicks the 'Add Discounts' button. Takes User to AddDiscountActivity.
-//     * 
-//     * @param view
-//     */
-//    public void addDiscount(View view) {
-//    	Intent intent = new Intent(this, AddDiscountActivity.class);
-//        startActivity(intent);
-//    }
     
     /** 
      * Called when the user clicks the 'Finalize Order' button. Takes user to PaymentOptionActivity.
@@ -128,16 +96,16 @@ public class MainMenuActivity extends Activity {
         else{
         	String toastMessage = "Please add items!";
     		Context context = getApplicationContext();
-    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		Toast toast = Toast.makeText(context, toastMessage, Toast.LENGTH_LONG);
     		toast.show();
         }        	
     }
         
-    /** 
-     * Called when the user clicks removes or adds an item. Checks the status of the order and displays it for the User.
-     *
-     */
-    
+	/**
+	 * Called when the user clicks removes or adds an item. Checks the status of
+	 * the order and displays it for the User.
+	 * 
+	 */   
     public void onResume(){
     	super.onResume();
     	
@@ -218,16 +186,16 @@ public class MainMenuActivity extends Activity {
     			
     		itemArray.get(i).setText(pizzas.get(i).toString());
     		if(pizzas.get(i).getPizzaSize().equals(SMALL_TAG)){
-            	setPriceArrayText(i,SMALL_PIZZA_COST, toppingArray);
+            	setPriceArrayText(i, SMALL_PIZZA_COST, toppingArray);
         	}
     		else if(pizzas.get(i).getPizzaSize().equals(MEDIUM_TAG)){
-    			setPriceArrayText(i,MEDIUM_PIZZA_COST, toppingArray);
+    			setPriceArrayText(i, MEDIUM_PIZZA_COST, toppingArray);
         	}
     		else if(pizzas.get(i).getPizzaSize().equals(LARGE_TAG)){
-    			setPriceArrayText(i,LARGE_PIZZA_COST, toppingArray);
+    			setPriceArrayText(i, LARGE_PIZZA_COST, toppingArray);
     		}
     		else{//specialty pizza
-    			setPriceArrayText(i,SPECIAL_PIZZA_COST, toppingArray);
+    			setPriceArrayText(i, SPECIAL_PIZZA_COST, toppingArray);
     		}
     	}
     	pizzaSize = pizzas.size();
@@ -263,12 +231,12 @@ public class MainMenuActivity extends Activity {
     	}    	
     	onResume();  	
     }
+    
     /**
      * Removes Item 2 from the order.
      * 
      * @param view
      */
-
 	public void removeItem2(View view) {
 		if(pizzaSize > 1){
 			mainOrder.getPizzas().remove(1);
@@ -278,6 +246,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 3 from the order.
      * 
@@ -292,6 +261,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 4 from the order.
      * 
@@ -306,6 +276,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 5 from the order.
      * 
@@ -320,6 +291,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 6 from the order.
      * 
@@ -334,6 +306,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 7 from the order.
      * 
@@ -348,6 +321,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 8 from the order.
      * 
@@ -362,6 +336,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 9 from the order.
      * 
@@ -376,6 +351,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
     /**
      * Removes Item 10 from the order.
      * 
@@ -390,6 +366,7 @@ public class MainMenuActivity extends Activity {
 		}
 		onResume();
 	}
+	
 	/**
 	 * Takes a Pizza as a parameter then adds it to mainOrder.
 	 * 
@@ -398,6 +375,7 @@ public class MainMenuActivity extends Activity {
 	public static void addPizzaToOrder(Pizza piz){
 		mainOrder.addPizza(piz);
 	}
+	
 	/**
 	 * Takes a Pop as a parameter then adds it to mainOrder.
 	 * 
@@ -430,14 +408,14 @@ public class MainMenuActivity extends Activity {
 	        finish();
 		}
 	}
+	
 	/**
 	 * Helper method for setting the price given a position, cost and array.
 	 * 
 	 * @param i Which text to change
 	 * @param cost Cost
 	 * @param toppingArray Array of toppings.
-	 */
-	
+	 */	
     public void setPriceArrayText(int i, Double cost, ArrayList<String> toppingArray){
     	priceArray.get(i).setText("$" + roundTwoDecimals(Double.valueOf((cost+toppingArray.size()))).toString());
 	}
@@ -446,8 +424,7 @@ public class MainMenuActivity extends Activity {
 	 * 
 	 * @param d The incoming double.
 	 * @return The Double rounded to two decimal places.
-	 */
-	
+	 */	
 	private Double roundTwoDecimals(double d) {
     	DecimalFormat twoDForm = new DecimalFormat("#.##");
     	return Double.valueOf(twoDForm.format(d));

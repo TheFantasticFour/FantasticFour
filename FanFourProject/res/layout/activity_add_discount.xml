@@ -17,7 +17,6 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Apply Your Discounts Here"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -41,7 +40,6 @@
 
             <requestFocus />
         </EditText>
-
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +55,6 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="Supply your CSBSJU Banner ID number for a 5% discount!"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +75,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number" />
-
     </LinearLayout>
 
     <Button

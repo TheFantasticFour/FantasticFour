@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#000000" >
 
     <TextView
         android:id="@+id/textView1"
@@ -10,8 +11,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
         android:text="Enter your Confirmation ID below:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
 
     <EditText
         android:id="@+id/confirmationEditText"
@@ -20,23 +23,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Confirmation ID" >
+        android:hint="Confirmation ID"
+        android:textColor="#FFFFFF" >
 
         <requestFocus />
     </EditText>
-
-    <TextView
-        android:id="@+id/orderArea"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/confirmButton"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:visibility="invisible" />
 
     <Button
         android:id="@+id/confirmButton"
@@ -45,8 +38,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/confirmationEditText"
-        android:background="#99FF66"
         android:onClick="confirmButton"
-        android:text="Enter" />
+        android:text="Enter"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

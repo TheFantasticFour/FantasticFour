@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:onClick="donePizza"
         android:background="#99FF66"
+        android:onClick="donePizza"
         android:text="Finish Adding Pizza" />
 
     <LinearLayout
@@ -65,7 +65,6 @@
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="Large \n$18.99" />
-
                 </RadioGroup>
             </LinearLayout>
 
@@ -154,7 +153,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chicken \n$1.00" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -201,11 +199,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Peppers \n$1.00" />
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>

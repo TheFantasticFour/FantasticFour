@@ -57,21 +57,6 @@ public class AddSpecialtyActivity extends Activity {
         
     }
     
-    public String setPizzaType(Integer pizzaType){
-    	switch (pizzaType){
-        	case 1:  return "Meat-Lovers Pizza";
-        	case 2:  return "Taco Pizza";
-        	case 3:  return "Veggie Pizza";
-        	case 4:  return "Fajita Pizza";
-        	case 5:  return "Buffalo-Chicken Pizza";
-        	case 6:  return "Bacon-Cheeseburger Pizza";
-        	case 7:  return "Dessert Pizza";
-		}
-    	return null;
-    }
-    
-    
-
     public void addPizzaA(View view){
     	Pizza tempPizza = new Pizza(Integer.valueOf(orderedArray.get(0)));
     	MainMenuActivity.addPizzaToOrder(tempPizza);
@@ -113,4 +98,24 @@ public class AddSpecialtyActivity extends Activity {
     	MainMenuActivity.addPizzaToOrder(tempPizza);
     	finish();
 	}
+	
+	 /**
+     * A helper method to take an integer and convert it to the
+     * corresponding pizza type 
+     * 
+     * @param pizzaType An integer 1-7 corresponding to each pizza type. 
+     * @return Returns a String with the name of the pizza
+     */
+    private String setPizzaType(Integer pizzaType){
+    	switch (pizzaType){
+        	case 1:  return "Meat-Lovers Pizza";
+        	case 2:  return "Taco Pizza";
+        	case 3:  return "Veggie Pizza";
+        	case 4:  return "Fajita Pizza";
+        	case 5:  return "Buffalo-Chicken Pizza";
+        	case 6:  return "Bacon-Cheeseburger Pizza";
+        	case 7:  return "Dessert Pizza";
+		}
+    	return null;
+    }
 }

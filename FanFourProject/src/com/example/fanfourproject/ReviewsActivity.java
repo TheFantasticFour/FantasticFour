@@ -7,7 +7,9 @@ package com.example.fanfourproject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.LightingColorFilter;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -26,11 +28,12 @@ public class ReviewsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews);
     }
-/**
- * Allows a user to submit thier review. Takes user to AllReviewsActivity.
- * 
- * @param view gathers the information submitted.
- */
+
+	/**
+	 * Allows a user to submit their review. Takes user to AllReviewsActivity.
+	 * 
+	 * @param view gathers the information submitted.
+	 */
     public void submitReview(View view){
     	Spinner myChoice = (Spinner) findViewById(R.id.spinner1);
     	String pizzaType = myChoice.getSelectedItem().toString();
@@ -44,10 +47,10 @@ public class ReviewsActivity extends Activity {
     	myHelper.addReviewToDatabase(pizzaType, pizzaRating, comment);
     	Intent intent = new Intent(this, AllReviewsActivity.class);
         startActivity(intent);
-    	
     }
+    
     /**
-     * Skips the review
+     * Skips the review process
      * 
      * @param view 
      */
