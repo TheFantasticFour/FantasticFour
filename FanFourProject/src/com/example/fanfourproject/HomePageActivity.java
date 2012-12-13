@@ -32,6 +32,7 @@ public class HomePageActivity extends Activity {
         Intent intent = new Intent(this, ContactPageActivity.class);
         startActivity(intent);
     }
+    
     /**
      * Called when user clicks the 'Change Order' button. Takes User to the ChangeOrderActivity.
      * 
@@ -41,6 +42,7 @@ public class HomePageActivity extends Activity {
     	Intent intent = new Intent(this, ChangeOrderActivity.class);
         startActivity(intent);
     }
+    
     /**
      * Called when user clicks 'Reviews' button. Takes User to the ReviewActivity.
      * 

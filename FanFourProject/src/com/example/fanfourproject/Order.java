@@ -30,6 +30,7 @@ public class Order {
 		pizzas = new ArrayList<Pizza>();
 		pops = new ArrayList<Pop>();
 	}
+	
 	/**
 	 * Method which gets the initial price for an order.
 	 * 

@@ -45,11 +45,10 @@ public class ChangeOrderActivity extends Activity {
 	 * @param view
 	 */
     public void confirmButton(View view){
-    	EditText confirmationText = (EditText) findViewById(R.id.confirmationEditText);
-    	String confirmationCode = confirmationText.getText().toString();
-    	
     	ArrayList<Object> mainArray = new ArrayList<Object>();
     	
+    	EditText confirmationText = (EditText) findViewById(R.id.confirmationEditText);
+    	String confirmationCode = confirmationText.getText().toString();
     	
     	mainArray = dbHelper.getOrderFromDatabase(confirmationCode);
     	    	

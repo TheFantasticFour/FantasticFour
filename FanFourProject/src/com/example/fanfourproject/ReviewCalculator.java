@@ -63,7 +63,8 @@ public class ReviewCalculator {
 		treeMap.put(score5, 5);
 		treeMap.put(score6, 6);
 		treeMap.put(score7, 7);
-				
+		
+		System.out.println(treeMap);
 		for(int i = 0; i < 7; i++){
 			Double highest = treeMap.lastKey();
 			returnArray.add(treeMap.get(highest).toString());

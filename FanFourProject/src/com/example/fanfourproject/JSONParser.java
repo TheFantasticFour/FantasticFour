@@ -42,7 +42,6 @@ public class JSONParser {
 			List<NameValuePair> params) {
 		// Making HTTP request
 		try {
-			
 			// check for request method
 			if(method == "POST"){
 				// request method is POST
@@ -54,7 +53,8 @@ public class JSONParser {
 				HttpEntity httpEntity = httpResponse.getEntity();
 				is = httpEntity.getContent();
 				
-			}else if(method == "GET"){
+			}
+			else if(method == "GET"){
 				// request method is GET
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				String paramString = URLEncodedUtils.format(params, "utf-8");
@@ -67,7 +67,8 @@ public class JSONParser {
 			}			
 			
 
-		} catch(Exception e){
+		} 
+		catch(Exception e){
 			e.printStackTrace();
 		}
 

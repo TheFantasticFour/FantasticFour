@@ -52,6 +52,7 @@ public class ConfirmChangedOrderActivity extends Activity {
         		MainMenuActivity.codeString + "|" + MainMenuActivity.bannerString, 
         		myOrder);
     }
+    
     /**
      * Closes the current Activity and directs the User to the HomePageActivity. 
      * 
@@ -63,10 +64,10 @@ public class ConfirmChangedOrderActivity extends Activity {
         startActivity(intent);
     }
     
+	/**
+	 * Used when 'Back' button is pressed. Overrides and does nothing.
+	 * 
+	 */
     @Override
-    /**
-     * Used when 'Back' button is pressed. Overrides and does nothing.
-     * 
-     */
     public void onBackPressed() {}//disable the back button
 }

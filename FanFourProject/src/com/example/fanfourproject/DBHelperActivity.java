@@ -55,12 +55,12 @@ public class DBHelperActivity extends Activity {
 	private String comment = "";
 
 	
-	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
+	
 	/**
 	 * Sets the ThreadPolicy to permit all. 
 	 * 
 	 */
-	
+	@SuppressLint({ "NewApi", "NewApi", "NewApi" })
 	public DBHelperActivity(){
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy); 		
@@ -115,17 +115,17 @@ public class DBHelperActivity extends Activity {
      */
     
     public void addOrderToDatabase(	
-    		String confID, 
-    		String phoneNumber, 
-    		String street, 
-    		String city, 
-    		String state, 
-    		String zipCode,
-    		String email,
-    		String paymentType,
-    		String creditCard,
-    		String discountCode,
-    		Order myOrder){ 
+    			String confID, 
+    			String phoneNumber, 
+    			String street, 
+    			String city, 
+    			String state, 
+    			String zipCode,
+    			String email,
+    			String paymentType,
+    			String creditCard,
+    			String discountCode,
+    			Order myOrder){ 
     	this.confID = confID;
     	this.phoneNumber = phoneNumber;
     	this.street = street;
@@ -156,17 +156,17 @@ public class DBHelperActivity extends Activity {
      * @param myOrder The final Price for the Order.
      */
     public void editOrderInDatabase(	
-    		String confID, 
-    		String phoneNumber, 
-    		String street, 
-    		String city, 
-    		String state, 
-    		String zipCode,
-    		String email,
-    		String paymentType,
-    		String creditCard,
-    		String discountCode,
-    		Order myOrder){    	
+    			String confID, 
+    			String phoneNumber, 
+    			String street, 
+    			String city, 
+    			String state, 
+    			String zipCode,
+    			String email,
+    			String paymentType,
+    			String creditCard,
+    			String discountCode,
+    			Order myOrder){    	
     	this.confID = confID;
     	this.phoneNumber = phoneNumber;
     	this.street = street;

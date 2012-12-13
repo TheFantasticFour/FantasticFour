@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#99CCFF"
+    android:background="#000000"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -21,7 +21,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="buildPizza"
-            android:text="Build Your Own Pizza" />
+            android:text="Build Your Own Pizza"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +41,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="specialtyPizza"
-            android:text="Add a Specialty Pizza" />
+            android:text="Add a Specialty Pizza"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +61,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="addPop"
-            android:text="Add Drinks" />
+            android:text="Add Drinks"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,14 +73,33 @@
             android:id="@+id/button8"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:background="@drawable/discount" />
+            android:background="@drawable/reddollar" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:onClick="addDiscount"
-            android:text="Add Discounts" />
+            android:text="Add Discounts"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:text="Gary&apos;s is a Proud Supporter of:"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="299dp"
+        android:layout_height="65dp"
+        android:layout_gravity="right"
+        android:background="@drawable/csbsju" />
 
 </LinearLayout>
