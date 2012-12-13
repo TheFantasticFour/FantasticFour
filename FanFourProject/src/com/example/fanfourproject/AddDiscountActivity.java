@@ -2,9 +2,11 @@ package com.example.fanfourproject;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 /*
  * This class is an extension of an order and is created when the
  * user presses the 'Add Discount' button on the MainMenuActivity page.
@@ -13,6 +15,8 @@ import android.widget.TextView;
  */
 public class AddDiscountActivity extends Activity {
 	
+	private static int TOAST_SHORT = Toast.LENGTH_SHORT;
+	private static int TOAST_LONG = Toast.LENGTH_LONG;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,10 @@ public class AddDiscountActivity extends Activity {
     	String codeMessage = "";
     	String bannerMessage = "";
     	
-    	if(codeString.equals(DiscountCalculate.CODE_1)){
+    	if(codeString.equals("")){
+    		codeMessage = "";
+    	}
+    	else if(codeString.equals(DiscountCalculate.CODE_1)){
     		codeMessage = "A 10% discount will be added for that code!";
     		MainMenuActivity.codeString = DiscountCalculate.CODE_1;
     	}
@@ -53,8 +60,11 @@ public class AddDiscountActivity extends Activity {
     		codeMessage = "Your order will only cost $4.00";
     		MainMenuActivity.codeString = DiscountCalculate.CODE_4;
     	}
-    	else{
-    		codeMessage = "Invalid discount code.";
+    	else{    		
+    		String toastMessage = "Invalid discount code";
+    		Context context = getApplicationContext();
+    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		toast.show();
     	}
     	
     	if(bannerString.equals("")){
@@ -65,7 +75,10 @@ public class AddDiscountActivity extends Activity {
     		MainMenuActivity.bannerString = bannerString;
     	}
     	else{
-    		bannerMessage = "Invalid CSBSJU Banner ID number";
+    		String toastMessage = "Invalid CSBSJU Banner ID number";
+    		Context context = getApplicationContext();
+    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		toast.show();
     	}
     	
     	

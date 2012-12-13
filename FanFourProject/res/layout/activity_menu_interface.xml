@@ -10,7 +10,37 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="goToMainMenu"
-        android:text="To normal menu for now!" />
+        android:onClick="buildPizza"
+        android:text="Build Your Own Pizza" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button1"
+        android:onClick="specialtyPizza"
+        android:text="Add a Specialty Pizza" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button2"
+        android:onClick="addPop"
+        android:text="Add Drinks" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button3"
+        android:onClick="addDiscount"
+        android:text="Add Discounts" />
 
 </RelativeLayout>

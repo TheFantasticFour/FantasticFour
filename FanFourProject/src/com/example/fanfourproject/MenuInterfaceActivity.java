@@ -13,8 +13,23 @@ public class MenuInterfaceActivity extends Activity {
         setContentView(R.layout.activity_menu_interface);
     }
 
-    public void goToMainMenu(View view) {
-        Intent intent = new Intent(this, MainMenuActivity.class);
+    public void buildPizza(View view) {
+        Intent intent = new Intent(this, AddPizzaActivity.class);
+        startActivity(intent);
+    }
+    
+    public void specialtyPizza(View view) {
+        Intent intent = new Intent(this, AddPizzaActivity.class);
+        startActivity(intent);
+    }
+    
+    public void addPop(View view) {
+        Intent intent = new Intent(this, AddPopActivity.class);
+        startActivity(intent);
+    }
+    
+    public void addDiscount(View view) {
+        Intent intent = new Intent(this, AddDiscountActivity.class);
         startActivity(intent);
     }
 }
