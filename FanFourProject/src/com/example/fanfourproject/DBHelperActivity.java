@@ -230,23 +230,24 @@ public class DBHelperActivity extends Activity {
     
     public Order convertOrderFromDatabase(String fullOrder){
     	Order myOrder = new Order();
-    	
     	String[] pizzaAndPop = fullOrder.split("///");
+    	int fullOrderLength = fullOrder.length();
     	
-    	String pizzaString = pizzaAndPop[0];
-    	String popString = pizzaAndPop[1];
-    	
-    	String[] pizzaSplit = pizzaString.split("//");
-    	String[] popSplit = popString.split("//");
-    	
-    	for(String s: pizzaSplit){
-    		myOrder.addPizza(convertStringToPizza(s));
+    	if(!fullOrder.substring(0,3).equals("///")){
+	    	String pizzaString = pizzaAndPop[0];
+	    	String[] pizzaSplit = pizzaString.split("//");   	
+	    	for(String s: pizzaSplit){
+	    		myOrder.addPizza(convertStringToPizza(s));
+	    	}
     	}
     	
-    	for(String s: popSplit){
-    		myOrder.addPop(convertStringToPop(s));
+    	if(!fullOrder.substring(fullOrderLength-3).equals("///")){
+    		String popString = pizzaAndPop[1];
+    		String[] popSplit = popString.split("//");
+    		for(String s: popSplit){
+    			myOrder.addPop(convertStringToPop(s));
+    		}
     	}
-    	
     	return myOrder;    	
     }
     /**
@@ -288,29 +289,53 @@ public class DBHelperActivity extends Activity {
      */
     
     public Pizza convertStringToPizza(String databasePizza){
-    	ArrayList<String> toppings = new ArrayList<String>();
-    	String[] sentence = databasePizza.split(" ");
-    	
-    	String pizzaSize = sentence[0];
-    	if(sentence.length == 2){
-    		return new Pizza(pizzaSize, new ArrayList<String>());
+    	if(!databasePizza.contains(":")){
+	    	ArrayList<String> toppings = new ArrayList<String>();
+	    	String[] sentence = databasePizza.split(" ");
+	    	
+	    	String pizzaSize = sentence[0];
+	    	if(sentence.length == 2){
+	    		return new Pizza(pizzaSize, new ArrayList<String>());
+	    	}
+	    	else if(sentence.length == 4){
+	    		toppings.add(sentence[3]);
+	    		return new Pizza(pizzaSize, toppings);
+	    	}
+	    	else if(sentence.length >= 6){
+	    		for(int i = 3; i < sentence.length-3; i++){
+	    			//removing the comma
+	    			sentence[i] = sentence[i].substring(0,sentence[i].length()-1);
+	    			toppings.add(sentence[i]);
+	    		}
+	    		toppings.add(sentence[sentence.length-3]);
+				toppings.add(sentence[sentence.length-1]);
+	    		return new Pizza(pizzaSize, toppings);
+	    	}
+	    	return null;
     	}
-    	else if(sentence.length == 4){
-    		toppings.add(sentence[3]);
-    		return new Pizza(pizzaSize, toppings);
-    	}
-    	else if(sentence.length >= 6){
-    		for(int i = 3; i < sentence.length-3; i++){
-    			//removing the comma
-    			sentence[i] = sentence[i].substring(0,sentence[i].length()-1);
-    			toppings.add(sentence[i]);
+    	else{
+    		if(databasePizza.equals("Special Pizza: Meat-Lovers Pizza")){
+    			return new Pizza(1);
     		}
-    		toppings.add(sentence[sentence.length-3]);
-			toppings.add(sentence[sentence.length-1]);
-    		return new Pizza(pizzaSize, toppings);
+    		else if(databasePizza.equals("Special Pizza: Taco Pizza")){
+    			return new Pizza(2);
+    		}
+    		else if(databasePizza.equals("Special Pizza: Veggie Pizza")){
+    			return new Pizza(3);
+    		}
+    		else if(databasePizza.equals("Special Pizza: Fajita Pizza")){
+    			return new Pizza(4);
+    		}
+    		else if(databasePizza.equals("Special Pizza: Buffalo-Chicken Pizza")){
+    			return new Pizza(5);
+    		}
+    		else if(databasePizza.equals("Special Pizza: Bacon-Cheeseburger Pizza")){
+    			return new Pizza(6);
+    		}
+    		else{ //"Special Pizza: Dessert Pizza"
+    			return new Pizza(7);
+    		}
     	}
-    	
-    	return null;
     }
     /**
      * Converts a String into a Pop Object. 

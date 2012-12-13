@@ -10,6 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:onClick="donePop"
+        android:background="#99FF66"
         android:text="Finish Adding Pop" />
 
     <LinearLayout
@@ -65,7 +66,7 @@
                         android:id="@+id/liter_coka_coke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Coka-Cola" />
+                        android:text="Coca-Cola" />
 
                     <RadioButton
                         android:id="@+id/liter_pepsi"
@@ -153,7 +154,7 @@
                         android:id="@+id/can_coka_cola"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Coka-Cola" />
+                        android:text="Coca-Cola" />
 
                     <RadioButton
                         android:id="@+id/can_pepsi"

@@ -11,59 +11,12 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/add_pizza"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/pizza" />
-
-        <Button
-            android:id="@+id/pizza_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="addPizza"
-            android:text="@string/add_pizza" />
-
-        <Button
-            android:id="@+id/add_pop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/pop_pic" />
-
-        <Button
-            android:id="@+id/pop_image"
+            android:id="@+id/addItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="addPop"
-            android:text="@string/add_pop" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/discount_holder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/discount_image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/discountjpg" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="addDiscount"
-            android:text="Add Discounts" />
-
-        <TextView
-            android:id="@+id/discount_display"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="No Discounts"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20dp" />
-
+            android:onClick="addToOrder"
+            android:background="#99FF66"
+            android:text="Add to Order" />
     </LinearLayout>
 
     <LinearLayout
@@ -379,6 +332,21 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/discount_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/discount_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="No Discounts"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/text_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -409,6 +377,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="finalizeOrder"
+            android:background="#99FF66"
             android:text="Finalize Order" />
     </LinearLayout>
 

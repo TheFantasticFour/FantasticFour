@@ -9,25 +9,31 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainMenuActivity extends Activity {
 	
 	private static final Double SMALL_PIZZA_COST = 8.99;
 	private static final Double MEDIUM_PIZZA_COST = 13.99;
 	private static final Double LARGE_PIZZA_COST = 18.99;
+	private static final Double SPECIAL_PIZZA_COST = 21.99;
 	
 	private static final String SMALL_TAG = "Small";
 	private static final String MEDIUM_TAG = "Medium";
+	private static final String LARGE_TAG = "Large";
 	
 	private static final String CAN_PRICE_TAG = "$0.99";
 	private static final String LITER_PRICE_TAG = "$2.99";
 	
 	private static final String LITER_TAG = "2-Liter";
+	
+	private static int TOAST_LONG = Toast.LENGTH_LONG;
 	
 	public static TextView tv1;
 	public static Order mainOrder;
@@ -52,6 +58,7 @@ public class MainMenuActivity extends Activity {
 	 */
     public void onCreate(Bundle savedInstanceState) {
 		changeOrder = ChangeOrderActivity.changeOrder;
+		System.out.println("MO: " + mainOrder);
 		
 		if(changeOrder!= null && changeOrder){
 			super.onCreate(savedInstanceState);
@@ -73,35 +80,40 @@ public class MainMenuActivity extends Activity {
 		}
     }
 	
-    /** 
-     * Called when the user clicks the 'Add Pizza' button. Takes User to AddPizzaActivity.
-     * 
-     * @param view
-     */
-    public void addPizza(View view) {
-        Intent intent = new Intent(this, AddPizzaActivity.class);
+	public void addToOrder(View view){
+		Intent intent = new Intent(this, MenuInterfaceActivity.class);
         startActivity(intent);
-    }
-    
-    /** 
-     * Called when the user clicks the 'Add Pop' button. Takes User to AddPopActivity.
-     * 
-     * @param view
-     */
-    public void addPop(View view) {
-    	Intent intent = new Intent(this, AddPopActivity.class);
-        startActivity(intent);
-    }
-    
-    /** 
-     * Called when the user clicks the 'Add Discounts' button. Takes User to AddDiscountActivity.
-     * 
-     * @param view
-     */
-    public void addDiscount(View view) {
-    	Intent intent = new Intent(this, AddDiscountActivity.class);
-        startActivity(intent);
-    }
+	}
+	
+//    /** 
+//     * Called when the user clicks the 'Add Pizza' button. Takes User to AddPizzaActivity.
+//     * 
+//     * @param view
+//     */
+//    public void addPizza(View view) {
+//        Intent intent = new Intent(this, AddPizzaActivity.class);
+//        startActivity(intent);
+//    }
+//    
+//    /** 
+//     * Called when the user clicks the 'Add Pop' button. Takes User to AddPopActivity.
+//     * 
+//     * @param view
+//     */
+//    public void addPop(View view) {
+//    	Intent intent = new Intent(this, AddPopActivity.class);
+//        startActivity(intent);
+//    }
+//    
+//    /** 
+//     * Called when the user clicks the 'Add Discounts' button. Takes User to AddDiscountActivity.
+//     * 
+//     * @param view
+//     */
+//    public void addDiscount(View view) {
+//    	Intent intent = new Intent(this, AddDiscountActivity.class);
+//        startActivity(intent);
+//    }
     
     /** 
      * Called when the user clicks the 'Finalize Order' button. Takes user to PaymentOptionActivity.
@@ -109,16 +121,16 @@ public class MainMenuActivity extends Activity {
      * @param view
      */
     public void finalizeOrder(View view){
-        //if(changeOrder){
+        if(Double.valueOf(mainOrder.getInitialPrice())!=0){
         	Intent intent = new Intent(this, PaymentOptionActivity.class);
             startActivity(intent);
-        	
-        //}
-        //else{
-        	//Intent intent = new Intent(this, PaymentOptionActivity.class);
-            //startActivity(intent);
-        	
-        //}
+        }
+        else{
+        	String toastMessage = "Please add items!";
+    		Context context = getApplicationContext();
+    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		toast.show();
+        }        	
     }
         
     /** 
@@ -211,8 +223,11 @@ public class MainMenuActivity extends Activity {
     		else if(pizzas.get(i).getPizzaSize().equals(MEDIUM_TAG)){
     			setPriceArrayText(i,MEDIUM_PIZZA_COST, toppingArray);
         	}
-    		else{
+    		else if(pizzas.get(i).getPizzaSize().equals(LARGE_TAG)){
     			setPriceArrayText(i,LARGE_PIZZA_COST, toppingArray);
+    		}
+    		else{//specialty pizza
+    			setPriceArrayText(i,SPECIAL_PIZZA_COST, toppingArray);
     		}
     	}
     	pizzaSize = pizzas.size();
@@ -391,34 +406,40 @@ public class MainMenuActivity extends Activity {
 	public static void addPopToOrder(Pop pop){
 		mainOrder.addPop(pop);
 	}
+
 	/**
 	 * Takes a ArrayList of Objects as a parameter and sets the mainOrder equal to the specified order.
 	 * 
 	 * @param changedOrderArray The incoming order to be edited.
 	 */
 	public void startChangedOrder(ArrayList<Object> changedOrderArray){
+		try{
+			mainOrder = (Order) changedOrderArray.get(10);		
+			String discountString = (String) changedOrderArray.get(9);
+			int indexOfSplitter = discountString.indexOf("|");
 		
-		mainOrder = (Order) changedOrderArray.get(10);
-		System.out.println("main Order: " + mainOrder);
-		
-		String discountString = (String) changedOrderArray.get(9);
-		int indexOfSplitter = discountString.indexOf("|");
-		codeString = discountString.substring(0, indexOfSplitter);
-		bannerString = discountString.substring(indexOfSplitter+1);
+			codeString = discountString.substring(0, indexOfSplitter);
+			bannerString = discountString.substring(indexOfSplitter+1);
 
-		changeArray = changedOrderArray;
-		onResume();
+			changeArray = changedOrderArray;
+			onResume();
+		}
+		catch(Exception e){//conf ID not found
+			Intent intent = new Intent(this, ChangeOrderActivity.class);
+	        startActivity(intent);
+	        finish();
+		}
 	}
 	/**
 	 * Helper method for setting the price given a position, cost and array.
 	 * 
-	 * @param i Size of the pizza. 
+	 * @param i Which text to change
 	 * @param cost Cost
 	 * @param toppingArray Array of toppings.
 	 */
 	
     public void setPriceArrayText(int i, Double cost, ArrayList<String> toppingArray){
-    	priceArray.get(i).setText("$" + roundTwoDecimals(Double.valueOf((SMALL_PIZZA_COST+toppingArray.size()))).toString());
+    	priceArray.get(i).setText("$" + roundTwoDecimals(Double.valueOf((cost+toppingArray.size()))).toString());
 	}
 	/**
 	 * Helper method for formatting

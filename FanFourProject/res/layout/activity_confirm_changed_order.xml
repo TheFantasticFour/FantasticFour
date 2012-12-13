@@ -39,6 +39,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="#99FF66"
         android:onClick="closeAndRestart"
         android:text="Back to Gary's Menu" />
 

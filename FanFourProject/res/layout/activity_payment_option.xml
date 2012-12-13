@@ -256,6 +256,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:onClick="submitOrder"
+        android:background="#99FF66"
         android:text="Submit Order" />
 
 </RelativeLayout>

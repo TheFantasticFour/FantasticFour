@@ -45,6 +45,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/confirmationEditText"
+        android:background="#99FF66"
         android:onClick="confirmButton"
         android:text="Enter" />
 

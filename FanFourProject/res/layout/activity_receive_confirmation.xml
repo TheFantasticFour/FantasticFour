@@ -40,6 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:onClick="closeAndRestart"
+        android:background="#99FF66"
         android:text="Back to Android Menu" />
 
     <TextView

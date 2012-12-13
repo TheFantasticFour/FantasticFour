@@ -7,12 +7,14 @@ package com.example.fanfourproject;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PaymentOptionActivity extends Activity {
 	
@@ -131,14 +133,19 @@ public class PaymentOptionActivity extends Activity {
     		boolean inMinnesota = tempState.toLowerCase().equals("mn");
     		boolean inZip1 = tempZip.equals("56321");
         	boolean inZip2 = tempZip.equals("56374");
-    		if(inMinnesota && (inZip1 || inZip2)){
-    			setAddress(tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip);
-    			va  = true;
+    		if(inMinnesota){
+    			if((inZip1 || inZip2)){
+    				setAddress(tempStreet + "\n" + tempCity + ", " + tempState + ", " + tempZip);
+    				va  = true;
+    				return va;
+    			}
+    			va = false;
+    			addToListOfMessages(4);
     			return va;
     		}
     		else{
     			va = false;
-    			addToListOfMessages(4);
+    			addToListOfMessages(3);
     			return va;
     		}
     	}
@@ -291,28 +298,60 @@ public class PaymentOptionActivity extends Activity {
     	
     	for(Integer myInt: listOfMessages){
     		if(myInt == 1){
-    			message = message + "Invalid Street Address" + "\n";
+    			//message = message + "Invalid Street Address" + "\n";
+    			String toastMessage = "Invalid Street Address";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 2){
-    			message = message + "Invalid City" + "\n";
+    			//message = message + "Invalid City" + "\n";
+    			String toastMessage = "Invalid City";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();    			
     		}
     		else if(myInt == 3){
-    			message = message + "Invalid State" + "\n";
+    			//message = message + "Invalid State" + "\n";
+    			String toastMessage = "Invalid State";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 4){
-    			message = message + "Invalid ZipCode" + "\n";
+    			//message = message + "Invalid ZipCode" + "\n";
+    			String toastMessage = "Invalid ZipCode";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 5){
-    			message = message + "Invalid Address" + "\n";
+    			//message = message + "Invalid Address" + "\n";
+    			String toastMessage = "Invalid Address";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 6){
-    			message = message + "Invalid Phone Number" + "\n";
+    			//message = message + "Invalid Phone Number" + "\n";
+    			String toastMessage = "Invalid Phone Number";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 7){
-    			message = message + "Invalid Email" + "\n";
+    			//message = message + "Invalid Email" + "\n";
+    			String toastMessage = "Invalid Email";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     		else if(myInt == 8){
-    			message = message + "Invalid Credit Card Number" + "\n";
+    			//message = message + "Invalid Credit Card Number" + "\n";
+    			String toastMessage = "Invalid Credit Card Number";
+        		Context context = getApplicationContext();
+        		Toast toast = Toast.makeText(context, toastMessage, 0);
+        		toast.show();
     		}
     	}
     	clearListOfMessages();
@@ -329,8 +368,6 @@ public class PaymentOptionActivity extends Activity {
     			startActivity(intent);
     		}
     	}
-    	TextView messageTextView = (TextView) findViewById(R.id.message_area);
-    	messageTextView.setText(message);
     }
   /**
    * Helper method for EditText

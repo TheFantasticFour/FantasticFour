@@ -6,6 +6,7 @@ public class Pizza {
 	
 	private ArrayList<String> toppings = new ArrayList<String>();
 	private String pizzaSize = "";
+	private String specialtyType = null;
 	
 	public Pizza(String size, ArrayList<String> tops){
 		for(String top: tops){
@@ -13,6 +14,27 @@ public class Pizza {
 		}
 		this.pizzaSize = size;
 	}
+	public Pizza(int specialtyType){
+		pizzaSize = "Special";
+		toppings = new ArrayList<String>();
+		switch (specialtyType){
+        case 1:  this.specialtyType = "Special Pizza: Meat-Lovers Pizza";
+                 break;
+        case 2:  this.specialtyType = "Special Pizza: Taco Pizza";
+                 break;
+        case 3:  this.specialtyType = "Special Pizza: Veggie Pizza";
+                 break;
+        case 4:  this.specialtyType = "Special Pizza: Fajita Pizza";
+                 break;
+        case 5:  this.specialtyType = "Special Pizza: Buffalo-Chicken Pizza";
+                 break;
+        case 6:  this.specialtyType = "Special Pizza: Bacon-Cheeseburger Pizza";
+                 break;
+        case 7:  this.specialtyType = "Special Pizza: Dessert Pizza";
+                 break;
+		}		
+	}
+	
 	/**
 	 * Gets pizza size
 	 * 
@@ -60,26 +82,31 @@ public class Pizza {
 	 */
 	public String toString(){
 		String s = "";
-		if(toppings.size()>1){
-			s = s + pizzaSize + " Pizza with ";
-			for(int i = 0; i < toppings.size(); i++){
-				if(i==toppings.size()-2){
-					s = s + toppings.get(i);
-				}
-				else if(i!=toppings.size()-1){
-					s = s + toppings.get(i) + ", ";
-				}				
-				else{
-					s = s + " and " + toppings.get(i);
+		if(specialtyType == null){
+			if(toppings.size()>1){
+				s = s + pizzaSize + " Pizza with ";
+				for(int i = 0; i < toppings.size(); i++){
+					if(i==toppings.size()-2){
+						s = s + toppings.get(i);
+					}
+					else if(i!=toppings.size()-1){
+						s = s + toppings.get(i) + ", ";
+					}				
+					else{
+						s = s + " and " + toppings.get(i);
+					}
 				}
 			}
+			else if(toppings.size()==1){
+				s = s + pizzaSize + " Pizza with " + toppings.get(0);
+			}
+			else{//no toppings
+				s = s + pizzaSize + " Pizza";
+			}
+			return s;
 		}
-		else if(toppings.size()==1){
-			s = s + pizzaSize + " Pizza with " + toppings.get(0);
+		else{
+			return specialtyType;
 		}
-		else{//no toppings
-			s = s + pizzaSize + " Pizza";
-		}
-		return s;
 	}
 }

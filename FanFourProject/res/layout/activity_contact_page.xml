@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#99FFCC">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentTop="true"
+    android:background="#99CCFF"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/contactUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="italic"
+        android:textSize="20dp"
         android:text="@string/contact_us"/>
 
     <TextView
         android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/phone_number"/>
+        android:text="@string/phone_number"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   Hours: 4:00 pm - 2:00 am daily"
+        android:textSize="15dp" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/email_address"/>
+        android:text="@string/email_address"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/zipCodes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Serving zip codes: 56321 and 56374"/>
+        android:textSize="15dp"
+        android:text="   Serving zip codes: 56321 and 56374"/>
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="match_parent"
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="#FFFFFF"
         android:onClick="backToMain"
         android:text="@string/back_to_home_page" />
 
 </LinearLayout>
+</RelativeLayout>

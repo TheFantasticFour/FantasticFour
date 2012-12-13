@@ -120,7 +120,6 @@ public class ReviewCalculator {
 		Integer currentHour = (int) ((currentTime/(1000.0*60*60))-6);
 		returnInt = (Integer.valueOf(currentYear)-yearR)*8760 + (Integer.valueOf(currentMonth)-monthR)*720 + (currentDay-dayR)*24 + (currentHour-hourR);
 		
-		System.out.println("RI: " + returnInt);
 		return returnInt;
 	}
 	/**

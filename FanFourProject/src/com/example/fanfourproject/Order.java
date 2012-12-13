@@ -18,6 +18,7 @@ public class Order {
 	private static final double PIZZA_SMALL_PRICE = 8.99;
 	private static final double PIZZA_MEDIUM_PRICE = 13.99;
 	private static final double PIZZA_LARGE_PRICE = 18.99;
+	private static final double PIZZA_SPECIAL_PRICE = 21.99;
 	
 	private static final double TAX_RATE = 0.075;
 	
@@ -51,8 +52,11 @@ public class Order {
 			else if(p.getPizzaSize().equals("Medium")){
 				total = total + PIZZA_MEDIUM_PRICE;
 			}
-			else{
+			else if(p.getPizzaSize().equals("Large")){
 				total = total + PIZZA_LARGE_PRICE;
+			}
+			else{//specialty pizza
+				total = total + PIZZA_SPECIAL_PRICE;
 			}
 			total = total + p.getPizzaToppings().size();
 		}

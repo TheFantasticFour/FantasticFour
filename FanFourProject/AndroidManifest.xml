@@ -75,6 +75,15 @@
             android:name=".ConfirmChangedOrderActivity"
             android:label="@string/title_activity_confirm_changed_order" >
         </activity>
+        <activity
+            android:name=".AddSpecialtyActivity"
+            android:label="@string/title_activity_add_specialty" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
     <!-- Internet Permissions -->

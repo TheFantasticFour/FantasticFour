@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-          android:onClick="closeAndRestart"
+        android:background="#99FF66"
+        android:onClick="closeAndRestart"
         android:text="Back to Main Menu" />
 
     <ListView

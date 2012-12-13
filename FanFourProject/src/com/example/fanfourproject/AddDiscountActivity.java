@@ -15,9 +15,6 @@ import android.widget.Toast;
  */
 public class AddDiscountActivity extends Activity {
 	
-	private static int TOAST_SHORT = Toast.LENGTH_SHORT;
-	private static int TOAST_LONG = Toast.LENGTH_LONG;
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +66,7 @@ public class AddDiscountActivity extends Activity {
     	else{    		
     		String toastMessage = "Invalid discount code";
     		Context context = getApplicationContext();
-    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		Toast toast = Toast.makeText(context, toastMessage, 1);
     		toast.show();
     	}
     	
@@ -83,7 +80,7 @@ public class AddDiscountActivity extends Activity {
     	else{
     		String toastMessage = "Invalid CSBSJU Banner ID number";
     		Context context = getApplicationContext();
-    		Toast toast = Toast.makeText(context, toastMessage, TOAST_LONG);
+    		Toast toast = Toast.makeText(context, toastMessage, 1);
     		toast.show();
     	}
     	

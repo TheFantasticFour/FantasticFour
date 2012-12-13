@@ -16,20 +16,24 @@ public class MenuInterfaceActivity extends Activity {
     public void buildPizza(View view) {
         Intent intent = new Intent(this, AddPizzaActivity.class);
         startActivity(intent);
+        finish();
     }
     
     public void specialtyPizza(View view) {
-        Intent intent = new Intent(this, AddPizzaActivity.class);
+        Intent intent = new Intent(this, AddSpecialtyActivity.class);
         startActivity(intent);
+        finish();
     }
     
     public void addPop(View view) {
         Intent intent = new Intent(this, AddPopActivity.class);
         startActivity(intent);
+        finish();
     }
     
     public void addDiscount(View view) {
         Intent intent = new Intent(this, AddDiscountActivity.class);
         startActivity(intent);
+        finish();
     }
 }
