@@ -29,6 +29,11 @@ public class ContactPageActivity extends Activity {
         finish();
     }
     
+    
+	/**
+	 * Used when 'Back' button is pressed. Overrides and does nothing.
+	 * 
+	 */
     @Override
     public void onBackPressed() {}//disable the back button
 }

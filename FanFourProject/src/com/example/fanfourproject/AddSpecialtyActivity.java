@@ -29,8 +29,10 @@ public class AddSpecialtyActivity extends Activity {
         
         reviewArray = dbHelper.getAllReviewsFromDatabase();
         orderedArray = new ArrayList<String>();
+        System.out.println(reviewArray);
+        System.out.println(orderedArray);
         orderedArray = revCalc.calculatePizzaOrder(reviewArray);
-        		        
+        System.out.println(orderedArray); 		        
         pizzaA = setPizzaType(Integer.valueOf(orderedArray.get(0)));
         pizzaB = setPizzaType(Integer.valueOf(orderedArray.get(1)));
         pizzaC = setPizzaType(Integer.valueOf(orderedArray.get(2)));

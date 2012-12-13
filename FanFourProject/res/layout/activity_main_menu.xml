@@ -14,7 +14,7 @@
             android:id="@+id/addItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#99FF66"
+            android:background="#33CCFF"
             android:onClick="addToOrder"
             android:text="Add to Order" />
     </LinearLayout>
@@ -393,7 +393,7 @@
             android:id="@+id/finalize_order"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#99FF66"
+            android:background="#33CCFF"
             android:onClick="finalizeOrder"
             android:text="Finalize Order" />
     </LinearLayout>
